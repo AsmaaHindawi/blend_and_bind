@@ -122,75 +122,59 @@
     
 
     <!-- Footer Section -->
-    <footer class="py-20 bg-blue-950 text-white">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <!-- First Column: Site Links -->
-                <div class="footerCol">
-                    <h4 class="text-2xl font-semibold mb-4 pb-2 border-b-2 border-yellow-400 inline-block">Blend & Bind</h4>
-                    <ul>
-                        <li class="mb-2"><a class="text-white hover:text-yellow-400" href="{{ route('home') }}">Home</a></li>
-                        <li class="mb-2"><a class="text-white hover:text-yellow-400" href="{{ route('about') }}">About</a></li>
-                        <li class="mb-2"><a class="text-white hover:text-yellow-400" href="{{ route('events') }}">Events</a></li>
-                        <li class="mb-2"><a class="text-white hover:text-yellow-400" href="{{ route('services') }}">Services</a></li>
-                        <li class="mb-2"><a class="text-white hover:text-yellow-400" href="{{ route('contact') }}">Contact</a></li>
-                    </ul>
-                </div>
-                <!-- Second Column: Get Help -->
-                <div class="footerCol">
-                    <h4 class="text-2xl font-semibold mb-4 pb-2 border-b-2 border-yellow-400 inline-block">Get Help</h4>
-                    <ul>
-                        <li class="mb-2"><a class="text-white hover:text-yellow-400" href="#">FAQ</a></li>
-                        <li class="mb-2"><a class="text-white hover:text-yellow-400" href="#">Reservation Status</a></li>
-                        <li class="mb-2"><a class="text-white hover:text-yellow-400" href="#">Payment Options</a></li>
-                    </ul>
-                </div>
-                <!-- Third Column: Follow Us -->
-                <div class="footerCol">
-                    <h4 class="text-2xl font-semibold mb-4 pb-2 border-b-2 border-yellow-400 inline-block">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/" target="_blank" class="text-yellow-400 hover:text-white">
-                            <i class="fab fa-facebook-f text-2xl"></i>
-                        </a>
-                        <a href="https://www.instagram.com/" target="_blank" class="text-yellow-400 hover:text-white">
-                            <i class="fab fa-instagram text-2xl"></i>
-                        </a>
-                        <a href="https://twitter.com/" target="_blank" class="text-yellow-400 hover:text-white">
-                            <i class="fab fa-twitter text-2xl"></i>
-                        </a>
-                        <a href="https://www.youtube.com/" target="_blank" class="text-yellow-400 hover:text-white">
-                            <i class="fab fa-youtube text-2xl"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<footer class="py-20 bg-blue-950 text-white flex">
+    <div class="container mx-auto">
+    
+         <img src="{{ asset('images\BlendBinds.png') }}" alt="Blend & Bind slogan" class="bg-white  rounded-lg w-20 h-16 mr-2">
 
-        <!-- Contact Section -->
-    <section class="py-20 bg-blue-950 text-white">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-12">Contact Us</h2>
-            <div class="bg-gray-700 p-10 rounded-lg shadow-lg mx-auto max-w-xl">
-                <form action="{{ route('contact.store') }}" method="POST">
-                    @csrf
-                    <div class="mb-6">
-                        <label for="name" class="block mb-2 font-semibold">Your Name</label>
-                        <input type="text" id="name" name="name" class="w-full p-4 rounded-lg bg-gray-600 text-white" placeholder="Enter your name" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="email" class="block mb-2 font-semibold">Your Email</label>
-                        <input type="email" id="email" name="email" class="w-full p-4 rounded-lg bg-gray-600 text-white" placeholder="Enter your email" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="message" class="block mb-2 font-semibold">Message</label>
-                        <textarea id="message" name="message" rows="4" class="w-full p-4 rounded-lg bg-gray-600 text-white" placeholder="Enter your message" required></textarea>
-                    </div>
-                    <button type="submit" class="px-8 py-4 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-600 transition">Send Message</button>
-                </form>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <!-- First Column: Site Links -->
+            <div class="footerCol">
+                <h4 class="text-2xl font-semibold mb-4 pb-2 border-b-2 border-yellow-400 inline-block">Blend & Bind</h4>
+                <ul>
+                    <li class="mb-2"><a class="text-white hover:text-yellow-400" href="{{ route('home') }}">Home</a></li>
+                    <li class="mb-2"><a class="text-white hover:text-yellow-400" href="{{ route('about') }}">About</a></li>
+                    <li class="mb-2"><a class="text-white hover:text-yellow-400" href="{{ route('events') }}">Events</a></li>
+                    <li class="mb-2"><a class="text-white hover:text-yellow-400" href="{{ route('services') }}">Services</a></li>
+                    <li class="mb-2"><a class="text-white hover:text-yellow-400" href="{{ route('contact') }}">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Second Column: Get Help -->
+            <div class="footerCol">
+                <h4 class="text-2xl font-semibold mb-4 pb-2 border-b-2 border-yellow-400 inline-block">Get Help</h4>
+                <ul>
+                    <li class="mb-2"><a class="text-white hover:text-yellow-400" href="#">FAQ</a></li>
+                    <li class="mb-2"><a class="text-white hover:text-yellow-400" href="#">Reservation Status</a></li>
+                    <li class="mb-2"><a class="text-white hover:text-yellow-400" href="#">Payment Options</a></li>
+                </ul>
+            </div>
+            <!-- Third Column: Follow Us -->
+            <div class="footerCol">
+                <h4 class="text-2xl font-semibold mb-4 pb-2 border-b-2 border-yellow-400 inline-block">Follow Us</h4>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/" target="_blank" class="text-yellow-400 hover:text-white">
+                        <i class="fab fa-facebook-f text-2xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" class="text-yellow-400 hover:text-white">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="https://twitter.com/" target="_blank" class="text-yellow-400 hover:text-white">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="https://www.youtube.com/" target="_blank" class="text-yellow-400 hover:text-white">
+                        <i class="fab fa-youtube text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Fourth Column: Contact Button -->
+            <div class="footerCol flex justify-center items-center">
+                <a href="{{ route('contact') }}" class="inline-block px-8 py-4 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-600 transition duration-200">
+                    Contact Us
+                </a>
             </div>
         </div>
-    </section>
-    </footer>
+    </div>
+</footer>
 
 </body>
 </html>

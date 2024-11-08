@@ -34,4 +34,4 @@ Route::get('/contact', function () {
 })->name('contact');
 
 // Contact form submission route (POST)
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact');
