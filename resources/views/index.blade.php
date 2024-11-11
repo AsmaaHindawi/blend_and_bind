@@ -1,42 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
+
 <!-- Hero Section -->
-<div class="bg-cover bg-center h-screen flex items-center justify-center text-center">
-  <div class="bg-black bg-opacity-50 p-10 rounded-lg">
-    <h1 class="text-white text-5xl font-bold mb-4">Blend and Bind</h1>
-    <p class="text-white text-2xl mb-8">Where Stories and Flavors Meet</p>
-    <a href="#shop" class="px-6 py-3 bg-yellow-500 text-black rounded-lg hover:bg-yellow-600">Discover Our Blends</a>
-  </div>
+<div class="d-flex align-items-center justify-content-center text-center bg-dark text-white" style="height: 100vh; background: url('images/background1.jpg') no-repeat center center/cover;">
+    <div class="bg-dark p-5 rounded opacity-75">
+        <h1 class="display-4 fw-bold mb-3">Blend and Bind</h1>
+        <p class="lead mb-4">Where Stories and Flavors Meet</p>
+        <a href="#shop" class="btn btn-warning text-dark fw-bold">Discover Our Blends</a>
+    </div>
 </div>
 
 <!-- About Us Section -->
-<section class="py-16">
-  <div class="container mx-auto px-6">
-    <div class="flex flex-col md:flex-row items-center justify-between">
-      <div class="w-full md:w-1/2">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Story</h2>
-        <p class="text-gray-600 mb-6">At Blend and Bind, we believe in bringing together the aroma of freshly brewed coffee with the love of reading. Our cozy spaces are designed for readers, thinkers, and lovers of fine coffee alike. The experience here is more than just flavors; it is about the community, the ambiance, and the books that tell stories and inspire creativity.</p>
-      </div>
-      <div class="w-full md:w-1/2 mt-6 md:mt-0">
-        <img src="{{ asset('images/about/about-image.jpg') }}" alt="About Blend and Bind" class="rounded-lg shadow-lg">
-      </div>
+<section class="py-5">
+    <div class="container px-4">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="display-5 fw-bold text-dark mb-3">Our Story</h2>
+                <p class="text-muted mb-4">At Blend and Bind, we believe in bringing together the aroma of freshly brewed coffee with the love of reading. Our cozy spaces are designed for readers, thinkers, and lovers of fine coffee alike. The experience here is more than just flavors; it is about the community, the ambiance, and the books that tell stories and inspire creativity.</p>
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0">
+                <img src="{{ asset('images/about/about-image.jpg') }}" alt="About Blend and Bind" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- Featured Products -->
-<section class="py-20 bg-gray-100">
-  <div class="container mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-8">Featured Products</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-white shadow-lg rounded-lg p-6">
-        <img src="{{ asset('images/products/coffee.jpg') }}" alt="Coffee Beans" class="w-full h-64 object-cover rounded">
-        <h3 class="text-lg font-semibold mt-4">Coffee Beans</h3>
-        <p class="text-gray-600">Rich and aromatic beans perfect for your daily brew.</p>
-      </div>
-      <!-- Repeat for other products -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="display-6 fw-bold text-center mb-5">Featured Products</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <img src="{{ asset('images/products/coffee.jpg') }}" alt="Coffee Beans" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="h5 fw-bold">Coffee Beans</h3>
+                        <p class="text-muted">Rich and aromatic beans perfect for your daily brew.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat similar product cards for other products -->
+        </div>
     </div>
-  </div>
 </section>
+
 @endsection

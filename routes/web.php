@@ -13,20 +13,15 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-// Shop page route
-Route::get('/shop', function () {
-    return view('shop');
-})->name('shop');
+// Books page route
+Route::get('/books', function () {
+    return view('books');
+})->name('books');
 
-// Services page route
-Route::get('/services', function () {
-    return view('services');
-})->name('services');
-
-// Events page route
-Route::get('/events', function () {
-    return view('events');
-})->name('events');
+// Cart page route
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart');
 
 // Contact page route (GET)
 Route::get('/contact', function () {
@@ -34,4 +29,29 @@ Route::get('/contact', function () {
 })->name('contact');
 
 // Contact form submission route (POST)
-Route::post('/contact', [ContactController::class, 'store'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+// Events page route
+Route::get('/events', function () {
+    return view('events');
+})->name('events');
+
+// Games page route
+Route::get('/games', function () {
+    return view('games');
+})->name('games');
+
+// Menu page route
+Route::get('/menu', function () {
+    return view('menu');
+})->name('menu');
+
+// Zones page route
+Route::get('/zones', function () {
+    return view('zones');
+})->name('zones');
+
+// Services page route
+Route::get('/services', function () {
+    return view('services');
+})->name('services');
