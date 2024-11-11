@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blend and Bind - Where Stories and Flavors Meet</title>
+    <title>@yield('title', 'Blend & Bind')</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
@@ -37,7 +37,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-white ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="{{ asset('images/BlendnBind.png') }}" alt="Blend & Bind Logo" class="me-3" style="width: 100px; height: 70px;"></a>
+            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('images/BlendnBind.png') }}" alt="Blend & Bind Logo" class="me-3" style="width: 100px; height: 70px;"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 <span class="text-custom-primary">Menu</span>

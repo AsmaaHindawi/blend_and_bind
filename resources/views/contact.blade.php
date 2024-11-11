@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Blend & Bind')
+
 @section('content')
 <section class="home-slider owl-carousel">
 

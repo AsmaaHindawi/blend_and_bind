@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Blend & Bind')
+
 @section('content')
 
 <!-- Hero Section -->
