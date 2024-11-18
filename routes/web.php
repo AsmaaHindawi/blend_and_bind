@@ -55,3 +55,7 @@ Route::get('/zones', function () {
 Route::get('/services', function () {
     return view('services');
 })->name('services');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');

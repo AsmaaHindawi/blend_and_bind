@@ -2,6 +2,9 @@
 .text-custom-primary {
     color: #4476ac;
 }
+.text-custom-white{
+    color:#f1e4cc;
+}
 
 /* Custom primary background color */
 .bg-custom-primary {
