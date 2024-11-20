@@ -15,6 +15,7 @@
         <div class="col-md-8 col-sm-12 text-center ftco-animate">
             <span class="subheading text-custom-white" style="font-family: 'Great Vibes', cursive; font-size: 50px;">Welcome</span>
           <h2 class="mb-4 text-custom-white">To Our Coffee Shop</h2>
+          <input type="text" wire:model="searchTerm" placeholder="Search site content..." class="form-control my-4 search-bar-input">
           <p><a href="{{ route('about') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Tell Me More</a></p>
         </div>
       </div>

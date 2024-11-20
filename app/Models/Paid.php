@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ContactMessage extends Model
+class Paid extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'name',
-        'email',
-        'subject',
-        'message',
-        'submitted_at',
-        'response_at',
+        'book_id',
+        'item_id',
+        'zone_id',
+        'game_id',
+        'purchased_date',
+        'total_payment',
+        'payment_method',
     ];
 
     /**

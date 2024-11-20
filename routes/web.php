@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SearchController;
 
 // Home page route
 Route::get('/', function () {
@@ -59,3 +60,5 @@ Route::get('/services', function () {
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+Route::get('/api/search', [SearchController::class, 'search'])->name('api.search');
