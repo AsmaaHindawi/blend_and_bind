@@ -7,11 +7,12 @@
     "require": {
         "php": "^8.2",
         "alexpechkarev/google-maps": "^11.0",
+        "babenkoivan/elastic-scout-driver": "^4.0",
         "google/apiclient": "^2.18",
         "guzzlehttp/guzzle": "^7.9",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.5"
+        "laravel/scout": "^10.11",
+        "laravel/tinker": "^2.9"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.14",

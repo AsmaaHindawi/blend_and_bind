@@ -4,8 +4,7 @@
 
 @section('content')
 <section class="home-slider owl-carousel">
-
-    <div class="slider-item" style="background-image: url(images/bg_1p.png);" data-stellar-background-ratio="0.5">
+    <div class="slider-item" style="background-image: url(images/bg_1p.png); background-size: cover; background-repeat: no-repeat;" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row slider-text justify-content-center align-items-center">
@@ -18,7 +17,7 @@
     </div>
 </section>
 
-<section class="ftco-section contact-section" style="background: url(images/design-space-stained-paper-textured-background.jpg); background-size: 120%; background-position: center;">
+<section class="ftco-section contact-section contact-page" style="background: url(images/istockphoto-1255807969-612x612.png); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; background-color: rgba(0, 0, 0, 0.5);">
     <div class="container mt-5">
         <div class="row block-9">
             <div class="col-md-4 contact-info ftco-animate">
@@ -27,10 +26,10 @@
                         <h1 class="h1">Contact Information</h1>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
+                        <p><span>Address:</span> <a href="https://maps.app.goo.gl/oMpxBaeTHZsthyjm7">Bliss Street, Hamra Beirut</a></p>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                        <p><span>Phone:</span> <a href="tel://1234567920">+1235 2355 98</a></p>
                     </div>
                     <div class="col-md-12 mb-3">
                         <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
@@ -48,8 +47,7 @@
                     </div>
                 @endif
                 <form action="{{ route('contact.store') }}" method="POST" class="contact-form">
-                    @csrf  <!-- CSRF Protection -->
-
+                    @csrf <!-- CSRF Protection -->
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -88,5 +86,4 @@
         </div>
     </div>
 </section>
-
 @endsection

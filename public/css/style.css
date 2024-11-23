@@ -4620,7 +4620,7 @@ button.close {
   .bs-popover-top .arrow::before, .bs-popover-auto[x-placement^="top"] .arrow::before {
     bottom: 0;
     border-top-color: rgba(0, 0, 0, 0.25); }
-  
+
   .bs-popover-top .arrow::after,
   .bs-popover-auto[x-placement^="top"] .arrow::after {
     bottom: 1px;
@@ -4640,7 +4640,7 @@ button.close {
   .bs-popover-right .arrow::before, .bs-popover-auto[x-placement^="right"] .arrow::before {
     left: 0;
     border-right-color: rgba(0, 0, 0, 0.25); }
-  
+
   .bs-popover-right .arrow::after,
   .bs-popover-auto[x-placement^="right"] .arrow::after {
     left: 1px;
@@ -4657,7 +4657,7 @@ button.close {
   .bs-popover-bottom .arrow::before, .bs-popover-auto[x-placement^="bottom"] .arrow::before {
     top: 0;
     border-bottom-color: rgba(0, 0, 0, 0.25); }
-  
+
   .bs-popover-bottom .arrow::after,
   .bs-popover-auto[x-placement^="bottom"] .arrow::after {
     top: 1px;
@@ -4686,7 +4686,7 @@ button.close {
   .bs-popover-left .arrow::before, .bs-popover-auto[x-placement^="left"] .arrow::before {
     right: 0;
     border-left-color: rgba(0, 0, 0, 0.25); }
-  
+
   .bs-popover-left .arrow::after,
   .bs-popover-auto[x-placement^="left"] .arrow::after {
     right: 1px;
@@ -7813,9 +7813,9 @@ h1, h2, h3, h4, h5,
     .ftco-about .one-half .overlap {
       margin-left: -150px;
       padding: 40px;
-      background: rgba(87, 133, 183, 0.5); 
-    } 
-    
+      background: rgba(87, 133, 183, 0.5);
+    }
+
     }
 
 .ftco-services {
@@ -8366,7 +8366,7 @@ h1, h2, h3, h4, h5,
     left: 0;
     right: 0;
     bottom: 0;
-    background: #000;
+    background: #adb5bd;
     opacity: .5; }
 
 .testimony {
@@ -8959,15 +8959,15 @@ textarea.form-control {
       border: 1px solid transparent; }
 
       .contact-section .contact-info p span {
-        color: #4476ac; 
-        font-size: 20px;
+        color: #383d41;
+        font-size: 22px;
 
       }
-      
+
       .contact-form .form-group {
         position: relative;
       }
-      
+
       .contact-form .form-control {
         border: none !important; /* Remove any other borders */
         border-bottom: 2px solid rgba(60, 100, 150, 0.9) !important; /* Underline border with a darker color */
@@ -8979,39 +8979,90 @@ textarea.form-control {
         font-size: 13px;
         border-radius: 0px;
         -webkit-box-shadow: none !important;
-        box-shadow: none !important; 
+        box-shadow: none !important;
       }
-      .search-bar-input {
-        border: none !important; /* Remove any other borders */
-        border-bottom: 3px solid rgba(241, 228, 204, 0.9) !important; /* Underline border with a darker color */
-        height: 58px !important;
-        padding-left: 0;
-        padding-right: 0;
-        background: transparent !important;
-        color: #f1e4cc !important; /* Text color */
-        font-size: 15px;
-        border-radius: 0px;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important; 
-        width: 300px;
+
+/* Search Bar Styling */
+.search-bar-input {
+    border: none !important; /* Removes all borders */
+    border-bottom: 2px solid #f1e4cc !important; /* Adds an underline border */
+    height: 50px; /* Adjusts the height */
+    background: transparent !important; /* Transparent background */
+    color: #f1e4cc; /* Text color */
+    font-size: 16px; /* Font size */
+    font-family: 'Poppins', sans-serif; /* Font family */
+    border-radius: 0px; /* No rounded corners */
+    padding: 0 5px; /* Adds slight padding for spacing */
+    text-align: center; /* Centers the text inside the input */
+    outline: none !important; /* Removes the default focus outline */
+    box-shadow: none !important; /* Removes browser shadow */
+    width: 300px; /* Sets a fixed width */
+    margin: 0 auto; /* Centers the search bar horizontally */
+    transition: all 0.3s ease; /* Adds smooth transitions */
+}
+
+/* Placeholder Styling */
+.search-bar-input::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* Light text for placeholder */
+    font-style: italic; /* Italic placeholder text */
+}
+
+/* Hover Effect */
+.search-bar-input:hover {
+    border-bottom: 2px solid #ffd700; /* Changes underline color on hover */
+}
+
+/* Focus Effect - Fix Background and Text Color */
+.search-bar-input:focus {
+    background: transparent !important; /* Ensure background stays transparent */
+    border-bottom: 2px solid #ffffff !important; /* Highlight underline */
+    color: #f1e4cc !important; /* Ensure text color remains */
+    outline: none !important; /* Remove outline */
+    box-shadow: none !important; /* Remove shadow */
+}
+
+/* Positioning the Search Bar */
+body > header > div.container > div > div {
+    display: flex;
+    flex-direction: column; /* Stacks elements vertically */
+    align-items: center; /* Centers elements horizontally */
+    justify-content: center; /* Centers elements vertically */
+    height: 100%; /* Ensures the container fills its parent */
+}
+
+body > header > div.container > div > div > input {
+    margin-top: 20px; /* Adds spacing below Welcome text */
+}
+
+    input {
+        /* background-color: transparent !important; */
+        box-shadow: none !important;
     }
-    body > header > div.container > div > div{
-      align-self: center;
-      justify-content: center;
-    }
-    body > header > div.container > div > div > input{
-      align-self: center;
-    }
-    
+
+    input:focus {
+    background-color: #fff !important;
+    outline: none !important;
+}
+
+.contact-page .contact-info a {
+    font-size: 19px;
+    text-decoration: none;
+    color: #4476ac;
+}
+
+.contact-page .contact-info a:hover {
+    color: #383d41;
+}
+
     @media (max-width: 768px) {
       .search-bar-input {
-          width: 80%; /* Make it wider on smaller screens */
+          width: 50%; /* Make it wider on smaller screens */
       }
   }
     .search-bar-input::placeholder {
       color: #f1e4cc; /* Replace this with your desired color */
   }
-      
+
   .contact-form .form-control::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: rgba(52, 58, 64, 0.8); }
@@ -9338,26 +9389,32 @@ textarea.form-control {
   transform: translate(-50%, -50%); /* Centering the image at specified coordinates */
   z-index: 2; /* Ensure it's above the background */
   width: 152px; /* Adjust the size of the image as needed */
-  height: auto; 
+  height: auto;
+}
+
+@media (max-width: 1500px) { /* Adjust 1200px to your desired breakpoint */
+    .coffee-top {
+        display: none;
+    }
 }
 
 /* Mobile Responsive */
 @media (max-width: 800px) {
-  /* .responsive-header {
-    background-size: contain; 
-    background-position: top center; 
-  } */
+  .responsive-header {
+    background-size: contain;
+    background-position: top center;
+  }
 }
 
 .img-fluid {
-  height: auto; 
+  height: auto;
   animation: imgRotate 30s linear infinite;
 }
 
-@keyframes imgRotate { 
-  100% { 
-    transform: rotate(360deg); 
-  } 
+@keyframes imgRotate {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* body > section.ftco-about.d-md-flex > div.one-half.ftco-animate.fadeInUp.ftco-animated > div > div.heading-section.ftco-animate.fadeInUp.ftco-animated > h2{

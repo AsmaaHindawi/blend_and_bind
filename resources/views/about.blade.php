@@ -5,7 +5,7 @@
 @section('content')
 <section class="home-slider owl-carousel">
 
-  <div class="slider-item" style="background-image: url(images/bg_1p.png);" data-stellar-background-ratio="0.5">
+  <div class="slider-item" style="background-image: url(images/bg_1p.png); background-size: cover; background-repeat: no-repeat; " data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
       <div class="row slider-text justify-content-center align-items-center">
@@ -19,6 +19,56 @@
     </div>
   </div>
 </section>
+
+   <!-- info Section -->
+   <section class="ftco-counter ftco-bg-light img" id="section-counter" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-coffee-cup"></span></div>
+                                <strong class="number" data-number="100">0</strong>
+                                <span>Coffee Branches</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-coffee-cup"></span></div>
+                                <strong class="number" data-number="85">0</strong>
+                                <span>Number of Awards</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-coffee-cup"></span></div>
+                                <strong class="number" data-number="10567">0</strong>
+                                <span>Happy Customer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-coffee-cup"></span></div>
+                                <strong class="number" data-number="900">0</strong>
+                                <span>Staff</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end info Section -->
 
 <section class="ftco-about d-md-flex">
   <div class="one-half img" style="background-image: url(images/ouvrir-un-coffee-shop-etapes.jpg);"></div>
@@ -35,7 +85,7 @@
   </div>
 </section>
 
-<section class="ftco-section img" id="ftco-testimony" style="background-image: url(images/bg_1.jpg);"  data-stellar-background-ratio="0.5">
+<section class="ftco-section img" id="ftco-testimony" style="background-image: url(images/paper-texture.jpg); background-size: cover; background-repeat: no-repeat;"  data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
     <div class="row justify-content-center mb-5">

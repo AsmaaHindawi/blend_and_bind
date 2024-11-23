@@ -62,3 +62,7 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/api/search', [SearchController::class, 'search'])->name('api.search');
+
+use App\Http\Controllers\AboutController;
+
+Route::get('/about', [AboutController::class, 'index'])->name('about');

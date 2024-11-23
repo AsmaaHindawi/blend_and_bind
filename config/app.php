@@ -17,6 +17,59 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Service Providers
+    |--------------------------------------------------------------------------
+    |
+    | The service providers listed here will be automatically loaded on the
+    | request to your application. Feel free to add your own services to
+    | this array to grant expanded functionality to your applications.
+    |
+    */
+
+'providers' => [
+
+    /*
+     * Laravel Framework Service Providers...
+     */
+
+     // Laravel Framework Service Providers
+    Illuminate\Auth\AuthServiceProvider::class,
+    Illuminate\Broadcasting\BroadcastServiceProvider::class,
+    Illuminate\Bus\BusServiceProvider::class,
+    Illuminate\Cache\CacheServiceProvider::class,
+    Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
+    Illuminate\Database\DatabaseServiceProvider::class,
+    Illuminate\Filesystem\FilesystemServiceProvider::class,
+    Illuminate\Session\SessionServiceProvider::class, // Make sure this is included
+    Illuminate\Translation\TranslationServiceProvider::class, // Make sure this is included
+    Illuminate\View\ViewServiceProvider::class,
+    Illuminate\Encryption\EncryptionServiceProvider::class, // Add this if it is missing
+    Illuminate\Cookie\CookieServiceProvider::class,
+    Illuminate\Validation\ValidationServiceProvider::class,
+    Illuminate\Mail\MailServiceProvider::class,
+
+
+    // Core Providers
+    Illuminate\Hashing\HashServiceProvider::class,
+    Illuminate\Queue\QueueServiceProvider::class,
+    Illuminate\Foundation\Providers\FoundationServiceProvider::class,
+
+
+    /*
+     * Package Service Providers...
+     */
+    // Add this service provider for the Elasticsearch integration
+    Elastic\ScoutDriver\ServiceProvider::class,
+
+    /*
+     * Application Service Providers...
+     */
+    App\Providers\AppServiceProvider::class,
+],
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
@@ -122,5 +175,48 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Aliases
+    |--------------------------------------------------------------------------
+    |   Available aliases
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'aliases' => [
+    'App' => Illuminate\Support\Facades\App::class,
+    'Artisan' => Illuminate\Support\Facades\Artisan::class,
+    'Auth' => Illuminate\Support\Facades\Auth::class,
+    'Blade' => Illuminate\Support\Facades\Blade::class,
+    'Cache' => Illuminate\Support\Facades\Cache::class,
+    'Config' => Illuminate\Support\Facades\Config::class,
+    'Cookie' => Illuminate\Support\Facades\Cookie::class,
+    'Crypt' => Illuminate\Support\Facades\Crypt::class,
+    'DB' => Illuminate\Support\Facades\DB::class, // Add this line for DB
+    'Eloquent' => Illuminate\Database\Eloquent\Model::class,
+    'Event' => Illuminate\Support\Facades\Event::class,
+    'File' => Illuminate\Support\Facades\File::class,
+    'Gate' => Illuminate\Support\Facades\Gate::class,
+    'Hash' => Illuminate\Support\Facades\Hash::class,
+    'Http' => Illuminate\Support\Facades\Http::class,
+    'Log' => Illuminate\Support\Facades\Log::class,
+    'Queue' => Illuminate\Support\Facades\Queue::class,
+    'Redirect' => Illuminate\Support\Facades\Redirect::class,
+    'Request' => Illuminate\Support\Facades\Request::class,
+    'Response' => Illuminate\Support\Facades\Response::class,
+    'Route' => Illuminate\Support\Facades\Route::class,
+    'Schema' => Illuminate\Support\Facades\Schema::class,
+    'Session' => Illuminate\Support\Facades\Session::class,
+    'Storage' => Illuminate\Support\Facades\Storage::class,
+    'URL' => Illuminate\Support\Facades\URL::class,
+    'Validator' => Illuminate\Support\Facades\Validator::class,
+    'View' => Illuminate\Support\Facades\View::class,
+    'Translator' => Illuminate\Support\Facades\Lang::class, // Make sure this is included
+
+
+],
+
 
 ];
