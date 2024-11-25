@@ -85,7 +85,7 @@
                     <div class="col-md-8 col-sm-12 text-center ftco-animate">
                         <h1 class="mb-4">Quiet Place to Study and Work</h1>
                         <p class="mb-4 mb-md-5">Book your own room and enjoy the best moments of tranquility.</p>
-                        <p><a href="{{ route('services') }}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Show More</a></p>
+                        <p><a href="{{ route('zones') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Show More</a></p>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     <div class="col-md-8 col-sm-12 text-center ftco-animate">
                         <h1 class="mb-4">Buy Your Favorite Book</h1>
                         <p class="mb-4 mb-md-5">You can find all old and modern books around the world.</p>
-                        <p><a href="{{ route('services') }}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Show More</a></p>
+                        <p><a href="{{ route('zones') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Show More</a></p>
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@
                     <div class="col-md-8 col-sm-12 text-center ftco-animate">
                         <h1 class="mb-4">Enjoy Playing With Your Friends</h1>
                         <p class="mb-4 mb-md-5">Find the most popular types of games to spend valuable time with friends.</p>
-                        <p><a href="{{ route('services') }}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Show More</a></p>
+                        <p><a href="{{ route('zones') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Show More</a></p>
                     </div>
                 </div>
             </div>
@@ -128,8 +128,8 @@
     				<div class="heading-section text-md-right ftco-animate">
 	          	<span class="subheading text-custom-primary">Discover</span>
 	            <h2 class="mb-4 ">Our Menu</h2>
-	            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-	            <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+	            <p class="mb-4"> Explore a variety of mouthwatering dishes and refreshing beverages crafted with the finest ingredients. Whether you're in the mood for a quick snack or a hearty meal, we have something for everyone!</p>
+	            <p><a href="{{ route('menu') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">View Full Menu</a></p>
 	          </div>
     			</div>
     			<div class="col-md-6">
@@ -141,17 +141,17 @@
     					</div>
     					<div class="col-md-6">
     						<div class="menu-entry mt-lg-4">
-		    					<a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>
+		    					<a href="#" class="img" style="background-image: url(images/dessert-4.jpg);"></a>
 		    				</div>
     					</div>
     					<div class="col-md-6">
     						<div class="menu-entry">
-		    					<a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
+		    					<a href="#" class="img" style="background-image: url(images/dessert-5.jpg);"></a>
 		    				</div>
     					</div>
     					<div class="col-md-6">
     						<div class="menu-entry mt-lg-4">
-		    					<a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>
+		    					<a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
 		    				</div>
     					</div>
     				</div>
@@ -166,7 +166,7 @@
           <div class="col-md-7 heading-section ftco-animate text-center">
           	<span class="subheading">Discover</span>
             <h2 class="mb-4">Best Coffee Sellers</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p>Discover the favorites our customers can't get enough of! From creamy cappuccinos to bold espressos, our best-seller coffees are crafted to deliver the perfect blend of flavor and aroma. Treat yourself to the top picks that make every coffee moment unforgettable.</p>
           </div>
         </div>
         <div class="row">
@@ -175,9 +175,7 @@
     					<a href="#" class="img" style="background-image: url(images/menu-1.jpg);"></a>
     					<div class="text text-center pt-4">
     						<h3><a href="#">Coffee Capuccino</a></h3>
-    						<p>A small river named Duden flows by their place and supplies</p>
-    						<p class="price"><span>$5.90</span></p>
-    						<p><a href="#" class="btn btn-primary btn-outline-primary">Show More</a></p>
+    						<p>A perfect balance of rich espresso, steamed milk, and velvety foam, topped with a sprinkle of cocoa or cinnamon for a warm, indulgent experience</p>
     					</div>
     				</div>
         	</div>
@@ -185,10 +183,8 @@
         		<div class="menu-entry">
     					<a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>
     					<div class="text text-center pt-4">
-    						<h3><a href="#">Coffee Capuccino</a></h3>
-    						<p>A small river named Duden flows by their place and supplies</p>
-    						<p class="price"><span>$5.90</span></p>
-    						<p><a href="#" class="btn btn-primary btn-outline-primary">Show More</a></p>
+    						<h3><a href="#">Coffee</a></h3>
+    						<p>Freshly brewed from the finest coffee beans, our classic coffee offers a bold and aromatic flavor to kickstart your day.</p>
     					</div>
     				</div>
         	</div>
@@ -196,10 +192,8 @@
         		<div class="menu-entry">
     					<a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
     					<div class="text text-center pt-4">
-    						<h3><a href="#">Coffee Capuccino</a></h3>
-    						<p>A small river named Duden flows by their place and supplies</p>
-    						<p class="price"><span>$5.90</span></p>
-    						<p><a href="#" class="btn btn-primary btn-outline-primary">Show More</a></p>
+    						<h3><a href="#">Milkshake</a></h3>
+    						<p>A creamy blend of milk and ice cream, available in a variety of irresistible flavors like chocolate, vanilla, and strawberry. A treat that’s both refreshing and delightful.</p>
     					</div>
     				</div>
         	</div>
@@ -207,14 +201,13 @@
         		<div class="menu-entry">
     					<a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>
     					<div class="text text-center pt-4">
-    						<h3><a href="#">Coffee Capuccino</a></h3>
-    						<p>A small river named Duden flows by their place and supplies</p>
-    						<p class="price"><span>$5.90</span></p>
-    						<p><a href="#" class="btn btn-primary btn-outline-primary">Show More</a></p>
+    						<h3><a href="#">Espresso</a></h3>
+    						<p>An intense shot of pure coffee bliss, crafted from premium beans to deliver a rich, bold, and aromatic flavor that true coffee lovers adore.</p>
     					</div>
     				</div>
         	</div>
         </div>
+       <div class="text-center"><p><a href="{{ route('menu') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3 ">Show More</a></p></div> 
     	</div>
     </section>
 

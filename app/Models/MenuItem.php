@@ -9,10 +9,13 @@ class MenuItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'category', 'price', 'availability'];
+    protected $table = 'menu_items'; // Table name
 
-    public function paid()
-    {
-        return $this->hasMany(Paid::class, 'item_id');
-    }
+    protected $primaryKey = 'item_id'; // Primary key column
+
+    public $incrementing = true; // Auto-incrementing key
+
+    protected $keyType = 'int'; // Primary key type
+
+    protected $fillable = ['name', 'category', 'price', 'availability', 'image'];
 }

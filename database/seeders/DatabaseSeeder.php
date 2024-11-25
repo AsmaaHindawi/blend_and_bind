@@ -15,5 +15,12 @@ class DatabaseSeeder extends Seeder
 
         // Seed Contact Messages Table
         ContactMessage::factory()->count(20)->create();
+
+        $this->call(BooksTableSeeder::class);
+
+        $this->call(MenuItemsSeeder::class);
+       
     }
+   
+   
 }

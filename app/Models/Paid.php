@@ -9,22 +9,15 @@ class Paid extends Model
 {
     use HasFactory;
 
+    protected $table = 'paid'; // Your table name
+
     protected $fillable = [
         'user_id',
         'book_id',
         'item_id',
-        'zone_id',
-        'game_id',
         'purchased_date',
         'total_payment',
         'payment_method',
+        'address',
     ];
-
-    /**
-     * Relationship with User
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
-    }
 }
