@@ -18,10 +18,11 @@ class DatabaseSeeder extends Seeder
 
         // Call all necessary seeders
         $this->call([
-            BooksTableSeeder::class,
-            MenuItemsSeeder::class,
-            GamesTableSeeder::class,      // Include Games Table Seeder
-            ContentsTableSeeder::class,  // Include Contents Table Seeder
+            BooksTableSeeder::class,       // Seeder for Books
+            MenuItemsSeeder::class,        // Seeder for Menu Items
+            UserTableSeeder::class,        // Update to UserTableSeeder
+            GamesTableSeeder::class,       // Seeder for Games
+            ContentSeeder::class,          // Seeder for Content
         ]);
     }
 }

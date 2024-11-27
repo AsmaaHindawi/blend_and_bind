@@ -8,7 +8,6 @@ return new class extends Migration
 {
     public function up(): void
     {
-        
         Schema::create('contact_messages', function (Blueprint $table) {
             $table->id('message_id');
             $table->unsignedBigInteger('user_id')->nullable();
@@ -18,7 +17,7 @@ return new class extends Migration
             $table->text('message');
             $table->timestamp('submitted_at')->useCurrent();
             $table->string('response_at')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,5 +27,4 @@ return new class extends Migration
         Schema::dropIfExists('contact_messages');
     }
 };
-
 

@@ -48,7 +48,7 @@
         <div class="d-flex align-items-center">
             @php
                 $isBook = $item['type'] === 'book';
-                $imagePath = $isBook 
+                $imagePath = $isBook
                     ? asset('book_images/' . $item['image'])
                     : asset('images/' . $item['image']);
             @endphp
@@ -66,7 +66,9 @@
             <button type="button" class="btn btn-outline-warning btn-sm btn-quantity increment-btn" data-id="{{ $key }}">+</button>
         </div>
     </td>
-    <td class="text-black">${{ number_format($item['price'] * $item['quantity'], 2) }}</td>
+    <td class="text-black item-total">
+        ${{ number_format($item['price'] * $item['quantity'], 2) }}
+    </td>
     <td class="text-center">
         <form action="{{ route('cart.remove', $key) }}" method="POST">
             @csrf
@@ -174,62 +176,56 @@
 
 @push('scripts')
 <script>
-   function updateCart(id, quantity) {
-    console.log('updateCart called for ID:', id, 'Quantity:', quantity);
+    function updateCart(id, quantity) {
+        console.log(`Updating cart for ID: ${id}, Quantity: ${quantity}`);
 
-    const row = document.querySelector(`tr[data-id="${id}"]`);
-    if (!row) {
-        console.error('No row found for ID:', id);
-        return; // Stop further execution if the row is not found
+        $.ajax({
+            url: `/cart/update/${id}`, // Ensure the URL is correct
+            method: 'POST',
+            data: {
+                quantity: quantity,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                if (response.success) {
+                    const row = $(`tr[data-id="${id}"]`);
+
+                    // Update the item total
+                    row.find('.item-total').text(`$${response.itemTotal.toFixed(2)}`);
+
+                    // Update the subtotal, sales tax, and grand total
+                    $('.subtotal').text(`$${response.subtotal.toFixed(2)}`);
+                    $('.sales-tax').text(`$${response.salesTax.toFixed(2)}`);
+                    $('.grand-total').text(`$${response.grandTotal.toFixed(2)}`);
+                } else {
+                    console.error('Failed to update cart:', response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error updating cart:', error);
+            }
+        });
     }
 
-    // Fetch request
-    fetch(`/cart/update/${id}`, {
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ quantity }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Server response:', data);
-        if (data.success) {
-            // Update item total and cart summary
-            row.querySelector('.item-total').textContent = `$${data.itemTotal.toFixed(2)}`;
-            document.querySelector('.subtotal').textContent = `$${data.subtotal.toFixed(2)}`;
-            document.querySelector('.sales-tax').textContent = `$${data.salesTax.toFixed(2)}`;
-            document.querySelector('.grand-total').textContent = `$${data.grandTotal.toFixed(2)}`;
-        } else {
-            console.error('Failed to update cart:', data.error || 'Unknown error');
-        }
-    })
-    .catch(error => console.error('Error updating cart:', error));
-}
+    $(document).ready(function () {
+        // Attach click event listeners for increment and decrement buttons
+        $(document).on('click', '.increment-btn, .decrement-btn', function () {
+            const row = $(this).closest('tr');
+            const id = row.data('id');
+            const input = row.find('.quantity-input');
+            const currentQuantity = parseInt(input.val());
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Unified event listener for increment and decrement buttons
-    document.addEventListener('click', function (e) {
-        const button = e.target;
-        if (button.classList.contains('increment-btn') || button.classList.contains('decrement-btn')) {
-            const row = button.closest('tr');
-            const id = row.getAttribute('data-id');
-            const input = row.querySelector('.quantity-input');
-            const currentQuantity = parseInt(input.value);
-
-            if (button.classList.contains('increment-btn')) {
-                input.value = currentQuantity + 1;
+            if ($(this).hasClass('increment-btn')) {
+                console.log('Increment button clicked');
+                input.val(currentQuantity + 1);
                 updateCart(id, currentQuantity + 1);
-            } else if (button.classList.contains('decrement-btn') && currentQuantity > 1) {
-                input.value = currentQuantity - 1;
+            } else if ($(this).hasClass('decrement-btn') && currentQuantity > 1) {
+                console.log('Decrement button clicked');
+                input.val(currentQuantity - 1);
                 updateCart(id, currentQuantity - 1);
             }
-        }
+        });
     });
-});
-
-
 </script>
-
 @endpush
+

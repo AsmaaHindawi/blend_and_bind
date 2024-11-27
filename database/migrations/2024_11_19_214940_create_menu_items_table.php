@@ -1,10 +1,8 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-// Create MENU_ITEMS Table
 return new class extends Migration
 {
     public function up(): void
@@ -12,9 +10,11 @@ return new class extends Migration
         Schema::create('menu_items', function (Blueprint $table) {
             $table->id('item_id');
             $table->string('name');
+            $table->decimal('price', 8, 2);
             $table->string('category');
-            $table->decimal('price', 8, 2);  // Increased to 8 digits for larger prices
-            $table->boolean('availability');
+            $table->integer('stock')->nullable(); // Added stock column
+            $table->boolean('availability')->default(1); // Available by default
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

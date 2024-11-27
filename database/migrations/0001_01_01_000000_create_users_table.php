@@ -1,25 +1,31 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id');  // Custom named primary key
-            $table->string('username');  // Username for users
-            $table->string('email')->unique();  // Email field, must be unique
-            $table->timestamp('email_verified_at')->nullable();  // Verification timestamp
+            $table->id('user_id');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('role');  // Password field
-            $table->rememberToken();  // Remember token for session purposes
-            $table->timestamps();  // Created at and updated at timestamps
+            $table->string('role')->default('user');
+            $table->string('name')->nullable(); // New column
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('users');

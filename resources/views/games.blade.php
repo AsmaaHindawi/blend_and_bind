@@ -205,16 +205,13 @@ section {
                         <h5 class="card-title">{{ $game->name }}</h5>
                         <p class="card-text">Type: {{ $game->type }}</p>
                         <p class="card-text">Players: {{ $game->min_players }} - {{ $game->max_players }}</p>
-<<<<<<< HEAD
 
-=======
->>>>>>> 433e84fcc2650a8cd320a471cb337bcb250940f2
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
-    
+
     @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {

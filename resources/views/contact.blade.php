@@ -3,20 +3,82 @@
 @section('title', 'Blend & Bind')
 
 @section('content')
-<section class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image: url(images/bg_1p.png); background-size: cover; background-repeat: no-repeat;" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row slider-text justify-content-center align-items-center">
-                <div class="col-md-7 col-sm-12 text-center ftco-animate">
-                    <h1 class="mb-3 mt-5 bread">Contact Us</h1>
-                    <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Contact</span></p>
-                </div>
-            </div>
+
+<div class="container-fluid px-0">
+    <!-- Header Section -->
+    <div class="header-banner position-relative">
+        <img src="{{ asset('images/image1.jpg') }}" alt="Menu Header" class="w-100">
+        <div class="header-overlay text-center">
+            <h1 class="header-title mt-5">Contact Us</h1>
+            <p class="breadcrumbs">
+                <span class="mr-2">
+                    <a href="{{ route('home') }}">Home</a>
+                </span>
+                <span>Contact</span>
+            </p>
         </div>
     </div>
-</section>
 
+</div>
+
+<style>
+/* Header Section */
+.header-banner {
+    position: relative;
+    overflow: hidden;
+}
+
+.header-banner img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: white;
+}
+ /* 2px solid rgba(255, 255, 255, 0.1) */
+
+ /* Style for the Breadcrumbs */
+.breadcrumbs {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #bfbfbf; /* Default breadcrumb text color */
+}
+
+.breadcrumbs span {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #bfbfbf; /* Span text color */
+}
+
+.breadcrumbs span a {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Link color specifically for "Home" */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs span a:hover {
+    color: #edca1b; /* Darker color when hovered */
+}
+</style>
 <section class="ftco-section contact-section contact-page" style="background: url(images/istockphoto-1255807969-612x612.png); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; background-color: rgba(0, 0, 0, 0.5);">
     <div class="container mt-5">
         <div class="row block-9">

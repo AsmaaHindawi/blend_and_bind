@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Game;
+use Carbon\Carbon;
 
 
 class GamesTableSeeder extends Seeder
@@ -16,7 +17,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Board',
             'min_players' => 2,
             'max_players' => 2,
-            'image' => 'chess.jpg', 
+            'image' => 'chess.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -24,7 +27,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Board',
             'min_players' => 2,
             'max_players' => 6,
-            'image' => 'monopoly.jpg', 
+            'image' => 'monopoly.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -32,7 +37,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Board',
             'min_players' => 2,
             'max_players' => 4,
-            'image' => 'scrabble.jpg', 
+            'image' => 'scrabble.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -40,7 +47,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Board',
             'min_players' => 2,
             'max_players' => 6,
-            'image' => 'risk.webp', 
+            'image' => 'risk.webp',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -48,7 +57,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Board',
             'min_players' => 3,
             'max_players' => 4,
-            'image' => 'catan.jpg', 
+            'image' => 'catan.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
 
@@ -57,7 +68,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Card',
             'min_players' => 2,
             'max_players' => 6,
-            'image' => 'td.webp', 
+            'image' => 'td.webp',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -65,7 +78,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Card',
             'min_players' => 2,
             'max_players' => 10,
-            'image' => 'uno.jpg', 
+            'image' => 'uno.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -73,7 +88,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Card',
             'min_players' => 2,
             'max_players' => 6,
-            'image' => 'jalsa.webp', 
+            'image' => 'jalsa.webp',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -81,7 +98,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Card',
             'min_players' => 2,
             'max_players' => 7,
-            'image' => 'lebanese.jpg', 
+            'image' => 'lebanese.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -89,7 +108,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Video',
             'min_players' => 1,
             'max_players' => 2,
-            'image' => 'super_mario.webp', 
+            'image' => 'super_mario.webp',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -97,7 +118,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Video',
             'min_players' => 1,
             'max_players' => 2,
-            'image' => 'street_fighter.jpg', 
+            'image' => 'street_fighter.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -105,7 +128,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Video',
             'min_players' => 1,
             'max_players' => 4,
-            'image' => 'fifa_21.jpg', 
+            'image' => 'fifa_21.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -113,7 +138,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Video',
             'min_players' => 1,
             'max_players' => 100,
-            'image' => 'call_of_duty.jpg', 
+            'image' => 'call_of_duty.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -121,7 +148,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Video',
             'min_players' => 4,
             'max_players' => 10,
-            'image' => 'among_us.jpg', 
+            'image' => 'among_us.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -129,7 +158,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Video',
             'min_players' => 4,
             'max_players' => 10,
-            'image' => 'pubg.jpg', 
+            'image' => 'pubg.jpg',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
 
         Game::create([
@@ -137,7 +168,9 @@ class GamesTableSeeder extends Seeder
             'type' => 'Video',
             'min_players' => 4,
             'max_players' => 10,
-            'image' => 'roblox.png', 
+            'image' => 'roblox.png',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
     }
 }

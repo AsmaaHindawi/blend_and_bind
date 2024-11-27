@@ -39,7 +39,7 @@
         </div>
         @foreach ($topAuthors as $author)
             <div class="col-md-2 text-center">
-                <a href="{{ route('books', ['filter' => 'author', 'value' => $author]) }}" 
+                <a href="{{ route('books', ['filter' => 'author', 'value' => $author]) }}"
                    class="filter-circle-blue {{ request('filter') === 'author' && request('value') === $author ? 'active' : '' }}">
                     <span>{{ $author }}</span>
                 </a>
@@ -66,7 +66,7 @@
         </div>
         @foreach ($topGenres as $genre)
             <div class="col-md-2 text-center">
-                <a href="{{ route('books', ['filter' => 'genre', 'value' => $genre]) }}" 
+                <a href="{{ route('books', ['filter' => 'genre', 'value' => $genre]) }}"
                    class="filter-circle-yellow {{ request('filter') === 'genre' && request('value') === $genre ? 'active' : '' }}">
                     <span>{{ $genre }}</span>
                 </a>
@@ -98,8 +98,7 @@
                     <h6 class="menu-card-price">${{ number_format($book->price, 2) }}</h6>
                     <form action="{{ route('cart.add', ['id' => $book->book_id]) }}" method="POST">
                         @csrf
-                        <input type="hidden" name="name" value="{{ $book->title }}">
-                        <input type="hidden" name="price" value="{{ $book->price }}">
+                        <input type="hidden" name="type" value="book">
                         <button type="submit" class="btn btn-warning btn-circle">
                             <i class="fas fa-shopping-cart"></i>
                         </button>

@@ -23,13 +23,13 @@
                         <span class="input-group-text" style="background: none; border: none; color: #FFD700;">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="email" id="login-email" name="email" class="form-control" placeholder="Email" required style="border: 1px solid black ;">
+                        <input type="email" id="login-email" name="email" class="form-control" placeholder="Email" required style="color: black !important; border: none; box-shadow: none;">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" style="background: none; border: none; color: #FFD700;">
                             <i class="fas fa-lock"></i>
                         </span>
-                        <input type="password" id="login-password" name="password" class="form-control" placeholder="Password" required style="border: 1px solid black ;">
+                        <input type="password" id="login-password" name="password" class="form-control" placeholder="Password" required style="color: black !important; border: none; box-shadow: none;">
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary w-100">Login</button>
@@ -50,25 +50,25 @@
                         <span class="input-group-text" style="background: none; border: none; color: #FFD700;">
                             <i class="fas fa-user"></i>
                         </span>
-                        <input type="text" id="signup-username" name="username" class="form-control" placeholder="Username" required style="height: 30px; font-size: 14px; border: 1px solid black !important;">
+                        <input type="text" id="signup-username" name="username" class="form-control" placeholder="Username" required style="color: black !important; border: none; box-shadow: none; height: 30px; font-size: 14px;">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" style="background: none; border: none; color: #FFD700;">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="email" id="signup-email" name="email" class="form-control" placeholder="Email" required style="height: 30px; font-size: 14px; border: 1px solid black !important;">
+                        <input type="email" id="signup-email" name="email" class="form-control" placeholder="Email" required style="color: black !important; border: none; box-shadow: none; height: 30px; font-size: 14px;">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" style="background: none; border: none; color: #FFD700;">
                             <i class="fas fa-lock"></i>
                         </span>
-                        <input type="password" id="signup-password" name="password" class="form-control" placeholder="Password" required style="height: 30px; font-size: 14px; border: 1px solid black !important;">
+                        <input type="password" id="signup-password" name="password" class="form-control" placeholder="Password" required style="color: black !important; border: none; box-shadow: none; height: 30px; font-size: 14px;">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" style="background: none; border: none; color: #FFD700;">
                             <i class="fas fa-lock"></i>
                         </span>
-                        <input type="password" id="signup-password-confirm" name="password_confirmation" class="form-control" placeholder="Confirm Password" required style="height: 30px; font-size: 14px; border: 1px solid black !important;">
+                        <input type="password" id="signup-password-confirm" name="password_confirmation" class="form-control" placeholder="Confirm Password" required style="color: black !important; border: none; box-shadow: none; height: 30px; font-size: 14px;">
                     </div>
                     <input type="hidden" name="role" value="user">
                     <div class="text-center">
@@ -97,10 +97,15 @@
 </script>
 
 <style>
-    /* General Form Styling */
     .input-group-text i {
         color: #FFD700; /* Yellow icons */
         font-size: 1.2rem;
+    }
+
+    .form-control {
+        border: none !important;
+        box-shadow: none !important;
+        color: black !important;
     }
 
     .btn-primary {
@@ -121,7 +126,6 @@
         text-decoration: underline;
     }
 
-    /* Scrollable Form */
     #signup-form {
         max-height: 350px;
         overflow-y: auto;
