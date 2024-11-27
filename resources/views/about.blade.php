@@ -79,7 +79,7 @@
         <h2 class="mb-4">Our Story</h2>
       </div>
       <div>
-        <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+        <p>At Blend & Bind, our journey began with a shared passion for the things we love most—books, food, and games. One of our founding members, a book and food enthusiast, dreamed of creating a space that would bring the joys of reading and dining together. Inspired by this vision, a fellow teammate who adored games and gaming joined forces to craft an experience that balanced fun, flavor, and the charm of stories. With the addition of two more friends who shared similar passions, the dream began to take shape. Together, we created a cozy haven where people can sip, read, play, and connect—offering something special for everyone. Blend & Bind is more than just a café or a bookstore; it’s a celebration of creativity, community, and the things we love.</p>
       </div>
     </div>
   </div>
@@ -92,7 +92,7 @@
       <div class="col-md-7 heading-section text-center ftco-animate">
         <span class="subheading">Testimony</span>
         <h2 class="mb-4">Customers Says</h2>
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+        <p>it inspires us to grow, improve, and create an experience that truly resonates with your needs and passions.</p>
       </div>
     </div>
   </div>
@@ -101,70 +101,71 @@
       <div class="col-lg align-self-sm-end">
         <div class="testimony">
            <blockquote>
-              <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small.&rdquo;</p>
+              <p>&ldquo;Blend & Bind has created a one-of-a-kind space where I can enjoy my love for books and coffee all in one place. The cozy atmosphere and thoughtful touches make it my go-to spot for relaxation!&rdquo;</p>
             </blockquote>
             <div class="author d-flex mt-4">
               <div class="image mr-3 align-self-center">
                 <img src="images/" alt="">
               </div>
-              <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+              <div class="name align-self-center">Layla Al-Omari</div>
             </div>
         </div>
       </div>
       <div class="col-lg align-self-sm-end">
         <div class="testimony overlay">
            <blockquote>
-              <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+              <p>&ldquo;Whether I'm playing games with friends or diving into a good book with a latte, Blend & Bind offers the perfect balance of fun and comfort. It's more than a café—it's an escape.&rdquo;</p>
             </blockquote>
             <div class="author d-flex mt-4">
               <div class="image mr-3 align-self-center">
                 <img src="images/" alt="">
               </div>
-              <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+              <div class="name align-self-center">Omar Al-Hassan</div>
             </div>
         </div>
       </div>
       <div class="col-lg align-self-sm-end">
         <div class="testimony">
            <blockquote>
-              <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small  line of blind text by the name. &rdquo;</p>
+              <p>&ldquo;The food here is not only delicious but thoughtfully paired with the ambiance. The staff is always welcoming, making each visit an absolute pleasure.&rdquo;</p>
             </blockquote>
             <div class="author d-flex mt-4">
               <div class="image mr-3 align-self-center">
                 <img src="images/" alt="">
               </div>
-              <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+              <div class="name align-self-center">Amina Khalil</div>
             </div>
         </div>
       </div>
       <div class="col-lg align-self-sm-end">
         <div class="testimony overlay">
            <blockquote>
-              <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however.&rdquo;</p>
+              <p>&ldquo;Blend & Bind is a gem! It’s the perfect spot to connect with friends over games or unwind alone with a book. Every detail feels personal and warm.&rdquo;</p>
             </blockquote>
             <div class="author d-flex mt-4">
               <div class="image mr-3 align-self-center">
                 <img src="images/" alt="">
               </div>
-              <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+              <div class="name align-self-center">Youssef Al-Mansour</div>
             </div>
         </div>
       </div>
       <div class="col-lg align-self-sm-end">
         <div class="testimony">
           <blockquote>
-            <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small  line of blind text by the name. &rdquo;</p>
+            <p>&ldquo;I love how Blend & Bind has become a community hub. Whether I’m exploring the games, browsing books, or just enjoying the amazing coffee, I always leave feeling inspired. &rdquo;</p>
           </blockquote>
           <div class="author d-flex mt-4">
             <div class="image mr-3 align-self-center">
               <img src="images/" alt="">
             </div>
-            <div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+            <div class="name align-self-center">Noor Al-Fahad</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 @endsection

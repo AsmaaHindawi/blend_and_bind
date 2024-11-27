@@ -13,7 +13,8 @@ return new class extends Migration
             $table->string('username');  // Username for users
             $table->string('email')->unique();  // Email field, must be unique
             $table->timestamp('email_verified_at')->nullable();  // Verification timestamp
-            $table->string('password');  // Password field
+            $table->string('password');
+            $table->string('role');  // Password field
             $table->rememberToken();  // Remember token for session purposes
             $table->timestamps();  // Created at and updated at timestamps
         });

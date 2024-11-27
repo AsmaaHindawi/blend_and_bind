@@ -66,7 +66,7 @@ class MenuItemsSeeder extends Seeder
         
             [
                 'name' => 'Iced Latte',
-                'category' => 'Drinks',
+                'category' => 'Cold Drinks',
                 'price' => 4.50,
                 'availability' => 1,
                 'image' => 'latte.jpg', // Path to the image
@@ -75,7 +75,7 @@ class MenuItemsSeeder extends Seeder
             ],
             [
                 'name' => 'Smoothie',
-                'category' => 'Drinks',
+                'category' => 'Cold Drinks',
                 'price' => 5.00,
                 'availability' => 1,
                 'image' => 'smoothie.jpg', // Path to the image
@@ -84,7 +84,7 @@ class MenuItemsSeeder extends Seeder
             ],
             [
                 'name' => 'Green Tea',
-                'category' => 'Drinks',
+                'category' => 'Hot Drinks',
                 'price' => 3.00,
                 'availability' => 1,
                 'image' => 'tea.jpg', // Path to the image

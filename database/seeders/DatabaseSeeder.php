@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
         // Seed Contact Messages Table
         ContactMessage::factory()->count(20)->create();
 
+        // Call all necessary seeders
         $this->call([
             BooksTableSeeder::class,
             MenuItemsSeeder::class,
-            GamesTableSeeder::class,
-            ContentsTableSeeder::class, // Add the Contents seeder here
+            GamesTableSeeder::class,      // Include Games Table Seeder
+            ContentsTableSeeder::class,  // Include Contents Table Seeder
         ]);
     }
-
 }

@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="{{ asset('css/jquery.timepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"> 
     @stack('styles')
 
     <!-- Additional Inline Styles -->
@@ -83,6 +83,10 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item text-custom-primary"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
                     <li class="nav-item text-custom-primary"><a href="{{ route('about') }}" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
+                    @auth
+                    @if(auth()->user()->role == 'admin')
+                    <li class="nav-item"><a href="{{ route('admin') }}" class="nav-link">Admin Dashboard</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">Services</a>
@@ -92,10 +96,25 @@
                             <a class="dropdown-item" href="{{ route('books') }}">Books</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="{{ route('zones') }}" class="nav-link">Zones</a></li>
-                    <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="{{ route('reservations') }}" class="nav-link">Zones</a></li>
+                    @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Services</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="{{ route('menu') }}">Menu</a>
+                            <a class="dropdown-item" href="{{ route('games') }}">Games</a>
+                            <a class="dropdown-item" href="{{ route('books') }}">Books</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="{{ route('reservations') }}" class="nav-link">Zones</a></li>
                     <li class="nav-item cart"><a href="{{ route('cart') }}" class="nav-link"><i
                                 class="fas fa-shopping-cart fa-2x"></i></a></li>
+                                @endif
+                    <li class="nav-item"><a href="{{ route('logout') }}" class="nav-link">Logout</a></li>
+                @else
+                    <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a></li>
+                @endauth
                 </ul>
             </div>
         </div>
@@ -165,6 +184,8 @@
     <script src="js/scrollax.min.js"></script>
 
     <script src="js/main.js"></script>
+    @stack('scripts')
+
 
 </body>
 
