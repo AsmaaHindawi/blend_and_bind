@@ -85,7 +85,7 @@
                     <div class="col-md-8 col-sm-12 text-center ftco-animate">
                         <h1 class="mb-4">Quiet Place to Study and Work</h1>
                         <p class="mb-4 mb-md-5">Book your own room and enjoy the best moments of tranquility.</p>
-                        <p><a href="{{ route('zones') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Show More</a></p>
+                        <p><a href="{{ route('reservations') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Show More</a></p>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     <div class="col-md-8 col-sm-12 text-center ftco-animate">
                         <h1 class="mb-4">Buy Your Favorite Book</h1>
                         <p class="mb-4 mb-md-5">You can find all old and modern books around the world.</p>
-                        <p><a href="{{ route('zones') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Show More</a></p>
+                        <p><a href="{{ route('reservations') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Show More</a></p>
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@
                     <div class="col-md-8 col-sm-12 text-center ftco-animate">
                         <h1 class="mb-4">Enjoy Playing With Your Friends</h1>
                         <p class="mb-4 mb-md-5">Find the most popular types of games to spend valuable time with friends.</p>
-                        <p><a href="{{ route('zones') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Show More</a></p>
+                        <p><a href="{{ route('reservations') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Show More</a></p>
                     </div>
                 </div>
             </div>
@@ -222,7 +222,7 @@
               <h2 class="mb-4">Our Story</h2>
             </div>
             <div>
-              <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+              <p>At Blend & Bind, our journey began with a shared passion for the things we love most—books, food, and games. One of our founding members, a book and food enthusiast, dreamed of creating a space that would bring the joys of reading and dining together. Inspired by this vision, a fellow teammate who adored games and gaming joined forces to craft an experience that balanced fun, flavor, and the charm of stories. With the addition of two more friends who shared similar passions, the dream began to take shape. Together, we created a cozy haven where people can sip, read, play, and connect—offering something special for everyone. Blend & Bind is more than just a café or a bookstore; it’s a celebration of creativity, community, and the things we love.</p>
             </div>
           </div>
         </div>

@@ -22,43 +22,50 @@ class CartController extends Controller
     /**
      * Add an item to the cart.
      */
-    public function addToCart($id)
-    {
-        // Check if the item is a book or menu item
-        $isBook = request()->has('type') && request()->input('type') === 'book';
-        
-        $item = $isBook
-            ? \App\Models\Book::where('book_id', $id)->first()
-            : \App\Models\MenuItem::where('item_id', $id)->first();
-    
-        if (!$item) {
-            return redirect()->back()->with('error', 'Item not found.');
-        }
-    
-        // Get the cart from the session or initialize it
-        $cart = session()->get('cart', []);
-    
-        // Check if the item is already in the cart
-        $cartKey = $isBook ? 'book-' . $id : 'menu-' . $id; // Unique key for each item type
-    
-        if (isset($cart[$cartKey])) {
-            $cart[$cartKey]['quantity']++;
-        } else {
-            // Add the item to the cart
-            $cart[$cartKey] = [
-                'type' => $isBook ? 'book' : 'menu',
-                'name' => $isBook ? $item->title : $item->name,
-                'price' => $item->price,
-                'quantity' => 1,
-                'image' => $item->image,
-            ];
-        }
-    
-        // Save the cart to the session
-        session()->put('cart', $cart);
-    
-        return redirect()->route('cart')->with('success', 'Item added to cart!');
+    public function addToCart(Request $request, $id)
+{
+    $type = $request->input('type'); // Get the type from the request
+
+    // Validate the type
+    if (!$type || !in_array($type, ['book', 'menu'])) {
+        return redirect()->back()->with('error', 'Invalid item type.');
     }
+
+    // Fetch the item based on the type
+    $item = $type === 'book'
+        ? Book::find($id)
+        : MenuItem::find($id);
+
+    if (!$item) {
+        return redirect()->back()->with('error', 'Item not found.');
+    }
+
+    // Get the cart from the session
+    $cart = session()->get('cart', []);
+
+    // Create a unique key for the item
+    $cartKey = "{$type}-{$id}";
+
+    // Check if the item is already in the cart
+    if (isset($cart[$cartKey])) {
+        $cart[$cartKey]['quantity']++;
+    } else {
+        // Add the item to the cart
+        $cart[$cartKey] = [
+            'type' => $type,
+            'name' => $type === 'book' ? $item->title : $item->name,
+            'price' => $item->price,
+            'quantity' => 1,
+            'image' => $item->image ?? 'default.jpg',
+        ];
+    }
+
+    // Save the cart to the session
+    session()->put('cart', $cart);
+
+    return redirect()->route('cart')->with('success', 'Item added to cart!');
+}
+
     
     
     /**
@@ -69,9 +76,6 @@ class CartController extends Controller
         return Book::where('book_id', $id)->exists();
     }
     
-
-    
-
     /**
      * Remove an item from the cart.
      */

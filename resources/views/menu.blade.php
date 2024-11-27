@@ -288,10 +288,10 @@
     <!-- Filter Buttons -->
     <ul class="filters_menu d-flex justify-content-center mb-4">
         <li class="active mx-2" data-filter="*">All</li>
-        <li class="mx-2" data-filter=".appetizers">Appetizers</li>
-        <li class="mx-2" data-filter=".desserts">Desserts</li>
-        <li class="mx-2" data-filter=".drinks">Drinks</li>
-        <li class="mx-2" data-filter=".drinks">Salads</li>
+        <li class="mx-2" data-filter="Appetizers">Appetizers</li>
+        <li class="mx-2" data-filter="Desserts">Desserts</li>
+        <li class="mx-2" data-filter="Drinks">Drinks</li>
+        <li class="mx-2" data-filter="Salads">Salads</li>
     </ul>
 
     @if($menuItems->isEmpty())
@@ -303,10 +303,11 @@
                 @php
                     // Map categories to filter classes
                     $categoryMap = [
-                        'Hot Drinks' => 'drinks',
-                        'Cold Drinks' => 'drinks',
-                        'Desserts' => 'desserts',
-                        'Appetizers' => 'appetizers',
+                        'Hot Drinks' => 'Drinks',
+                        'Cold Drinks' => 'Drinks',
+                        'Desserts' => 'Desserts',
+                        'Appetizers' => 'Appetizers',
+                        'Salads' => 'Salads',
                     ];
                     $filterClass = $categoryMap[$item->category] ?? strtolower(str_replace(' ', '-', $item->category));
                 @endphp
@@ -343,7 +344,13 @@
 
 @push('styles')
 <style>
-    
+    .pricing-entry h3 span {
+    background-color: #4476ac !important; /* Change this to your website's blue color */
+    color: white; /* Ensure text remains readable */
+    padding: 2px 5px; /* Optional: Adjust padding for spacing */
+    border-radius: 4px; /* Optional: Add rounded corners */
+}
+
     /* Card container */
     .menu-card {
         background-color: #4476ac; /* Footer blue color */
@@ -506,20 +513,23 @@
     document.addEventListener('DOMContentLoaded', function () {
         // Filtering functionality
         document.querySelectorAll('.filters_menu li').forEach(filter => {
-            filter.addEventListener('click', function () {
-                document.querySelectorAll('.filters_menu li').forEach(el => el.classList.remove('active'));
-                this.classList.add('active');
-                
-                const filterValue = this.getAttribute('data-filter');
-                document.querySelectorAll('.grid .all').forEach(item => {
-                    if (filterValue === '*' || item.classList.contains(filterValue.substring(1))) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
+    filter.addEventListener('click', function () {
+        document.querySelectorAll('.filters_menu li').forEach(el => el.classList.remove('active'));
+        this.classList.add('active');
+        
+        const filterValue = this.getAttribute('data-filter');
+        document.querySelectorAll('.grid .all').forEach(item => {
+            if (filterValue === '*' || item.classList.contains(filterValue)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
         });
     });
+});
+
+});
+
+
 </script>
 @endpush

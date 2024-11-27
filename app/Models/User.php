@@ -11,9 +11,10 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'name',
+        'username', // Replace 'name' with 'username'
         'email',
         'password',
+        'role', // Add the 'role' field
     ];
 
     protected $hidden = [
@@ -21,13 +22,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        
+    ];
+    
 
     /**
      * Relationship with Contact Messages

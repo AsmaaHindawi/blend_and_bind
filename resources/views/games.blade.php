@@ -188,27 +188,57 @@ section {
     
     <!-- Filters Menu -->
     <ul class="filters_menu">
-        <li class="active"><a href="{{ route('games') }}" class="text-decoration-none">All</a></li>
-        <li><a href="{{ route('games', ['type' => 'board']) }}" class="text-decoration-none">Board</a></li>
-        <li><a href="{{ route('games', ['type' => 'card']) }}" class="text-decoration-none">Card</a></li>
-        <li><a href="{{ route('games', ['type' => 'video']) }}" class="text-decoration-none">Video</a></li>
+        <li class="active" data-filter="*">All</li>
+        <li data-filter="board">Board</li>
+        <li data-filter="card">Card</li>
+        <li data-filter="video">Video</li>
     </ul>
 
     <!-- Games List -->
-    <div class="row">
+    <div class="row grid">
         @foreach($games as $game)
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+            @php
+                $filterClass = strtolower($game->type); // Convert game type to lowercase for consistent class naming
+            @endphp
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 all {{ $filterClass }}">
                 <div class="card">
                     <img src="{{ asset('images/' . $game->image) }}" class="card-img-top" alt="{{ $game->name }}">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ $game->name }}</h5>
                         <p class="card-text">Type: {{ $game->type }}</p>
                         <p class="card-text">Players: {{ $game->min_players }} - {{ $game->max_players }}</p>
-                    
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
-</div>
+    
+    @push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.filters_menu li').forEach(filter => {
+            filter.addEventListener('click', function () {
+                // Remove active class from all filters
+                document.querySelectorAll('.filters_menu li').forEach(el => el.classList.remove('active'));
+
+                // Add active class to clicked filter
+                this.classList.add('active');
+
+                // Get the filter value
+                const filterValue = this.getAttribute('data-filter');
+
+                // Show/hide items based on filter
+                document.querySelectorAll('.grid .all').forEach(item => {
+                    if (filterValue === '*' || item.classList.contains(filterValue)) {
+                        item.style.display = 'block'; // Show matching items
+                    } else {
+                        item.style.display = 'none'; // Hide non-matching items
+                    }
+                });
+            });
+        });
+    });
+</script>
+@endpush
+
 @endsection

@@ -42,49 +42,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($cart as $id => $item)
-                        <tr data-id="{{ $id }}">
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    @php
-                                        $isBook = isset($item['type']) && $item['type'] === 'book';
-                                        $imagePath = isset($item['image']) 
-                                            ? ($isBook 
-                                                ? asset('book_images/' . $item['image']) 
-                                                : asset('menu_images/' . $item['image']))
-                                            : asset('default_images/default-item.jpg');
-                                        $itemName = $item['name'] ?? $item['title'] ?? 'Unnamed Item';
-                                    @endphp
-                                    <img src="{{ $imagePath }}" alt="{{ $itemName }}" class="cart-item-img">
-                                    <div class="ms-3">
-                                        <h5 class="item-name">{{ $itemName }}</h5>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="text-black item-price" data-price="{{ $item['price'] }}">
-                                ${{ number_format($item['price'], 2) }}
-                            </td>
-                            <td class="text-center">
-                                <div class="input-group quantity-buttons">
-                                    <button type="button" class="btn btn-outline-warning btn-sm btn-quantity decrement-btn" data-id="{{ $id }}">-</button>
-                                    <input type="number" value="{{ $item['quantity'] }}" min="1" class="form-control text-center quantity-input text-black" readonly>
-                                    <button type="button" class="btn btn-outline-warning btn-sm btn-quantity increment-btn" data-id="{{ $id }}">+</button>
-                                </div>
-                            </td>
-                            <td class="text-black item-total">
-                                ${{ number_format($item['price'] * $item['quantity'], 2) }}
-                            </td>
-                            <td class="text-center">
-                                <form action="{{ route('cart.remove', $id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-circle-delete">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
+                    @foreach($cart as $key => $item)
+<tr data-id="{{ $key }}">
+    <td>
+        <div class="d-flex align-items-center">
+            @php
+                $isBook = $item['type'] === 'book';
+                $imagePath = $isBook 
+                    ? asset('book_images/' . $item['image'])
+                    : asset('images/' . $item['image']);
+            @endphp
+            <img src="{{ $imagePath }}" alt="{{ $item['name'] }}" class="cart-item-img">
+            <div class="ms-3">
+                <h5 class="item-name">{{ $item['name'] }}</h5>
+            </div>
+        </div>
+    </td>
+    <td class="text-black">${{ number_format($item['price'], 2) }}</td>
+    <td class="text-center">
+        <div class="input-group quantity-buttons">
+            <button type="button" class="btn btn-outline-warning btn-sm btn-quantity decrement-btn" data-id="{{ $key }}">-</button>
+            <input type="number" value="{{ $item['quantity'] }}" min="1" class="form-control text-center quantity-input text-black" readonly>
+            <button type="button" class="btn btn-outline-warning btn-sm btn-quantity increment-btn" data-id="{{ $key }}">+</button>
+        </div>
+    </td>
+    <td class="text-black">${{ number_format($item['price'] * $item['quantity'], 2) }}</td>
+    <td class="text-center">
+        <form action="{{ route('cart.remove', $key) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-circle-delete">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </form>
+    </td>
+</tr>
+@endforeach
+
                 </tbody>
             </table>
         </div>
@@ -183,16 +177,14 @@
    function updateCart(id, quantity) {
     console.log('updateCart called for ID:', id, 'Quantity:', quantity);
 
-    const row = document.querySelector(tr[data-id="${id}"]);
-    console.log('Row found:', row);
-
+    const row = document.querySelector(`tr[data-id="${id}"]`);
     if (!row) {
         console.error('No row found for ID:', id);
         return; // Stop further execution if the row is not found
     }
 
     // Fetch request
-    fetch(/cart/update/${id}, {
+    fetch(`/cart/update/${id}`, {
         method: 'POST',
         headers: {
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
@@ -204,43 +196,39 @@
     .then(data => {
         console.log('Server response:', data);
         if (data.success) {
-            row.querySelector('.item-total').textContent = $${data.itemTotal.toFixed(2)};
-            document.querySelector('.subtotal').textContent = $${data.subtotal.toFixed(2)};
-            document.querySelector('.sales-tax').textContent = $${data.salesTax.toFixed(2)};
-            document.querySelector('.grand-total').textContent = $${data.grandTotal.toFixed(2)};
+            // Update item total and cart summary
+            row.querySelector('.item-total').textContent = `$${data.itemTotal.toFixed(2)}`;
+            document.querySelector('.subtotal').textContent = `$${data.subtotal.toFixed(2)}`;
+            document.querySelector('.sales-tax').textContent = `$${data.salesTax.toFixed(2)}`;
+            document.querySelector('.grand-total').textContent = `$${data.grandTotal.toFixed(2)}`;
+        } else {
+            console.error('Failed to update cart:', data.error || 'Unknown error');
         }
     })
     .catch(error => console.error('Error updating cart:', error));
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Event listener for increment button
+    // Unified event listener for increment and decrement buttons
     document.addEventListener('click', function (e) {
-        if (e.target && e.target.classList.contains('increment-btn')) {
-            const row = e.target.closest('tr');
+        const button = e.target;
+        if (button.classList.contains('increment-btn') || button.classList.contains('decrement-btn')) {
+            const row = button.closest('tr');
             const id = row.getAttribute('data-id');
             const input = row.querySelector('.quantity-input');
             const currentQuantity = parseInt(input.value);
-            input.value = currentQuantity + 1;
-            updateCart(id, currentQuantity + 1);
-        }
-    });
 
-    // Event listener for decrement button
-    document.addEventListener('click', function (e) {
-        if (e.target && e.target.classList.contains('decrement-btn')) {
-            const row = e.target.closest('tr');
-            const id = row.getAttribute('data-id');
-            const input = row.querySelector('.quantity-input');
-            const currentQuantity = parseInt(input.value);
-            if (currentQuantity > 1) {
+            if (button.classList.contains('increment-btn')) {
+                input.value = currentQuantity + 1;
+                updateCart(id, currentQuantity + 1);
+            } else if (button.classList.contains('decrement-btn') && currentQuantity > 1) {
                 input.value = currentQuantity - 1;
                 updateCart(id, currentQuantity - 1);
             }
         }
     });
 });
+
 
 </script>
 

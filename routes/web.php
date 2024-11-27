@@ -3,12 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\ZoneController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegisterController;
 
 // Home page route
 Route::get('/', function () {
@@ -73,17 +75,25 @@ Route::get('/menu', function () {
 Route::get('/menu', [MenuController::class, 'showMenu'])->name('menu');
 
 // Zones page route
-Route::get('/zones', [ZoneController::class, 'index'])->name('zones');
-Route::post('/zones', [ZoneController::class, 'store'])->name('zones');
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations');
+
+Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations');
 
 // Services page route
 Route::get('/services', function () {
     return view('services');
 })->name('services');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::post('register', [RegisterController::class, 'register']);
+
+Route::get('/admin', function () {
+    return view('Admin Dashboard');
+})->name('admin');
+
 
 Route::get('/api/search', [SearchController::class, 'search'])->name('api.search');
 
