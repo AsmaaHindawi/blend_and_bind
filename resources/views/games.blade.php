@@ -10,7 +10,6 @@ section {
 }
 
 
-
 /* Ensuring card images maintain aspect ratio */
 .card-img-top {
     object-fit: cover;
@@ -128,7 +127,7 @@ section {
     }
 </style>
 
-<!-- Hero Section 
+<!-- Hero Section
 <section class="home-slider owl-carousel">
     <div class="slider-item" style="background-image: url(images/bg_1p.png);" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
@@ -152,9 +151,8 @@ section {
             <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Games</span></p>
         </div>
     </div>
-    
-</div>
 
+</div>
 
 
 <!-- Introduction Section -->
@@ -163,7 +161,7 @@ section {
     <div class="one-half img position-relative" style="background-image: url('{{ asset('images/gamezone.jpg') }}'); background-size: cover; background-position: center;">
         <div class="overlay" style="background: rgba(0, 0, 0, 0.4); position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
     </div>
-    
+
     <!-- Right Text Section -->
     <div class="one-half d-flex align-items-center position-relative" style="z-index: 2;">
         <div class="container py-5">
@@ -185,7 +183,7 @@ section {
 <!-- Games Section -->
 <div class="container mt-5">
     <h2 class="text-center mb-5" style="font-family: 'Dancing Script', cursive; font-size: 48px; color: black;">Explore Our Games</h2>
-    
+
     <!-- Filters Menu -->
     <ul class="filters_menu">
         <li class="active"><a href="{{ route('games') }}" class="text-decoration-none">All</a></li>
@@ -204,7 +202,7 @@ section {
                         <h5 class="card-title">{{ $game->name }}</h5>
                         <p class="card-text">Type: {{ $game->type }}</p>
                         <p class="card-text">Players: {{ $game->min_players }} - {{ $game->max_players }}</p>
-                    
+
                     </div>
                 </div>
             </div>

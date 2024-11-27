@@ -16,7 +16,6 @@
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <!-- Google Fonts -->
@@ -24,6 +23,13 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <!-- Vite App Entry Point -->
+    @vite('resources/js/app.js')
+    @stack('styles')
+
+<!-- Search Links -->
+    <script src="{{ asset('js/search.js') }}"></script>
 
     <!-- Additional Assets -->
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
@@ -118,9 +124,9 @@
                 <div class="col">
                     <h4 class="h4 fw-bold mb-3 text-white">Get Help</h4>
                     <ul class="list-unstyled">
-                        <li><a class="text-white" href="#">FAQ</a></li>
-                        <li><a class="text-white" href="#">Reservation Status</a></li>
-                        <li><a class="text-white" href="#">Payment Options</a></li>
+                        <li><a class="text-white" href="{{ route('home') }}">FAQ</a></li>
+                        <li><a class="text-white" href="{{ route('home') }}">Reservation Status</a></li>
+                        <li><a class="text-white" href="{{ route('home') }}">Payment Options</a></li>
                     </ul>
                 </div>
                 <!-- Third Column: Follow Us -->
@@ -147,7 +153,6 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
     <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/jquery.stellar.min.js"></script>
@@ -158,6 +163,7 @@
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/jquery.timepicker.min.js"></script>
     <script src="js/scrollax.min.js"></script>
+
     <script src="js/main.js"></script>
 
 </body>

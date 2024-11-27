@@ -15,13 +15,25 @@
     <div class="container">
       <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
         <div class="col-md-8 col-sm-12 text-center ftco-animate">
-            <span class="subheading text-custom-white" style="font-family: 'Great Vibes', cursive; font-size: 50px;">Welcome</span>
-          <h2 class="mb-4 text-custom-white">To Our Coffee Shop</h2>
-          <input type="text" wire:model="searchTerm" placeholder="Search site content..." class="form-control mb-5 search-bar-input">
-          <p><a href="{{ route('about') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3">Tell Me More</a></p>
+
+            <!-- Welcome Message -->
+            <span class="subheading" style="font-family: 'Great Vibes', cursive; font-size: 50px; color:#dfba8f;">Welcome</span>
+            <h2 class="mb-4 text-custom-white">To Our Coffee Shop</h2>
+
+            <!-- Search Bar -->
+            <input
+            type="text"
+            id="searchTerm"
+            wire:model="searchTerm"
+            placeholder="Search site content..."
+            class="form-control mb-5 search-bar-input">
+
+        <!-- Search Results -->
+        <div id="searchResults" class="search-results"></div>
         </div>
       </div>
     </div>
+
 </header>
 
      <!-- End Hero Section -->
@@ -207,7 +219,7 @@
     				</div>
         	</div>
         </div>
-       <div class="text-center"><p><a href="{{ route('menu') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3 ">Show More</a></p></div> 
+       <div class="text-center"><p><a href="{{ route('menu') }}" class="btn btn-warning p-3 px-xl-4 py-xl-3 ">Show More</a></p></div>
     	</div>
     </section>
 
@@ -228,3 +240,5 @@
         </div>
       </section>
 @endsection
+
+

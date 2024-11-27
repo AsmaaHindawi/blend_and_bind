@@ -7303,7 +7303,7 @@ h1, h2, h3, h4, h5,
   color: #4476ac !important; }
 
 .ftco-navbar-light {
-  background: transparent !important;
+  background: rgba(255, 255, 255, 0.2) !important;
   position: absolute;
   top: 0;
   left: 0;
@@ -9019,6 +9019,61 @@ textarea.form-control {
     color: #f1e4cc !important; /* Ensure text color remains */
     outline: none !important; /* Remove outline */
     box-shadow: none !important; /* Remove shadow */
+}
+/* Search Results Styling */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* Default to 90% of the search bar's parent container width */
+    max-width: 400px; /* Limit the width on larger screens */
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 1000;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    visibility: hidden; /* Hide by default */
+    opacity: 0; /* Fully transparent by default */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+}
+
+/* Individual Search Items */
+.search-item {
+    padding: 10px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.search-item:hover {
+    background-color: #f9f9f9;
+}
+
+/* Responsive Styling for Smaller Screens */
+@media (max-width: 768px) {
+    .search-results {
+        width: 95%; /* Use more screen space on smaller devices */
+        max-width: none; /* Remove max-width restriction */
+    }
+
+    .search-item {
+        font-size: 14px; /* Smaller font size for search items */
+        padding: 8px; /* Reduce padding for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .search-results {
+        width: 100%; /* Use full width on very small screens */
+        left: 0; /* Align to the left edge of the screen */
+        transform: none; /* Remove centering transform */
+    }
+
+    .search-item {
+        font-size: 12px; /* Further reduce font size for tiny screens */
+    }
 }
 
 /* Positioning the Search Bar */

@@ -1,0 +1,137 @@
+{
+    "home": {
+      "welcome": "Welcome to Our Coffee Shop",
+      "hero_section": [
+        "Quiet Place to Study and Work",
+        "Book your own room and enjoy the best moments of tranquility.",
+        "Buy Your Favorite Book",
+        "You can find all old and modern books around the world.",
+        "Enjoy Playing With Your Friends",
+        "Find the most popular types of games to spend valuable time with friends."
+      ],
+      "menu_section": "Explore a variety of mouthwatering dishes and refreshing beverages crafted with the finest ingredients.",
+      "best_sellers": [
+        "Discover the favorites our customers can't get enough of!",
+        "From creamy cappuccinos to bold espressos, our best-seller coffees are crafted to deliver the perfect blend of flavor and aroma."
+      ],
+      "items": [
+        "Coffee Capuccino",
+        "Coffee",
+        "Milkshake",
+        "Espresso",
+        "An intense shot of pure coffee bliss."
+      ]
+    },
+    "about": {
+      "hero_section": {
+        "title": "About Us",
+        "breadcrumbs": "Home > About"
+      },
+      "info_section": [
+        "Coffee Branches: 100",
+        "Number of Awards: 85",
+        "Happy Customer: 10,567",
+        "Staff: 900"
+      ],
+      "our_story": "On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word 'and' and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.",
+      "testimony": [
+        "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life.",
+        "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.",
+        "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name.",
+        "Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however."
+      ]
+    },
+    "games": {
+      "hero_section": {
+        "title": "Our Games Zone",
+        "breadcrumbs": "Home > Games"
+      },
+      "introduction": "Unwind with an exceptional collection of games tailored for every taste. Whether you're a strategist, adventurer, or thrill-seeker, our cozy coffee shop offers the perfect blend of relaxation and excitement. Join us to sip, play, and connect!",
+      "game_types": [
+        "Board Games",
+        "Card Games",
+        "Video Games"
+      ]
+    },
+    "books": {
+      "hero_section": {
+        "title": "Our Books",
+        "search_placeholder": "Search books by title, genre, or author"
+      },
+      "top_authors": [
+        "Author 1",
+        "Author 2",
+        "Author 3"
+      ],
+      "top_genres": [
+        "Fiction",
+        "Non-Fiction",
+        "Mystery",
+        "Fantasy"
+      ],
+      "description": "Discover our vast collection of books, from timeless classics to modern bestsellers. Whether you’re looking for fiction, non-fiction, or academic resources, our library has something for every reader."
+    },
+    "zones": {
+      "hero_section": {
+        "title": "Zones",
+        "breadcrumbs": "Home > Zone"
+      },
+      "coffee_place": "Step into our Coffee Place, a warm and inviting space designed for moments of relaxation and rejuvenation.",
+      "study_rooms": "Discover your productivity haven in our thoughtfully designed Study Rooms.",
+      "games_room": "Unleash your inner gamer in our state-of-the-art Games Room.",
+      "library": "Immerse yourself in the world of knowledge and creativity in our serene Library."
+    },
+    "contact": {
+      "hero_section": {
+        "title": "Contact Us",
+        "breadcrumbs": "Home > Contact"
+      },
+      "contact_information": {
+        "address": "Bliss Street, Hamra Beirut",
+        "phone": "+961 76 689 085",
+        "email": "blendnbind@gmail.com",
+        "website": "https://najjareshop.com/lb/en"
+      },
+      "form_fields": [
+        "Name",
+        "Email",
+        "Subject",
+        "Message"
+      ],
+      "form_submit_button": "Send Message"
+    },
+    "cart": {
+      "title": "Your Cart",
+      "items_count": "X items",
+      "subtotal": "Subtotal",
+      "sales_tax": "Sales Tax (10%)",
+      "grand_total": "Grand Total",
+      "checkout_button": "Check Out",
+      "empty_cart_message": "Your cart is currently empty.",
+      "browse_menu_button": "Browse Menu",
+      "browse_books_button": "Browse Books"
+    },
+    "checkout": {
+      "hero_section": {
+        "title": "Our Menu",
+        "image": "images/menut.avif"
+      },
+      "menu_categories": [
+        "Appetizers",
+        "Desserts",
+        "Drinks",
+        "Salads"
+      ],
+      "popular_dishes": [
+        "Garlic Bread",
+        "Mozzarella Sticks",
+        "Spring Rolls",
+        "Curly Fries",
+        "Tabouleh",
+        "Fatoush",
+        "Cheese Cake",
+        "Latte",
+        "Black Coffee"
+      ]
+    }
+  }

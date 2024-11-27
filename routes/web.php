@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
@@ -9,6 +9,8 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PaymentController;
 
 // Home page route
 Route::get('/', function () {
@@ -16,77 +18,55 @@ Route::get('/', function () {
 })->name('home');
 
 // About page route
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-//events
-Route::get('/events', function () {
-    return view('events');
-})->name('events');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 // Books page route
-Route::get('/books', function () {
-    return view('books');
-})->name('books');
 Route::get('/books', [BookController::class, 'index'])->name('books');
 
-// Cart-checkout page route
-// View the cart
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
+// Cart-checkout routes
+Route::prefix('cart')->group(function () {
+    Route::get('/', [CartController::class, 'index'])->name('cart'); // View the cart
+    Route::post('/add/{id}', [CartController::class, 'addToCart'])->name('cart.add'); // Add to cart
+    Route::delete('/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove'); // Remove from cart
+    Route::post('/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.update'); // Update cart
+});
 
-// Add an item to the cart (use POST method)
-Route::post('/cart/add/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+// Checkout routes
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout'); // Display checkout
+Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process'); // Process checkout
+Route::post('/save-card-details', [CheckoutController::class, 'saveCardDetails'])->name('saveCardDetails'); // Save card details
 
-// Remove an item from the cart (use DELETE method for better semantics and security)
-Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
-
-Route::post('/cart/update/{id}', [CartController::class, 'updateQuantity'])->name('cart.update');
-
-// Display the checkout page
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-
-// Process the checkout form
-Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
-
-Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process');
-
-
-Route::post('/save-card-details', [CheckoutController::class, 'saveCardDetails'])->name('saveCardDetails');
-
-// Contact page route (GET)
+// Contact page route
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
-
-// Contact form submission route (POST)
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store'); // Contact form submission
 
 // Games page route
 Route::get('/games', [GameController::class, 'index'])->name('games');
 
-
 // Menu page route
-Route::get('/menu', function () {
-    return view('menu');
-})->name('menu');
 Route::get('/menu', [MenuController::class, 'showMenu'])->name('menu');
 
-// Zones page route
-Route::get('/zones', [ZoneController::class, 'index'])->name('zones');
-Route::post('/zones', [ZoneController::class, 'store'])->name('zones');
+// Zones routes
+Route::prefix('zones')->group(function () {
+    Route::get('/', [ZoneController::class, 'index'])->name('zones'); // Zones index
+    Route::post('/', [ZoneController::class, 'store'])->name('zones.store'); // Store zones
+});
 
 // Services page route
 Route::get('/services', function () {
     return view('services');
 })->name('services');
 
+// Login page route
 Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+// Search API route
 Route::get('/api/search', [SearchController::class, 'search'])->name('api.search');
 
-use App\Http\Controllers\AboutController;
-
-Route::get('/about', [AboutController::class, 'index'])->name('about');
+// Payment method page route
+Route::get('/paymentmethod', [PaymentController::class, 'showPaymentPage'])->name('paymentmethod'); // View the payment method page
+Route::post('/paymentmethod/confirm', [PaymentController::class, 'confirmPayment'])->name('paymentmethod.confirm'); // Confirm payment
