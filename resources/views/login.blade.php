@@ -3,7 +3,7 @@
 @section('title', 'Login & Sign Up')
 
 @section('content')
-<div class="d-flex align-items-center justify-content-center" style="min-height: 100vh; background: linear-gradient(135deg, #FFD700 50%, #ffffff 50%);">
+<div class="d-flex align-items-center justify-content-center" style="min-height: 100vh; background: linear-gradient(135deg, #FFD700 50%, #d5d1c0 50%);">
     <div class="login-box d-flex shadow-lg" style="background: #fff; border-radius: 10px; overflow: hidden; width: 800px; height: 500px;">
         <!-- Image Section -->
         <div class="image-section" style="flex: 1; background: url('{{ asset('images/login.jpg') }}') no-repeat center center; background-size: cover;"></div>
@@ -130,5 +130,6 @@
         max-height: 350px;
         overflow-y: auto;
     }
+
 </style>
 @endsection

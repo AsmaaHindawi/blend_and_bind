@@ -30,7 +30,7 @@ class UserTableSeeder extends Seeder
                 'username' => 'Ashraf',
                 'email' => 'ashrafdassouki@gmail.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('12345'), // Hashed password for security
+                'password' => Hash::make('12345678'), // Hashed password for security
                 'remember_token' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -40,7 +40,7 @@ class UserTableSeeder extends Seeder
                 'username' => 'admin',
                 'email' => 'admin@gmail.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('54321'), // Hashed password for security
+                'password' => Hash::make('12345678'), // Hashed password for security
                 'remember_token' => null,
                 'created_at' => now(),
                 'updated_at' => now(),

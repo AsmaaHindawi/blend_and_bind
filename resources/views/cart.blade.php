@@ -3,6 +3,72 @@
 @section('title', 'Your Cart')
 
 @section('content')
+
+<div class="container-fluid px-0">
+    <!-- Header Section -->
+    <div class="header-banner position-relative">
+        <img src="{{ asset('images/ouvrir-un-coffee-shop-etapes.jpg') }}" alt="Zone Header" class="w-100">
+        <div class="header-overlay text-center">
+            <h1 class="header-title mt-5">Your Cart</h1>
+            <p class="breadcrumbs">
+                <span class="mr-2">
+                    <a href="{{ route('home') }}">Home</a>
+                </span>
+                <span>Cart</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Header Section */
+.header-banner {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header-banner img {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .header-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .header-title {
+        font-family: 'Dancing Script', cursive;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .modal-body {
+    padding: 15px;
+}
+
+.form-label {
+    margin-bottom: 5px;
+}
+
+#reservationModal input,
+    #reservationModal select {
+        color: black  !important;/* Ensures input text is black */
+    }
+
+</style>
+
+
 <div class="container my-5 pt-5">
     <h1 class="mb-4 cart-title text-center" style="font-family: 'Dancing Script', cursive;">
         Your Cart ({{ count($cart) }} items)
@@ -26,8 +92,8 @@
             Your cart is currently empty.
         </div>
         <div class="d-flex justify-content-between">
-            <a href="{{ url('/menu') }}" class="btn btn-custom">Browse Menu</a>
-            <a href="{{ url('/books') }}" class="btn btn-custom">Browse Books</a>
+            <a href="{{ url('/menu') }}" class="btn btn-custom" id="btn-browse-menu">Browse Menu</a>
+            <a href="{{ url('/books') }}" class="btn btn-custom" id="btn-browse-books">Browse Books</a>
         </div>
     @else
         <div class="table-responsive">
@@ -171,6 +237,38 @@
     .text-black {
         color: #000 !important;
     }
+/* Special selector for "Browse Menu" button */
+#btn-browse-menu {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border-radius: 1px; /* Rounded corners */
+    padding: 12px 20px; /* Padding */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#btn-browse-menu:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Special selector for "Browse Books" button */
+#btn-browse-books {
+    background-color: #FF9800; /* Orange background */
+    color: white; /* White text */
+    border-radius: 1px; /* Rounded corners */
+    padding: 12px 20px; /* Padding */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#btn-browse-books:hover {
+    background-color: #fb8c00; /* Darker orange on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
 </style>
 @endpush
 

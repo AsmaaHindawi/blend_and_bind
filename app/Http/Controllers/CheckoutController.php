@@ -81,11 +81,10 @@ class CheckoutController extends Controller
     public function saveCardDetails(Request $request)
     {
         $request->validate([
-            'card_number' => 'required|digits:16', // Adjust for card length
-            'expiry_date' => 'required|regex:/^(0[1-9]|1[0-2])\\/\\d{2}$/', // MM/YY format
+            'card_number' => 'required|digits:16', // Adjusted for card length
+            'expiry_date' => 'required|regex:/^(0[1-9]|1[0-2])\/(\d{2})$/', // Corrected regex with proper delimiters
             'ccv' => 'required|digits:3', // 3-digit CCV
         ]);
-
 
         // Simulate saving card details (secure storage requires tokenization or encryption)
         session()->put('card_details', [

@@ -69,15 +69,17 @@ Route::get('/services', function () {
 })->name('services');
 
 // Login page route
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+// Route::get('/login', function () {
+//     return view('login');
+// })->name('login');
 
-// Authentication routes
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('login', [AuthController::class, 'login']);
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('register', [RegisterController::class, 'register']);
+// Authentication Routes
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Register User
+Route::post('/register', [RegisterController::class, 'register']);
 
 // Admin dashboard route
 Route::get('/admin', function () {
@@ -87,6 +89,6 @@ Route::get('/admin', function () {
 // Search API route
 Route::get('/api/search', [SearchController::class, 'search'])->name('api.search');
 
-// Payment method routes
-Route::get('/paymentmethod', [PaymentController::class, 'showPaymentPage'])->name('paymentmethod'); // View the payment method page
-Route::post('/paymentmethod/confirm', [PaymentController::class, 'confirmPayment'])->name('paymentmethod.confirm'); // Confirm payment
+// Route::middleware(['auth', 'admin'])->group(function () {
+//     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+// });

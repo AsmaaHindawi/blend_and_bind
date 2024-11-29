@@ -9,7 +9,6 @@ section {
     padding: 2rem 1rem; /* Consistent padding for all sections */
 }
 
-
 /* Ensuring card images maintain aspect ratio */
 .card-img-top {
     object-fit: cover;
@@ -148,7 +147,12 @@ section {
         <img src="{{ asset('images/photo-1511512578047-dfb367046420.jpeg') }}" alt="Menu Header" class="w-100">
         <div class="header-overlay text-center">
             <h1 class="header-title mt-5">Our Games Zone</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Games</span></p>
+            <p class="breadcrumbs">
+                <span class="mr-2">
+                    <a href="{{ route('home') }}">Home</a>
+                </span>
+                <span>Games</span>
+            </p>
         </div>
     </div>
 
@@ -200,7 +204,7 @@ section {
             @endphp
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 all {{ $filterClass }}">
                 <div class="card">
-                    <img src="{{ asset('images/' . $game->image) }}" class="card-img-top" alt="{{ $game->name }}">
+                    <img src="{{ asset('games_images/' . $game->image) }}" class="card-img-top" alt="{{ $game->name }}">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ $game->name }}</h5>
                         <p class="card-text">Type: {{ $game->type }}</p>

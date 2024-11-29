@@ -9,6 +9,12 @@
         <img src="{{ asset('book_images/header.jpg') }}" alt="Books Header" class="w-100">
         <div class="header-overlay text-center">
             <h1 class="header-title">Our Books</h1>
+            <p class="breadcrumbs">
+                <span class="mr-2">
+                    <a href="{{ route('home') }}">Home</a>
+                </span>
+                <span>Menu</span>
+            </p>
             <form method="GET" action="{{ route('books') }}" class="search-form">
                 <div class="input-group search-container">
                     <input type="text" name="search" class="form-control search-bar" placeholder="Search books by title, genre, or author" value="{{ request('search') }}">

@@ -10,6 +10,12 @@
         <img src="{{ asset('images/menut.avif') }}" alt="Menu Header" class="w-100">
         <div class="header-overlay text-center">
             <h1 class="header-title">Our Menu</h1>
+            <p class="breadcrumbs">
+                <span class="mr-2">
+                    <a href="{{ route('home') }}">Home</a>
+                </span>
+                <span>Contact</span>
+            </p>
         </div>
     </div>
 </div>
@@ -237,7 +243,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="pricing-entry d-flex ftco-animate">
           <div class="img" style="background-image: url(images/cappuccino.jpg);"></div>
           <div class="desc pl-3">
@@ -344,11 +350,35 @@
 
 @push('styles')
 <style>
+
+    /* Style for the Breadcrumbs */
+.breadcrumbs {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #bfbfbf; /* Default breadcrumb text color */
+}
+
+.breadcrumbs span {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #bfbfbf; /* Span text color */
+}
+
+.breadcrumbs span a {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Link color specifically for "Home" */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs span a:hover {
+    color: #edca1b; /* Darker color when hovered */
+}
     .pricing-entry h3 span {
     background-color: #4476ac !important; /* Change this to your website's blue color */
-    color: white; /* Ensure text remains readable */
-    padding: 2px 5px; /* Optional: Adjust padding for spacing */
-    border-radius: 4px; /* Optional: Add rounded corners */
+    color: white;
+    padding: 6px 10px;
+    border-radius: 1px; /* Optional: Add rounded corners */
 }
 
     /* Card container */
@@ -485,7 +515,7 @@
         font-family: 'Dancing Script', cursive;
         font-size: 48px;
         font-weight: bold;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
         color: white;
     }
 
@@ -516,7 +546,7 @@
     filter.addEventListener('click', function () {
         document.querySelectorAll('.filters_menu li').forEach(el => el.classList.remove('active'));
         this.classList.add('active');
-        
+
         const filterValue = this.getAttribute('data-filter');
         document.querySelectorAll('.grid .all').forEach(item => {
             if (filterValue === '*' || item.classList.contains(filterValue)) {

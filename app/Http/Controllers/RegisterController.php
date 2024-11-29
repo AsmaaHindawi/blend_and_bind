@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash; // Add this to hash the password
 
 class RegisterController extends Controller
 {
@@ -34,7 +35,7 @@ class RegisterController extends Controller
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
-            'password' =>$request->password, 
+            'password' => Hash::make($request->password), // Hash the password before saving
             'role' => $request->role,
         ]);
 

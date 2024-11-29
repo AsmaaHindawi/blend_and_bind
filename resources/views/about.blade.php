@@ -162,7 +162,7 @@
   </div>
 </section>
 
-<section class="ftco-section img" id="ftco-testimony" style="background-image: url(images/paper-texture.jpg); background-size: cover; background-repeat: no-repeat;"  data-stellar-background-ratio="0.5">
+<section class="ftco-section img" id="ftco-testimony" style="background-image: url(images/); background-size: cover; background-repeat: no-repeat;"  data-stellar-background-ratio="0.5">
   <div class="overlay"></div>
   <div class="container">
     <div class="row justify-content-center mb-5">

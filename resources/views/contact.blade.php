@@ -14,7 +14,7 @@
                 <span class="mr-2">
                     <a href="{{ route('home') }}">Home</a>
                 </span>
-                <span>Contact</span>
+                <span>Menu</span>
             </p>
         </div>
     </div>
@@ -88,16 +88,16 @@
                         <h1 class="h1">Contact Information</h1>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <p><span>Address:</span> <a href="https://maps.app.goo.gl/oMpxBaeTHZsthyjm7">Bliss Street, Hamra Beirut</a></p>
+                        <p><span>Phone:</span> <a href="tel://+96176689085">+961 76 689 085</a></p>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <p><span>Phone:</span> <a href="tel://+96176689085">+961 76 689 085</a></p>
+                        <p><span>Website:</span> <a href="{{ route('home') }}">BlendnBind.com</a></p>
                     </div>
                     <div class="col-md-12 mb-3">
                         <p><span>Email:</span> <a href="mailto:info@yoursite.com">blendnbind@gmail.com</a></p>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <p><span>Website:</span> <a href="{{ route('home') }}">BlendnBind.com</a></p>
+                        <p><span>Address:</span> <a href="https://maps.app.goo.gl/oMpxBaeTHZsthyjm7">Bliss Street, Hamra Beirut</a></p>
                     </div>
                 </div>
             </div>

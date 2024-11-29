@@ -1,127 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'Blend & Bind')
+@section('title', 'Blend & Bind - Reservations')
 
 @section('content')
 
 <style>
-#our-zones h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #444;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-    letter-spacing: 1px;
-}
-
-/* Zone Card */
-.zone-card {
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow for a professional look */
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: auto; /* Allow height to adjust based on content */
-}
-
-/* Ensure all cards in a row have the same height */
-.row-cols-1 > .col, .row-cols-md-2 > .col {
-    display: flex;
-    align-items: stretch;
-}
-
-.zone-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-}
-
-/* Image Container */
-.zone-image-container img {
-    width: 100%;
-    height: 200px; /* Fixed height for consistent size */
-    object-fit: cover;
-    border-bottom: 3px solid #007bff; /* Accent color border */
-    transition: transform 0.3s ease;
-}
-
-.zone-card:hover .zone-image-container img {
-    transform: scale(1.05);
-}
-
-/* Image Styling */
-.zone-img {
-    width: 100%;
-    height: 200px; /* Fixed image height for uniformity */
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-/* Zone Info */
-.zone-info {
-    padding: 20px;
-    text-align: center;
-    flex-grow: 1; /* Ensures consistent spacing inside the cards */
-}
-
-.zone-info h3 {
-    font-size: 1.5rem;
-    color: #007bff;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.zone-info p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-}
-
-/* Zone Description Styling */
-.zone-description {
-    font-size: 1.2rem;
-    color: #555;
-    line-height: 1.8;
-    margin-top: 15px;
-}
-
-/* Responsive Design */
-@media (max-width: 767px) {
-    .zone-card {
-        flex-direction: column;
-        height: auto; /* Adjusts height for smaller screens */
+    /* General Section Styling */
+    section {
+        padding: 2rem 1rem;
     }
 
-    #our-zones h2 {
-        font-size: 2rem;
-    }
-
-    .zone-image-container img {
-        height: 150px; /* Reduced height for mobile screens */
-    }
-}
-
-@media (max-width: 767px) {
-    .zone-card {
-        padding: 15px;
-    }
-
-    .zone-img {
-        height: 150px;
-    }
-
-    .zone-description {
-        font-size: 1rem;
-    }
-
-}
-
-/* Header Section */
-.header-banner {
+    /* Header Section Styling */
+    .header-banner {
         position: relative;
         overflow: hidden;
     }
@@ -152,55 +42,142 @@
         color: white;
     }
 
-    .modal-body {
-    padding: 15px;
-}
-
-.form-label {
-    margin-bottom: 5px;
-}
-
-#reservationModal input, 
-    #reservationModal select {
-        color: black  !important;/* Ensures input text is black */
+    /* Zone Card Styling */
+    .zone-card {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: auto;
     }
 
+    .zone-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .zone-image-container img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 3px solid #437eb5;
+        transition: transform 0.3s ease;
+    }
+
+    .zone-card:hover .zone-image-container img {
+        transform: scale(1.05);
+    }
+
+    /* Zone Info Styling */
+    .zone-info {
+        padding: 20px;
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    .zone-info h3 {
+        font-size: 1.5rem;
+        color: #437eb5;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .zone-info p {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    /* Reservation Section Styling */
+    #events-reservation {
+        background-color: #f0f4f8;
+        padding-bottom: 3rem;
+    }
+
+    .reservation-container {
+        background-color: #fff;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 1.5rem;
+    }
+
+    .reservation-container img {
+        border-radius: 10px;
+        height: 300px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .reservation-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .reservation-info h3 {
+        font-weight: bold;
+        font-size: 1.8rem;
+        color: #444;
+    }
+
+    .reservation-info p {
+        color: #666;
+        line-height: 1.8;
+        font-size: 1rem;
+    }
+
+    .reservation-info button {
+        margin-top: 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* Modal Styling */
+    .modal-body {
+        padding: 15px;
+    }
+
+    .modal-content {
+        position: relative;
+    }
+
+    .modal-header {
+        z-index: 2;
+        position: relative;
+    }
+
+    #reservationModal .modal-content .position-absolute {
+        border-radius: 0.5rem;
+        z-index: 0;
+    }
 </style>
 
-<!--
-<section class="home-slider owl-carousel">
-
-    <div class="slider-item" style="background-image: url(images/bg_1p.png);" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row slider-text justify-content-center align-items-center">
-  
-          <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            <h1 class="mb-3 mt-5 bread">Zones</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Zone</span></p>
-          </div>
-  
-        </div>
-      </div>
-    </div>
-  </section>-->
- 
-
-  <div class="container-fluid px-0">
-    <!-- Header Section -->
+<!-- Header Section -->
+<div class="container-fluid px-0">
     <div class="header-banner position-relative">
         <img src="{{ asset('images/ouvrir-un-coffee-shop-etapes.jpg') }}" alt="Zone Header" class="w-100">
         <div class="header-overlay text-center">
             <h1 class="header-title mt-5">Our Zones</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="{{ route('home') }}">Home</a></span> <span>Zones</span></p>
+            <p class="breadcrumbs">
+                <span class="mr-2">
+                    <a href="{{ route('home') }}">Home</a>
+                </span>
+                <span>Menu</span>
+            </p>
         </div>
     </div>
-    
 </div>
 
-
-    <!-- Section 1: Coffee Shop Zones -->
-    <section id="our-zones" class=" container mt-5 py-5">
+<!-- Section 1: Coffee Shop Zones -->
+<section id="our-zones" class="container mt-5 py-5">
     <div class="container">
         <h2 class="text-center mb-5">Explore Our Zones</h2>
         <div class="row g-4">
@@ -212,7 +189,7 @@
                     </div>
                     <div class="zone-info">
                         <h3>Coffee Place</h3>
-                        <p>Step into our Coffee Place, a warm and inviting space designed for moments of relaxation and rejuvenation. Here, you can savor the finest brews crafted from premium beans, offering rich flavors that awaken your senses. Whether you’re meeting with friends, enjoying a solo break, or seeking inspiration for your next big idea, this cozy corner provides the perfect ambiance to sip, chat, and unwind.</p>
+                        <p>Step into our Coffee Place, a cozy haven for savoring premium brews, connecting with friends, and finding inspiration in a relaxing ambiance.</p>
                     </div>
                 </div>
             </div>
@@ -224,7 +201,7 @@
                     </div>
                     <div class="zone-info">
                         <h3>Study Rooms</h3>
-                        <p>Discover your productivity haven in our thoughtfully designed Study Rooms. These quiet, private spaces are tailored for focused studying, group discussions, and collaborative projects. Each room is equipped with ergonomic furniture, ample lighting, and all the tools you need to concentrate and achieve your goals. Step in and transform your ideas into reality, free from distractions.</p>
+                        <p>Experience ultimate focus and collaboration in our well-equipped Study Rooms, designed for productive studying and group projects.</p>
                     </div>
                 </div>
             </div>
@@ -236,7 +213,7 @@
                     </div>
                     <div class="zone-info">
                         <h3>Games Room</h3>
-                        <p>Unleash your inner gamer in our state-of-the-art Games Room, a dynamic space brimming with fun and excitement. Equipped with the latest gaming consoles, board games, and interactive entertainment, it’s a haven for friendly competition and laughter. Whether you're battling it out in a virtual tournament or enjoying classic board games with friends, the Games Room is your go-to spot for memorable moments.</p>
+                        <p>Dive into endless fun and friendly competition in our Games Room, packed with the latest consoles, board games, and interactive. </p>
                     </div>
                 </div>
             </div>
@@ -248,7 +225,8 @@
                     </div>
                     <div class="zone-info">
                         <h3>Library</h3>
-                        <p>Immerse yourself in the world of knowledge and creativity in our serene Library. With an extensive collection of books, journals, and digital resources, it caters to curious minds and passionate learners. The tranquil atmosphere and comfortable seating provide the perfect setting to dive into your favorite books, research topics, or find inspiration for your next project. A sanctuary for learning and growth awaits you here.</p>
+                        <p>
+                            Explore endless knowledge and creativity in our serene Library, a tranquil haven for reading, research, and inspiration.</p>
                     </div>
                 </div>
             </div>
@@ -256,10 +234,50 @@
     </div>
 </section>
 
+<!-- Reservation Section -->
+<div id="events-reservation" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5" style="font-size: 3rem;">Events Reservation</h2>
+        <div class="row g-4">
+            <div class="col-12">
+                <div class="reservation-container">
+                    <div class="col-md-6">
+                        <img src="{{ asset('images/reservetable.jpg') }}" alt="Coffee Shop">
+                    </div>
+                    <div class="col-md-6 reservation-info">
+                        <h3>Reserve Coffee Shop</h3>
+                        <p>Plan your next big event at our coffee shop or enjoy a cozy table for two. Flexible reservations tailored to your needs!</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservationModal">Reserve Table</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
 <div id="events-reservation" class="py-5" style="background-color: #f0f4f8; width: 100%; margin-bottom: 50px;">
     <div class="container">
-        <h2 class="text-center mb-5" style="font-family: 'Poppins', sans-serif; font-size: 2.5rem; color: #333;">Events Reservation</h2>
+        <h2 class="text-center mb-5" style= "font-size: 3rem;">Events Reservation</h2>
         <div class="row g-4">
+            <div class="container mt-5">
+                <!-- Success Message -->
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <!-- Validation Errors -->
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+        </div>
             <!-- Coffee Shop Reservation -->
             <div class="col-12">
                 <div class="d-flex flex-wrap bg-white rounded-3 shadow-lg p-4">
@@ -293,31 +311,6 @@
         </div>
     </div>
 </div>
-
-<div class="container mt-5">
-
-
-        <!-- Success Message -->
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <!-- Validation Errors -->
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <!-- Reservation Form -->
-         
-        
 
 <!-- Modal -->
 <div class="modal fade" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
@@ -393,7 +386,4 @@
         </div>
     </div>
 </div>
-
-
-
 @endsection

@@ -3589,7 +3589,7 @@ input[type="button"].btn-block {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  min-width: 0;
+  /* min-width: 0; */
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
@@ -3606,6 +3606,9 @@ input[type="button"].btn-block {
     border-bottom-left-radius: 0.25rem; }
 
 .card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem; }
+    .card-body > .table {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
@@ -7949,14 +7952,12 @@ h1, h2, h3, h4, h5,
       font-size: 18px; }
       .pricing-entry .text h3 span {
         background: #151111;
-        background: url(../images/bg_4.jpg) no-repeat fixed;
         padding-right: 20px; }
     .pricing-entry .text .price {
       width: 80px;
-      color: #c49b63;
-      text-align: right;
-      background: #151111;
-      background: url(../images/bg_4.jpg) no-repeat fixed;
+      color: #fff;
+      text-align: center;
+      background-color: #4476ac;
       font-size: 16px; }
 
 .menu-entry {
@@ -9456,8 +9457,9 @@ body > header > div.container > div > div > input {
 /* Mobile Responsive */
 @media (max-width: 800px) {
   .responsive-header {
-    background-size: contain;
+    background-size:auto;
     background-position: top center;
+
   }
 }
 
