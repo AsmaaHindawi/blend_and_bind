@@ -6,7 +6,7 @@
 <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh; background: linear-gradient(135deg, #dccc40d6 50%, #ded5b6e8 50%);">
     <div class="login-box d-flex shadow-lg" style="background: #fff; border-radius: 10px; overflow: hidden; width: 800px; height: 500px;">
         <!-- Image Section -->
-        <div class="image-section" style="flex: 1; background: url('{{ asset('images/loginimage.jpg') }}') no-repeat center center; background-size: cover;"></div>
+        <div class="image-section" style="flex: 1; background: url('{{ asset('images/Image (2).jpeg') }}') no-repeat center center; background-size: cover;"></div>
 
         <!-- Form Section -->
         <div class="form-section p-4" style="flex: 1.2; display: flex; flex-direction: column; justify-content: center;">
