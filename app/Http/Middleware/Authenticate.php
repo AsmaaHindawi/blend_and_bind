@@ -17,6 +17,7 @@ class Authenticate
      */
     public function handle($request, Closure $next, ...$guards)
     {
+        \Log::info('Authenticate middleware called.');
         if (empty($guards)) {
             $guards = [null]; // Use the default guard if none is specified
         }

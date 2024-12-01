@@ -17,6 +17,7 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -115,13 +116,7 @@
                         <li class="nav-item">
                             <a href="{{ route('reservations') }}" class="nav-link">Zones</a>
                         </li>
-                        <li class="nav-item cart">
-                            <a href="{{ route('cart') }}" class="nav-link">
-                                <i class="fas fa-shopping-cart fa-2x"></i>
-                            </a>
-                        </li>
                     @endif
-
                     <!-- Logout Link for All Authenticated Users -->
                     <li class="nav-item">
                         <a href="{{ route('logout') }}" class="nav-link">Logout</a>
@@ -132,6 +127,12 @@
                         <a href="{{ route('login') }}" class="nav-link">Login</a>
                     </li>
                 @endauth
+
+                <li class="nav-item cart">
+                    <a href="{{ route('cart') }}" class="nav-link">
+                        <i class="fas fa-shopping-cart fa-2x"></i>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -161,8 +162,8 @@
                     <h4 class="h4 fw-bold mb-3 text-white">Get Help</h4>
                     <ul class="list-unstyled">
                         <li><a class="text-white" href="{{ route('home') }}">FAQ</a></li>
-                        <li><a class="text-white" href="{{ route('home') }}">Reservation Status</a></li>
-                        <li><a class="text-white" href="{{ route('home') }}">Payment Options</a></li>
+                        <li><a class="text-white" href="{{ route('reservations') }}">Reservation Status</a></li>
+                        <li><a class="text-white" href="{{ route('checkout') }}">Payment Options</a></li>
                     </ul>
                 </div>
                 <!-- Third Column: Follow Us -->
@@ -179,7 +180,7 @@
                 </div>
                 <!-- Fourth Column: Contact Button -->
                 <div class="col d-flex align-items-start">
-                    <a href="{{ route('login') }}" class="btn btn-warning text-dark fw-bold">Login</a>
+                    <a href="{{ route('contact') }}" class="btn btn-warning text-dark fw-bold">Contact Us</a>
                 </div>
             </div>
         </div>

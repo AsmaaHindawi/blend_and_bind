@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paid; // Import the Paid model
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class CheckoutController extends Controller
 {
@@ -33,6 +35,7 @@ class CheckoutController extends Controller
      */
     public function process(Request $request)
     {
+        \Log::info('Checkout process method started.');
         // Check if the user is logged in
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'You must be logged in to place an order.');
@@ -47,8 +50,10 @@ class CheckoutController extends Controller
             'postcode' => 'required|string|max:20',
             'phone' => 'required|string|max:20',
             'email' => 'required|string|email|max:255',
-            'payment_method' => 'required|in:bank_transfer,wish,omt',
+            'payment_method' => 'required|in:bank_transfer,wish,omt,cash',
         ]);
+
+        \Log::info('Validation completed without issues.');
 
         $cart = session()->get('cart', []);
 
@@ -72,7 +77,6 @@ class CheckoutController extends Controller
         $paid->address = $validated['street_address'] . ', ' . $validated['city'] . ', ' . $validated['postcode'];
         $paid->phone_number = $validated['phone'];
         $paid->save();
-
         session()->forget('cart');
         return redirect()->route('home')->with('success', 'Order placed successfully!');
     }
@@ -80,6 +84,8 @@ class CheckoutController extends Controller
 
     public function saveCardDetails(Request $request)
     {
+        \Log::info('Reached saveCardDetails method in CheckoutController.');
+
         $request->validate([
             'card_number' => 'required|digits:16', // Adjusted for card length
             'expiry_date' => 'required|regex:/^(0[1-9]|1[0-2])\/(\d{2})$/', // Corrected regex with proper delimiters
@@ -93,7 +99,10 @@ class CheckoutController extends Controller
             'ccv' => $request->input('ccv'),
         ]);
 
+        \Log::info('Validation passed in saveCardDetails method.');
+
         return redirect()->route('checkout')->with('success', 'Card details saved successfully!');
+
     }
 
 

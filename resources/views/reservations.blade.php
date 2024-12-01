@@ -41,6 +41,29 @@
         margin-bottom: 20px;
         color: white;
     }
+ /* Style for the Breadcrumbs */
+ .breadcrumbs {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #bfbfbf; /* Default breadcrumb text color */
+}
+
+.breadcrumbs span {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #bfbfbf; /* Span text color */
+}
+
+.breadcrumbs span a {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Link color specifically for "Home" */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs span a:hover {
+    color: #edca1b; /* Darker color when hovered */
+}
 
     /* Zone Card Styling */
     .zone-card {
@@ -78,6 +101,7 @@
         padding: 20px;
         text-align: center;
         flex-grow: 1;
+        /* color: rgba(255, 255, 255, 0.9) !important; */
     }
 
     .zone-info h3 {
@@ -170,7 +194,7 @@
                 <span class="mr-2">
                     <a href="{{ route('home') }}">Home</a>
                 </span>
-                <span>Menu</span>
+                <span>Zones</span>
             </p>
         </div>
     </div>
@@ -235,7 +259,7 @@
 </section>
 
 <!-- Reservation Section -->
-<div id="events-reservation" class="py-5">
+{{-- <div id="events-reservation" class="py-5">
     <div class="container">
         <h2 class="text-center mb-5" style="font-size: 3rem;">Events Reservation</h2>
         <div class="row g-4">
@@ -253,7 +277,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!-- Modal -->
 <div id="events-reservation" class="py-5" style="background-color: #f0f4f8; width: 100%; margin-bottom: 50px;">

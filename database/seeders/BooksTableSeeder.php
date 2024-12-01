@@ -9,15 +9,100 @@ class BooksTableSeeder extends Seeder
 {
     public function run()
     {
-        // Insert multiple rows into the 'books' table
+
         DB::table('books')->insert([
             [
-                'title' => 'The Great Gatsby',
+                'title' => 'فقه السنة',
+                'price' => 20.99,
+                'author' => 'Islamic Authors',
+                'genre' => 'Islamic Books',
+                'publication_year' => 1945,
+                'image' => 'fekehsunnah.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'تدبر و عمل ',
+                'price' => 20.99,
+                'author' => 'Islamic Authors',
+                'genre' => 'Islamic Books',
+                'publication_year' => 2015,
+                'image' => 'quran.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            [
+                'title' => 'البسي واسع',
                 'price' => 10.99,
-                'author' => 'F. Scott Fitzgerald',
-                'genre' => 'Classic',
-                'publication_year' => 1925,
-                'image' => 'the-great-gatsby.jpg', // Image file in the public/book_images directory
+                'author' => 'Islamic Authors',
+                'genre' => 'Islamic Books',
+                'publication_year' => 2022,
+                'image' => 'wear-wase3.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'رسائل من القرآن',
+                'price' => 13.00,
+                'author' => 'Islamic Authors',
+                'genre' => 'Islamic Books',
+                'publication_year' => 2021,
+                'image' => 'messages-from-quran.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            [
+                'title' => 'No one But You',
+                'price' => 15.00,
+                'author' => 'Brenda Novak',
+                'genre' => 'Novel',
+                'publication_year' => 2017,
+                'image' => 'No-One-But-You.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            [
+                'title' => 'Finding Our Forever',
+                'price' => 13.00,
+                'author' => 'Brenda Novak',
+                'genre' => 'Novel',
+                'publication_year' => 2021,
+                'image' => 'Finding-Our-Forever.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            [
+                'title' => 'صغّر عقلك',
+                'price' => 15.00,
+                'author' => 'Arabian Authors',
+                'genre' => 'Arabic Books',
+                'publication_year' => 2019,
+                'image' => 'sagher.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+
+            [
+                'title' => 'الاربعون',
+                'price' => 13.00,
+                'author' => 'Arabian Authors',
+                'genre' => 'Arabic Books',
+                'publication_year' => 2021,
+                'image' => '40.jpg',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'title' => 'استخارة- أحكام ومسائل',
+                'price' => 10.99,
+                'author' => 'Islamic Authors',
+                'genre' => 'Islamic Books',
+                'publication_year' => 2000,
+                'image' => 'Islamic.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -27,7 +112,7 @@ class BooksTableSeeder extends Seeder
                 'author' => 'Harper Lee',
                 'genre' => 'Fiction',
                 'publication_year' => 1960,
-                'image' => 'to-kill-a-mockingbird.jpg', // Image file in the public/book_images directory
+                'image' => 'to-kill-a-mockingbird.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -37,7 +122,7 @@ class BooksTableSeeder extends Seeder
                 'author' => 'George Orwell',
                 'genre' => 'Dystopian',
                 'publication_year' => 1949,
-                'image' => '1984.jpg', // Image file in the public/book_images directory
+                'image' => '1984.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
@@ -47,10 +132,11 @@ class BooksTableSeeder extends Seeder
                 'author' => 'J.D. Salinger',
                 'genre' => 'Fiction',
                 'publication_year' => 1951,
-                'image' => 'the-catcher-in-the-rye.jpg', // Image file in the public/book_images directory
+                'image' => 'the-catcher-in-the-rye.jpg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+
         ]);
     }
 }

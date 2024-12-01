@@ -13,7 +13,7 @@
                 <span class="mr-2">
                     <a href="{{ route('home') }}">Home</a>
                 </span>
-                <span>Menu</span>
+                <span>Books</span>
             </p>
             <form method="GET" action="{{ route('books') }}" class="search-form">
                 <div class="input-group search-container">
@@ -121,6 +121,32 @@
 
 @push('styles')
 <style>
+
+    /* Style for the Breadcrumbs */
+
+.breadcrumbs {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #bfbfbf; /* Default breadcrumb text color */
+}
+
+.breadcrumbs span {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #bfbfbf; /* Span text color */
+}
+
+.breadcrumbs span a {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Link color specifically for "Home" */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs span a:hover {
+    color: #edca1b; /* Darker color when hovered */
+}
+
     /* Header Section */
     .header-banner {
         position: relative;
@@ -146,10 +172,11 @@
     }
 
     .header-title {
+        margin-top: 65px;
         font-family: 'Dancing Script', cursive;
         font-size: 48px;
         font-weight: bold;
-        margin-bottom: 20px;
+        margin-bottom: 7px;
         color: white;
     }
 

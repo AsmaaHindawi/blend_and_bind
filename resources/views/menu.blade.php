@@ -14,7 +14,7 @@
                 <span class="mr-2">
                     <a href="{{ route('home') }}">Home</a>
                 </span>
-                <span>Contact</span>
+                <span>Menu</span>
             </p>
         </div>
     </div>
@@ -515,6 +515,7 @@
         font-family: 'Dancing Script', cursive;
         font-size: 48px;
         font-weight: bold;
+        margin-top: 35px;
         margin-bottom: 12px;
         color: white;
     }

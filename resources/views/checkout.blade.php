@@ -3,6 +3,22 @@
 @section('title', 'Checkout')
 
 @section('content')
+
+<div class="container-fluid px-0">
+    <!-- Header Section -->
+    <div class="header-banner position-relative">
+        <img src="{{ asset('images/ouvrir-un-coffee-shop-etapes.jpg') }}" alt="Zone Header" class="w-100">
+        <div class="header-overlay text-center">
+            <h1 class="header-title mt-5">Your Cart</h1>
+            <p class="breadcrumbs">
+                <span class="mr-2">
+                    <a href="{{ route('home') }}">Home</a>
+                </span>
+                <span>Cart</span>
+            </p>
+        </div>
+    </div>
+</div>
 <div class="container my-5">
     <h1 class="text-center mb-4" style="font-family: 'Dancing Script', cursive;">Checkout</h1>
 
@@ -76,6 +92,12 @@
                 <!-- Payment Methods -->
                 <h3 class="mt-4">Payment Method</h3>
                 <div class="form-check">
+                    <div class="form-check payment-option-radio">
+                        <input type="radio" id="cash_payment_method" name="payment_method" value="cash" class="form-check-input unique-radio" required>
+                        <label for="cash_payment_method" class="form-check-label">Pay on Delivery</label>
+                    </div>
+                    
+                <div class="form-check">
                     <input type="radio" id="bank_transfer" name="payment_method" value="bank_transfer" class="form-check-input payment-method" required>
                     <label for="bank_transfer" class="form-check-label">Direct Bank Transfer</label>
                 </div>
@@ -140,6 +162,62 @@
 
 @push('styles')
 <style>
+
+        /* Header Section */
+.header-banner {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header-banner img {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .header-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .header-title {
+        font-family: 'Dancing Script', cursive;
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    /* Style for the Breadcrumbs */
+.breadcrumbs {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #bfbfbf; /* Default breadcrumb text color */
+}
+
+.breadcrumbs span {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #bfbfbf; /* Span text color */
+}
+
+.breadcrumbs span a {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Link color specifically for "Home" */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs span a:hover {
+    color: #edca1b; /* Darker color when hovered */
+}
     /* General form input styles */
     .form-control {
         background-color: white !important;
@@ -162,9 +240,9 @@
     .card {
         border-color: black !important;
     }
+
 </style>
 @endpush
-
 @push('scripts')
 <script>
     // Show payment modal when a payment method is selected
@@ -173,5 +251,6 @@
             $('#paymentModal').modal('show');
         });
     });
+
 </script>
 @endpush

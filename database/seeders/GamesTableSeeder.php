@@ -62,10 +62,9 @@ class GamesTableSeeder extends Seeder
             'updated_at' => Carbon::now(),
         ]);
 
-
         Game::create([
             'name' => 'truth or Dare',
-            'type' => 'Card',
+            'type' => 'Cards',
             'min_players' => 2,
             'max_players' => 6,
             'image' => 'td.webp',
@@ -75,7 +74,7 @@ class GamesTableSeeder extends Seeder
 
         Game::create([
             'name' => 'Uno',
-            'type' => 'Card',
+            'type' => 'Cards',
             'min_players' => 2,
             'max_players' => 10,
             'image' => 'uno.jpg',
@@ -85,7 +84,7 @@ class GamesTableSeeder extends Seeder
 
         Game::create([
             'name' => 'Al Jalsa',
-            'type' => 'Card',
+            'type' => 'Cards',
             'min_players' => 2,
             'max_players' => 6,
             'image' => 'jalsa.webp',
@@ -95,7 +94,7 @@ class GamesTableSeeder extends Seeder
 
         Game::create([
             'name' => 'Lebanese Card Game',
-            'type' => 'Card',
+            'type' => 'Cards',
             'min_players' => 2,
             'max_players' => 7,
             'image' => 'lebanese.jpg',

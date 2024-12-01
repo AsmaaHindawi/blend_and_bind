@@ -1,15 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Blend & Bind - Admin Dashboard')
+@section('title', 'Admin Dashboard')
 
 @section('content')
-
-<div class="container-fluid px-0">
-    <!-- Header Section -->
     <div class="header-banner position-relative">
-        <img src="{{ asset('images/image1.jpg') }}" alt="Menu Header" class="w-100">
+        <img src="{{ asset('images/image1.jpg') }}" alt="Dashboard Header" class="w-100">
         <div class="header-overlay text-center">
-            <h1 class="header-title mt-5">Dashboard</h1>
+            <h1 class="header-title">Admin Dashboard</h1>
             <p class="breadcrumbs">
                 <span class="mr-2">
                     <a href="{{ route('home') }}">Home</a>
@@ -19,287 +16,243 @@
         </div>
     </div>
 
-</div>
+    <div class="container mt-4">
+        <!-- Cards Section -->
+        <div class="row mb-4">
+            <!-- Users Card -->
+            <div class="col-md-3">
+                <div class="custom-card shadow text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Users</h5>
+                        <p class="card-text">{{ $userCount ?? '0' }}</p>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Admins Card -->
+            <div class="col-md-3">
+                <div class="custom-card shadow text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Admins</h5>
+                        <form action="{{ route('admin.admins.update') }}" method="POST">
+                            @csrf
+                            <input type="number" name="adminCount" value="{{ $adminCount ?? '0' }}" min="1"
+                                class="form-control custom-input">
+                            <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-<div class="container-fluid admin-dashboard-container px-5 py-4">
-    <div class="row mb-4">
-        <!-- Dashboard Overview Cards -->
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-            <div class="card text-white bg-primary">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            <i class="fas fa-user-tie fa-3x"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">Admin Access</h5>
-                            <p class="card-text">CPU Traffic: 10%</p>
-                        </div>
+            <!-- Books Card -->
+            <div class="col-md-3">
+                <div class="custom-card shadow text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Books</h5>
+                        <form action="{{ route('admin.books.update') }}" method="POST">
+                            @csrf
+                            <input type="number" name="bookSales" value="{{ $bookCount ?? '0' }}" min="0"
+                                class="form-control custom-input">
+                            <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-            <div class="card text-white bg-warning">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            <i class="fas fa-thumbs-up fa-3x"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">Customer Feedback</h5>
-                            <p class="card-text">Likes: 41,410</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-            <div class="card text-white bg-success">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            <i class="fas fa-shopping-cart fa-3x"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">Sales</h5>
-                            <p class="card-text">Total Sales: 760</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
-            <div class="card text-white bg-info">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div class="me-3">
-                            <i class="fas fa-user-plus fa-3x"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">New Members</h5>
-                            <p class="card-text">New Sign-Ups: 2,000</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Monthly Recap & Orders Overview -->
-    <div class="row">
-        <div class="col-lg-8 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Monthly Recap Report</h5>
-                </div>
-                <div class="card-body">
-                    <canvas id="monthlyRecapChart"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Latest Orders</h5>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span>Call of Duty IV</span>
-                            <span class="badge bg-success">Shipped</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span>iPhone 6 Plus</span>
-                            <span class="badge bg-warning">Pending</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span>Samsung Smart TV</span>
-                            <span class="badge bg-danger">Delivered</span>
-                        </li>
-                    </ul>
-                    <a href="#" class="btn btn-primary mt-3">View All Orders</a>
+            <!-- Menu Items Card -->
+            <div class="col-md-3">
+                <div class="custom-card shadow text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Menu Items</h5>
+                        <form action="{{ route('admin.menus.update') }}" method="POST">
+                            @csrf
+                            <input type="number" name="menuSales" value="{{ $menuCount ?? '0' }}" min="0"
+                                class="form-control custom-input">
+                            <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Goal Completion Section -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Goal Completion</h5>
+        <!-- Pie Chart Section -->
+        <div class="row mb-4">
+            <div class="col-md-6 offset-md-3">
+                <div class="custom-chart-card shadow">
+                    <div class="card-header bg-dark text-white text-center">
+                        <h5 class="card-title">Website Statistics</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <canvas id="statisticsPieChart"></canvas>
+                        <div class="mt-4 text-center">
+                            <div><span class="legend-box" style="background-color: #36A2EB; align-items: flex-start; display: flex;"></span> Users</div>
+                            <div><span class="legend-box" style="background-color: #FFCE56; align-items: flex-start; display: flex;"></span> Admins</div>
+                            <div><span class="legend-box" style="background-color: #FF6384; align-items: flex-start; display: flex;"></span> Books</div>
+                            <div><span class="legend-box" style="background-color: #4BC0C0; align-items: flex-start; display: flex;"></span> Menu Items</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="progress-group">
-                        <span class="progress-text">Add Products to Cart</span>
-                        <span class="float-end">160/200</span>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" style="width: 80%"></div>
-                        </div>
+            </div>
+        </div>
+
+        <!-- Monthly Sales Chart -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="custom-chart-card shadow">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="card-title mb-0">Monthly Recap Report</h5>
                     </div>
-                    <div class="progress-group">
-                        <span class="progress-text">Complete Purchase</span>
-                        <span class="float-end">310/400</span>
-                        <div class="progress">
-                            <div class="progress-bar bg-danger" style="width: 77.5%"></div>
-                        </div>
-                    </div>
-                    <div class="progress-group">
-                        <span class="progress-text">Visit Premium Page</span>
-                        <span class="float-end">480/800</span>
-                        <div class="progress">
-                            <div class="progress-bar bg-success" style="width: 60%"></div>
-                        </div>
+                    <div class="card-body">
+                        <canvas id="monthlySalesChart"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endsection
+    @push('scripts')
+        <script>
+            // Monthly Sales Bar Chart
+            const monthlySalesCtx = document.getElementById('monthlySalesChart').getContext('2d');
+            new Chart(monthlySalesCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['January', 'February', 'March', 'April', 'May'], // Static months
+                    datasets: [{
+                        label: 'Sales',
+                        data: [500, 700, 800, 600, 750], // Static data
+                        backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6c757d'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    }
+                }
+            });
 
-    <!-- Product Overview -->
-    <div class="row">
-        <div class="col-lg-6 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Product Overview</h5>
-                </div>
-                <div class="card-body">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            Some Product - Sales: 12,000, Price: $13
-                        </li>
-                        <li class="list-group-item">
-                            Another Product - Sales: 123,234, Price: $29
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Online Store Overview</h5>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container">
-                        <canvas id="storeOverviewChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@endsection
-
-@push('scripts')
-<script>
-    const ctx = document.getElementById('monthlyRecapChart').getContext('2d');
-    const monthlyRecapChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'Sales',
-                data: [10, 20, 30, 40, 50, 60, 70],
-                backgroundColor: 'rgba(0, 123, 255, 0.2)',
-                borderColor: 'rgba(0, 123, 255, 1)',
-                borderWidth: 1
-            }]
-        }
-    });
-</script>
-@endpush
-
+            // Pie Chart for Website Statistics
+            const statisticsCtx = document.getElementById('statisticsPieChart').getContext('2d');
+            new Chart(statisticsCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Users', 'Admins', 'Books', 'Menu Items'],
+                    datasets: [{
+                        data: [
+                            {{ $userCount ?? 0 }},
+                            {{ $adminCount ?? 0 }},
+                            {{ $bookCount ?? 0 }},
+                            {{ $menuCount ?? 0 }}
+                        ],
+                        backgroundColor: [
+                            '#36A2EB', // Blue for Users
+                            '#FFCE56', // Yellow for Admins
+                            '#FF6384', // Red for Books
+                            '#4BC0C0' // Teal for Menu Items
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        </script>
+    @endpush
 <style>
     /* Header Section */
-.header-banner {
-    position: relative;
-    overflow: hidden;
-}
-
-.header-banner img {
-    height: 300px;
-    object-fit: cover;
-}
-
-.header-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.header-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 48px;
-    font-weight: bold;
-    margin-bottom: 12px;
-    color: white;
-}
- /* 2px solid rgba(255, 255, 255, 0.1) */
-
- /* Style for the Breadcrumbs */
-.breadcrumbs {
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 1px;
-    color: #bfbfbf; /* Default breadcrumb text color */
-}
-
-.breadcrumbs span {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    color: #bfbfbf; /* Span text color */
-}
-
-.breadcrumbs span a {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff; /* Link color specifically for "Home" */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.breadcrumbs span a:hover {
-    color: #edca1b; /* Darker color when hovered */
-}
-
-    .container-fluid.admin-dashboard-container {
-        padding: 2rem; /* Added padding to create space around the container */
+    .header-banner {
+        position: relative;
+        overflow: hidden;
     }
-    .card {
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    .header-banner img {
+        height: 300px;
+        object-fit: cover;
     }
-    .card .card-header {
-        background-color: #343a40;
-        color: #ffffff;
+
+    .header-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
     }
-    .card-title {
-        font-size: 1.25rem;
+
+    .header-title {
+        font-family: 'Dancing Script', cursive;
+        font-size: 48px;
         font-weight: bold;
+        margin-top: 35px;
+        margin-bottom: 12px;
+        color: white;
     }
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
+    /* 2px solid rgba(255, 255, 255, 0.1) */
+
+    /* Style for the Breadcrumbs */
+    .breadcrumbs {
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+        color: #bfbfbf;
+        /* Default breadcrumb text color */
     }
-    .list-group-item {
-        border: none;
-        border-bottom: 1px solid #ddd;
+
+    .breadcrumbs span {
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        color: #bfbfbf;
+        /* Span text color */
     }
-    .badge {
-        font-size: 0.9rem;
-        padding: 0.5em 0.75em;
+
+    .breadcrumbs span a {
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        /* Link color specifically for "Home" */
+        text-decoration: none;
+        transition: color 0.3s ease;
     }
-    .progress {
-        height: 1rem;
+
+    .breadcrumbs span a:hover {
+        color: #edca1b;
+        /* Darker color when hovered */
+    }
+
+    /* Legend Styles */
+    .legend-box {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        border-radius: 3px;
+    }
+    #monthlySalesChart {
+        display: flex;
+        justify-content: center !important;
+    }
+
+    /* Responsive Chart Styles */
+    @media (max-width: 768px) {
+        .custom-card {
+            margin-bottom: 15px;
+        }
+
+        .custom-chart-card {
+            margin-bottom: 15px;
+        }
     }
 </style>

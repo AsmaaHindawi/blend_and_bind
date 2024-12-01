@@ -66,6 +66,29 @@
         color: black  !important;/* Ensures input text is black */
     }
 
+/* Style for the Breadcrumbs */
+.breadcrumbs {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #bfbfbf; /* Default breadcrumb text color */
+}
+
+.breadcrumbs span {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #bfbfbf; /* Span text color */
+}
+
+.breadcrumbs span a {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Link color specifically for "Home" */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs span a:hover {
+    color: #edca1b; /* Darker color when hovered */
+}
 </style>
 
 
@@ -151,8 +174,13 @@
             </table>
         </div>
 
+        <div class="d-flex justify-content-between pt-3 ">
+            <a href="{{ url('/menu') }}" class="btn btn-custom" id="btn-browse-menu">Browse Menu</a>
+            <a href="{{ url('/books') }}" class="btn btn-custom" id="btn-browse-books">Browse Books</a>
+        </div>
         <!-- Summary Section -->
         <div class="cart-summary mt-5">
+
             <div class="d-flex justify-content-between">
                 <span class="cart-label">Subtotal:</span>
                 <span class="text-black subtotal">
@@ -239,7 +267,7 @@
     }
 /* Special selector for "Browse Menu" button */
 #btn-browse-menu {
-    background-color: #4CAF50; /* Green background */
+    background-color: hsla(213, 59%, 29%, 0.858); /* Green background */
     color: white; /* White text */
     border-radius: 1px; /* Rounded corners */
     padding: 12px 20px; /* Padding */
@@ -249,13 +277,13 @@
 }
 
 #btn-browse-menu:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: hsla(213, 53%, 36%, 0.858); /* Darker green on hover */
     transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Special selector for "Browse Books" button */
 #btn-browse-books {
-    background-color: #FF9800; /* Orange background */
+    background-color: hsl(244, 34%, 42%); /* Orange background */
     color: white; /* White text */
     border-radius: 1px; /* Rounded corners */
     padding: 12px 20px; /* Padding */
@@ -265,7 +293,7 @@
 }
 
 #btn-browse-books:hover {
-    background-color: #fb8c00; /* Darker orange on hover */
+    background-color: hsl(244, 34%, 42%); /* Darker orange on hover */
     transform: scale(1.05); /* Slight zoom effect */
 }
 
