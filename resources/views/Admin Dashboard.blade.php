@@ -7,6 +7,7 @@
         <img src="{{ asset('images/image1.jpg') }}" alt="Dashboard Header" class="w-100">
         <div class="header-overlay text-center">
             <h1 class="header-title">Admin Dashboard</h1>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
             <p class="breadcrumbs">
                 <span class="mr-2">
                     <a href="{{ route('home') }}">Home</a>
@@ -21,23 +22,23 @@
         <div class="row mb-4">
             <!-- Users Card -->
             <div class="col-md-3">
-                <div class="custom-card shadow text-center">
+                <div class="custom-card-dashboard shadow text-center">
                     <div class="card-body">
                         <h5 class="card-title">Users</h5>
-                        <p class="card-text">{{ $userCount ?? '0' }}</p>
+                        <p class="card-text text-success font-weight-bold">{{ $userCount ?? '0' }} Users</p>
                     </div>
                 </div>
             </div>
 
             <!-- Admins Card -->
             <div class="col-md-3">
-                <div class="custom-card shadow text-center">
+                <div class="custom-card-dashboard shadow text-center">
                     <div class="card-body">
                         <h5 class="card-title">Admins</h5>
                         <form action="{{ route('admin.admins.update') }}" method="POST">
                             @csrf
                             <input type="number" name="adminCount" value="{{ $adminCount ?? '0' }}" min="1"
-                                class="form-control custom-input">
+                                class="form-control custom-input-dashboard">
                             <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
                         </form>
                     </div>
@@ -46,13 +47,13 @@
 
             <!-- Books Card -->
             <div class="col-md-3">
-                <div class="custom-card shadow text-center">
+                <div class="custom-card-dashboard shadow text-center">
                     <div class="card-body">
                         <h5 class="card-title">Books</h5>
                         <form action="{{ route('admin.books.update') }}" method="POST">
                             @csrf
                             <input type="number" name="bookSales" value="{{ $bookCount ?? '0' }}" min="0"
-                                class="form-control custom-input">
+                                class="form-control custom-input-dashboard">
                             <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
                         </form>
                     </div>
@@ -61,13 +62,13 @@
 
             <!-- Menu Items Card -->
             <div class="col-md-3">
-                <div class="custom-card shadow text-center">
+                <div class="custom-card-dashboard shadow text-center">
                     <div class="card-body">
                         <h5 class="card-title">Menu Items</h5>
                         <form action="{{ route('admin.menus.update') }}" method="POST">
                             @csrf
                             <input type="number" name="menuSales" value="{{ $menuCount ?? '0' }}" min="0"
-                                class="form-control custom-input">
+                                class="form-control custom-input-dashboard">
                             <button type="submit" class="btn btn-primary btn-sm mt-2">Save</button>
                         </form>
                     </div>
@@ -75,100 +76,329 @@
             </div>
         </div>
 
-        <!-- Pie Chart Section -->
-        <div class="row mb-4">
-            <div class="col-md-6 offset-md-3">
-                <div class="custom-chart-card shadow">
+        <div class="row mb-4 custom-charts">
+            <!-- Pie Chart Section -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="custom-chart-card shadow w-100">
                     <div class="card-header bg-dark text-white text-center">
                         <h5 class="card-title">Website Statistics</h5>
                     </div>
                     <div class="card-body text-center">
-                        <canvas id="statisticsPieChart"></canvas>
+                        <canvas id="statisticsPieChart" style="max-height: 400px;"></canvas>
                         <div class="mt-4 text-center">
-                            <div><span class="legend-box" style="background-color: #36A2EB; align-items: flex-start; display: flex;"></span> Users</div>
-                            <div><span class="legend-box" style="background-color: #FFCE56; align-items: flex-start; display: flex;"></span> Admins</div>
-                            <div><span class="legend-box" style="background-color: #FF6384; align-items: flex-start; display: flex;"></span> Books</div>
-                            <div><span class="legend-box" style="background-color: #4BC0C0; align-items: flex-start; display: flex;"></span> Menu Items</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Histogram Chart Section -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="custom-chart-card shadow w-100">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="card-title mb-0">Monthly Recap Report</h5>
+                        <button class="btn btn-sm btn-light float-right toggle-chart-type">
+                            Toggle to Curve
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="monthlySalesChart" style="max-height: 400px;"></canvas>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Monthly Sales Chart -->
-        <div class="row mb-4">
-            <div class="col-md-12">
-                <div class="custom-chart-card shadow">
-                    <div class="card-header bg-dark text-white">
-                        <h5 class="card-title mb-0">Monthly Recap Report</h5>
+        <!-- To-Do List Section -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card todo-card-dashboard">
+                    <div class="card-header todo-card-header-dashboard d-flex justify-content-between align-items-center">
+                        <h5>To Do List</h5>
+                        <button id="show-first-three" class="btn btn-outline-secondary btn-sm">123</button>
                     </div>
                     <div class="card-body">
-                        <canvas id="monthlySalesChart"></canvas>
+                        <ul id="todo-list" class="list-group-todo-dashboard"></ul>
+                        <button id="add-item-button" class="btn btn-primary w-100 mt-3">+ Add item</button>
+                        <form id="add-todo-form" class="mt-3 d-none">
+                            <input type="text" id="new-task" placeholder="Task Name" class="form-control mb-2">
+                            <input type="text" id="new-task-time" placeholder="Task Duration" class="form-control mb-2">
+                            <button type="submit" class="btn btn-success w-100">Add Task</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest Orders Section -->
+            <div class="col-md-6">
+                <div class="card orders-card-dashboard">
+                    <div class="card-header orders-card-header-dashboard d-flex justify-content-between align-items-center">
+                        <h5>Latest Orders</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table orders-table-dashboard">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Item</th>
+                                    <th>Status</th>
+                                    <th>Popularity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-list"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products and Store Overview Section -->
+        <div class="row mt-4 d-flex justify-content-center">
+            <div class="col-md-8 mb-5">
+                <div class="card products-card-dashboard">
+                    <div class="card-header products-card-header-dashboard d-flex justify-content-between align-items-center">
+                        <h5>Products</h5>
+                        <button class="btn btn-outline-secondary btn-sm" id="export-excel"><!-- MODIFIED BUTTON -->
+                            <i class="fa fa-download"></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <table class="table products-table-dashboard" id="products-table"><!-- ADDED ID TO TABLE -->
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Sales</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-list"></tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @endsection
-    @push('scripts')
-        <script>
-            // Monthly Sales Bar Chart
-            const monthlySalesCtx = document.getElementById('monthlySalesChart').getContext('2d');
-            new Chart(monthlySalesCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['January', 'February', 'March', 'April', 'May'], // Static months
-                    datasets: [{
-                        label: 'Sales',
-                        data: [500, 700, 800, 600, 750], // Static data
-                        backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6c757d'],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top'
-                        }
-                    }
-                }
-            });
+@endsection
 
-            // Pie Chart for Website Statistics
-            const statisticsCtx = document.getElementById('statisticsPieChart').getContext('2d');
-            new Chart(statisticsCtx, {
-                type: 'pie',
-                data: {
-                    labels: ['Users', 'Admins', 'Books', 'Menu Items'],
-                    datasets: [{
-                        data: [
-                            {{ $userCount ?? 0 }},
-                            {{ $adminCount ?? 0 }},
-                            {{ $bookCount ?? 0 }},
-                            {{ $menuCount ?? 0 }}
-                        ],
-                        backgroundColor: [
-                            '#36A2EB', // Blue for Users
-                            '#FFCE56', // Yellow for Admins
-                            '#FF6384', // Red for Books
-                            '#4BC0C0' // Teal for Menu Items
-                        ],
-                        hoverOffset: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    }
+@push('scripts')
+<script>
+// Pie Chart for Website Statistics
+const statisticsCtx = document.getElementById('statisticsPieChart').getContext('2d');
+new Chart(statisticsCtx, {
+    type: 'pie',
+    data: {
+        labels: ['Users', 'Admins', 'Books', 'Menu Items'],
+        datasets: [{
+            data: [
+                {{ $userCount ?? 0 }},
+                {{ $adminCount ?? 0 }},
+                {{ $bookCount ?? 0 }},
+                {{ $menuCount ?? 0 }}
+            ],
+            backgroundColor: ['#36A2EB', '#FFCE56', '#FF6384', '#4BC0C0'],
+            hoverOffset: 4
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'bottom'
+            }
+        }
+    }
+});
+
+// Monthly Sales Chart with toggle functionality
+let chartType = 'bar';
+const monthlySalesCtx = document.getElementById('monthlySalesChart').getContext('2d');
+let monthlySalesChart = new Chart(monthlySalesCtx, {
+    type: chartType,
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May'],
+        datasets: [{
+            label: 'Sales',
+            data: [500, 700, 800, 600, 750],
+            backgroundColor: chartType === 'bar' ?
+                ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6c757d'] : 'transparent',
+            borderColor: '#007bff',
+            borderWidth: chartType === 'line' ? 2 : 1,
+            tension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        }
+    }
+});
+
+// Toggle chart type
+document.querySelector('.toggle-chart-type').addEventListener('click', () => {
+    chartType = chartType === 'bar' ? 'line' : 'bar';
+    monthlySalesChart.destroy();
+    monthlySalesChart = new Chart(monthlySalesCtx, {
+        type: chartType,
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May'],
+            datasets: [{
+                label: 'Sales',
+                data: [500, 700, 800, 600, 750],
+                backgroundColor: chartType === 'bar' ?
+                    ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6c757d'] : 'transparent',
+                borderColor: '#007bff',
+                borderWidth: chartType === 'line' ? 2 : 1,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
                 }
-            });
-        </script>
-    @endpush
+            }
+        }
+    });
+});
+
+// Additional Scripts for To-Do List
+document.addEventListener('DOMContentLoaded', () => {
+    // Load the persisted To-Do list from localStorage or use default mock data
+    let todoList = JSON.parse(localStorage.getItem('todoList')) || [
+        { task: "Prepare daily sales report", time: "2 hours", done: false },
+        { task: "Inventory check", time: "1 day", done: false }
+    ];
+
+    const todoListContainer = document.getElementById('todo-list');
+    const addItemButton = document.getElementById('add-item-button');
+    const addTodoForm = document.getElementById('add-todo-form');
+    const showFirstThreeButton = document.getElementById('show-first-three');
+
+    let showAllTasks = true; // State variable to track if showing all tasks or only the first three
+
+    // Function to render tasks in the list
+    function renderTodoList(tasks) {
+        todoListContainer.innerHTML = ""; // Clear the list before rendering
+        tasks.forEach((item) => {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item-todo-dashboard d-flex align-items-center justify-content-between';
+            listItem.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" ${item.done ? 'checked' : ''} class="mr-2" onchange="this.checked ? this.nextElementSibling.classList.add('text-muted', 'text-decoration-line-through') : this.nextElementSibling.classList.remove('text-muted', 'text-decoration-line-through');">
+                    <span>${item.task}</span>
+                </div>
+                <span class="badge badge-secondary">${item.time}</span>
+            `;
+            todoListContainer.appendChild(listItem);
+        });
+    }
+
+    // Render initial tasks from localStorage
+    renderTodoList(todoList);
+
+    // Save the updated To-Do list to localStorage
+    function saveToLocalStorage() {
+        localStorage.setItem('todoList', JSON.stringify(todoList));
+    }
+
+    // Handle Add Item Button Click
+    addItemButton.addEventListener('click', () => {
+        addItemButton.classList.add('d-none');
+        addTodoForm.classList.remove('d-none');
+    });
+
+    // Handle Add Task Form Submission
+    addTodoForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const newTaskText = document.getElementById('new-task').value;
+        const newTaskTime = document.getElementById('new-task-time').value;
+
+        if (newTaskText && newTaskTime) {
+            // Add the new task to the list and persist it
+            todoList.push({ task: newTaskText, time: newTaskTime, done: false });
+            saveToLocalStorage(); // Save the updated list
+            renderTodoList(todoList); // Re-render the list with the new task
+
+            // Reset the form
+            addTodoForm.reset();
+            addTodoForm.classList.add('d-none');
+            addItemButton.classList.remove('d-none');
+        }
+    });
+
+    // Handle "123" Button Click to Toggle Between Showing First Three and All Tasks
+    showFirstThreeButton.addEventListener('click', () => {
+        if (showAllTasks) {
+            // Show only the first three tasks
+            const firstThreeTasks = todoList.slice(0, 3);
+            renderTodoList(firstThreeTasks);
+            showFirstThreeButton.textContent = 'Show All Tasks'; // Update button text
+        } else {
+            // Show all tasks
+            renderTodoList(todoList);
+            showFirstThreeButton.textContent = 'Show First Three'; // Update button text
+        }
+        showAllTasks = !showAllTasks; // Toggle the state
+    });
+});
+
+// Populate Orders
+const orders = [
+    { id: "ORD001", item: "Cappuccino", status: "Delivered", popularity: "95%" },
+    { id: "ORD002", item: "Chocolate Cake", status: "Pending", popularity: "85%" },
+    { id: "ORD003", item: "Smoothie", status: "Shipped", popularity: "75%" }
+];
+
+const ordersContainer = document.getElementById('orders-list');
+orders.forEach(order => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td><a href="#" class="text-info">${order.id}</a></td>
+        <td>${order.item}</td>
+        <td><span class="badge badge-${order.status === 'Delivered' ? 'success' : 'warning'}">${order.status}</span></td>
+        <td>${order.popularity}</td>
+    `;
+    ordersContainer.appendChild(row);
+});
+
+// Populate Products
+const products = [
+    { name: "فقه السنة", price: "$20.99", sales: "150 Sold" },
+    { name: "No one But You", price: "$15.00", sales: "98 Sold" },
+    { name: "1984", price: "$14.99", sales: "120 Sold" }
+];
+
+const productsContainer = document.getElementById('products-list');
+products.forEach(product => {
+    const row = document.createElement('tr');
+    row.className = 'products-row-dashboard';
+    row.innerHTML = `
+        <td>${product.name}</td>
+        <td>${product.price}</td>
+        <td><span class="badge badge-success">${product.sales}</span></td>
+    `;
+    productsContainer.appendChild(row);
+});
+
+// Export Products Table to Excel
+document.getElementById('export-excel').addEventListener('click', function () {
+    // Prepare data for Excel
+    let table = document.getElementById('products-table');
+    let workbook = XLSX.utils.table_to_book(table, {sheet: "Products"});
+    // Create and download the Excel file
+    XLSX.writeFile(workbook, 'Products.xlsx');
+});
+</script>
+@endpush
+
 <style>
     /* Header Section */
     .header-banner {
@@ -202,44 +432,67 @@
         margin-bottom: 12px;
         color: white;
     }
-    /* 2px solid rgba(255, 255, 255, 0.1) */
 
-    /* Style for the Breadcrumbs */
     .breadcrumbs {
         text-transform: uppercase;
         font-size: 13px;
         letter-spacing: 1px;
         color: #bfbfbf;
-        /* Default breadcrumb text color */
     }
 
     .breadcrumbs span {
         border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         color: #bfbfbf;
-        /* Span text color */
     }
 
     .breadcrumbs span a {
         border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         color: #ffffff;
-        /* Link color specifically for "Home" */
         text-decoration: none;
         transition: color 0.3s ease;
     }
 
     .breadcrumbs span a:hover {
         color: #edca1b;
-        /* Darker color when hovered */
     }
 
-    /* Legend Styles */
-    .legend-box {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        margin-right: 5px;
-        border-radius: 3px;
+    /* Custom Card Styles for Dashboard */
+    .custom-card-dashboard {
+        border-radius: 10px;
+        padding: 15px;
+        background-color: #f8f9fa;
     }
+
+    .card-header {
+        background-color: #343a40;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .list-group-item-todo-dashboard {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .table.orders-table-dashboard th, .table.orders-table-dashboard td,
+    .table.products-table-dashboard th, .table.products-table-dashboard td {
+        vertical-align: middle;
+    }
+
+    #store-overview div.store-overview-entry-dashboard {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    #add-todo-item {
+        background-color: #007bff;
+        color: white;
+    }
+
     #monthlySalesChart {
         display: flex;
         justify-content: center !important;
@@ -247,12 +500,34 @@
 
     /* Responsive Chart Styles */
     @media (max-width: 768px) {
-        .custom-card {
+        .custom-card-dashboard {
             margin-bottom: 15px;
         }
 
         .custom-chart-card {
             margin-bottom: 15px;
+        }
+    }
+
+    .custom-charts .custom-chart-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .custom-charts canvas {
+        max-width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 768px) {
+        .custom-charts .col-md-6 {
+            margin-bottom: 20px;
+        }
+
+        .custom-charts .custom-chart-card {
+            width: 100%;
         }
     }
 </style>

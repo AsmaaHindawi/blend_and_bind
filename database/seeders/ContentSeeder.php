@@ -34,10 +34,21 @@ class ContentSeeder extends Seeder
                 'title' => 'Games',
                 'body' => 'Explore the Games section to find a variety of board, card, and video games.',
             ],
+            [
+                'title' => 'Reservations',
+                'body' => 'Book your own private zone and enjoy tranquility or games with friends.',
+            ],
+            [
+                'title' => 'Add to Cart',
+                'body' => 'Manage your items in the cart and proceed to checkout.',
+            ],
+            [
+                'title' => 'Checkout',
+                'body' => 'Finalize your purchase with secure payment options.',
+            ],
         ];
 
         foreach ($contents as $content) {
-            // Check if a content entry with the same title already exists
             $exists = DB::table('contents')->where('title', $content['title'])->exists();
 
             if (!$exists) {

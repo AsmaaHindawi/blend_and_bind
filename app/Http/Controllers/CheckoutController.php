@@ -36,12 +36,13 @@ class CheckoutController extends Controller
     public function process(Request $request)
     {
         \Log::info('Checkout process method started.');
+
         // Check if the user is logged in
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'You must be logged in to place an order.');
         }
 
-        // Proceed with the rest of the code
+        // Validate the request inputs
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -55,12 +56,14 @@ class CheckoutController extends Controller
 
         \Log::info('Validation completed without issues.');
 
+        // Retrieve the cart from the session
         $cart = session()->get('cart', []);
 
         if (empty($cart)) {
             return redirect()->route('checkout')->with('error', 'Your cart is empty.');
         }
 
+        // Calculate totals
         $subtotal = array_sum(array_map(function ($item) {
             return $item['price'] * $item['quantity'];
         }, $cart));
@@ -77,33 +80,39 @@ class CheckoutController extends Controller
         $paid->address = $validated['street_address'] . ', ' . $validated['city'] . ', ' . $validated['postcode'];
         $paid->phone_number = $validated['phone'];
         $paid->save();
+
+        // Clear the cart session
         session()->forget('cart');
+
         return redirect()->route('home')->with('success', 'Order placed successfully!');
     }
 
-
+    /**
+     * Save card details method.
+     */
     public function saveCardDetails(Request $request)
     {
         \Log::info('Reached saveCardDetails method in CheckoutController.');
 
+        // Validate card details with corrected regex and length requirements
         $request->validate([
-            'card_number' => 'required|digits:16', // Adjusted for card length
-            'expiry_date' => 'required|regex:/^(0[1-9]|1[0-2])\/(\d{2})$/', // Corrected regex with proper delimiters
-            'ccv' => 'required|digits:3', // 3-digit CCV
+            'card_number' => 'required|digits:16', // Ensure card number is exactly 16 digits
+            'expiry_date' => ['required', 'regex:/^(0[1-9]|1[0-2])\/(\d{4})$/'], // Validate MM/YYYY format
+            'ccv' => 'required|digits:3', // Ensure CCV is exactly 3 digits
         ]);
 
-        // Simulate saving card details (secure storage requires tokenization or encryption)
+        \Log::info('Validation passed for card details.');
+
+        // Save card details temporarily in session for testing purposes
+        // For production, use a secure method such as encryption or tokenization
         session()->put('card_details', [
             'card_number' => $request->input('card_number'),
             'expiry_date' => $request->input('expiry_date'),
             'ccv' => $request->input('ccv'),
         ]);
 
-        \Log::info('Validation passed in saveCardDetails method.');
+        \Log::info('Card details saved successfully in session.');
 
         return redirect()->route('checkout')->with('success', 'Card details saved successfully!');
-
     }
-
-
 }

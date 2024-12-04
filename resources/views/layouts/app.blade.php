@@ -15,6 +15,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Include SheetJS Library from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -29,8 +33,10 @@
     @vite('resources/js/app.js')
     @stack('styles')
 
-<!-- Search Links -->
+    <!-- Search Links -->
     <script src="{{ asset('js/search.js') }}"></script>
+    <!-- Favorite Links -->
+    <script src="{{ asset('js/favorite.js') }}"></script>
 
     <!-- Additional Assets -->
     <link rel="stylesheet" href="{{ asset('css/open-iconic-bootstrap.min.css') }}">
@@ -66,77 +72,77 @@
 </head>
 
 <body class="bg-light text-dark">
- <!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-white ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset('images/BlendnBind.png') }}" alt="Blend & Bind Logo" class="me-3"
-                style="width: 100px; height: 70px;">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ftco-nav"
-            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            <span class="text-custom-primary">Menu</span>
-        </button>
-        <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-                <!-- Home Link -->
-                <li class="nav-item text-custom-primary">
-                    <a href="{{ route('home') }}" class="nav-link">Home</a>
-                </li>
-
-                <!-- Common Links for Logged-in Users and Non-logged-in Users -->
-                <li class="nav-item text-custom-primary">
-                    <a href="{{ route('about') }}" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('contact') }}" class="nav-link">Contact</a>
-                </li>
-
-                @auth
-                    <!-- Links for Admin Users -->
-                    @if(auth()->user()->role == 'admin')
-                        <li class="nav-item">
-                            <a href="{{ route('admin') }}" class="nav-link">Admin Dashboard</a>
-                        </li>
-                    @endif
-
-                    <!-- Links for Logged-in Clients (not Admins) -->
-                    @if(auth()->user()->role != 'admin')
-                        <!-- Services Dropdown for Clients -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Services</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown03">
-                                <a class="dropdown-item" href="{{ route('menu') }}">Menu</a>
-                                <a class="dropdown-item" href="{{ route('games') }}">Games</a>
-                                <a class="dropdown-item" href="{{ route('books') }}">Books</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('reservations') }}" class="nav-link">Zones</a>
-                        </li>
-                    @endif
-                    <!-- Logout Link for All Authenticated Users -->
-                    <li class="nav-item">
-                        <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-white ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="{{ route('home') }}">
+                <img src="{{ asset('images/BlendnBind.png') }}" alt="Blend & Bind Logo" class="me-3"
+                    style="width: 100px; height: 70px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="text-custom-primary">Menu</span>
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Home Link -->
+                    <li class="nav-item text-custom-primary">
+                        <a href="{{ route('home') }}" class="nav-link">Home</a>
                     </li>
-                @else
-                    <!-- Links for Non-logged-in Users -->
-                    <li class="nav-item">
-                        <a href="{{ route('login') }}" class="nav-link">Login</a>
-                    </li>
-                @endauth
 
-                <li class="nav-item cart">
-                    <a href="{{ route('cart') }}" class="nav-link">
-                        <i class="fas fa-shopping-cart fa-2x"></i>
-                    </a>
-                </li>
-            </ul>
+                    <!-- Common Links for Logged-in Users and Non-logged-in Users -->
+                    <li class="nav-item text-custom-primary">
+                        <a href="{{ route('about') }}" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('contact') }}" class="nav-link">Contact</a>
+                    </li>
+
+                    @auth
+                        <!-- Links for Admin Users -->
+                        @if (auth()->user()->role == 'admin')
+                            <li class="nav-item">
+                                <a href="{{ route('admin') }}" class="nav-link">Admin Dashboard</a>
+                            </li>
+                        @endif
+
+                        <!-- Links for Logged-in Clients (not Admins) -->
+                        @if (auth()->user()->role != 'admin')
+                            <!-- Services Dropdown for Clients -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Services</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown03">
+                                    <a class="dropdown-item" href="{{ route('menu') }}">Menu</a>
+                                    <a class="dropdown-item" href="{{ route('games') }}">Games</a>
+                                    <a class="dropdown-item" href="{{ route('books') }}">Books</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('reservations') }}" class="nav-link">Zones</a>
+                            </li>
+                        @endif
+                        <!-- Logout Link for All Authenticated Users -->
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+                        </li>
+                    @else
+                        <!-- Links for Non-logged-in Users -->
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">Login</a>
+                        </li>
+                    @endauth
+
+                    <li class="nav-item cart">
+                        <a href="{{ route('cart') }}" class="nav-link">
+                            <i class="fas fa-shopping-cart fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <!-- Main Content Section -->
     <div class="main-content">
@@ -153,7 +159,7 @@
                     <ul class="list-unstyled">
                         <li><a class="text-white" href="{{ route('home') }}">Home</a></li>
                         <li><a class="text-white" href="{{ route('about') }}">About</a></li>
-                        <li><a class="text-white" href="{{ route('services') }}">Services</a></li>
+                        <li><a class="text-white" href="{{ route('login') }}">Login</a></li>
                         <li><a class="text-white" href="{{ route('contact') }}">Contact</a></li>
                     </ul>
                 </div>

@@ -96,7 +96,7 @@
                         <input type="radio" id="cash_payment_method" name="payment_method" value="cash" class="form-check-input unique-radio" required>
                         <label for="cash_payment_method" class="form-check-label">Pay on Delivery</label>
                     </div>
-                    
+
                 <div class="form-check">
                     <input type="radio" id="bank_transfer" name="payment_method" value="bank_transfer" class="form-check-input payment-method" required>
                     <label for="bank_transfer" class="form-check-label">Direct Bank Transfer</label>
@@ -245,12 +245,41 @@
 @endpush
 @push('scripts')
 <script>
-    // Show payment modal when a payment method is selected
-    document.querySelectorAll('.payment-method').forEach(method => {
-        method.addEventListener('change', function () {
-            $('#paymentModal').modal('show');
+    document.addEventListener('DOMContentLoaded', function () {
+        // Show payment modal when a payment method is selected
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('change', function () {
+                if (this.value === 'bank_transfer' || this.value === 'wish' || this.value === 'omt') {
+                    $('#paymentModal').modal('show');
+                }
+            });
+        });
+
+        // Automatically close modal after saving card details successfully
+        const paymentForm = document.querySelector('#paymentModal form');
+        paymentForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Simulate a server request
+            fetch(paymentForm.action, {
+                method: 'POST',
+                body: new FormData(paymentForm),
+                headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to save card details.');
+                    return response.text(); // Process response if needed
+                })
+                .then(() => {
+                    $('#paymentModal').modal('hide');
+                    alert('Card details saved successfully!');
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Error saving card details. Please try again.');
+                });
         });
     });
-
 </script>
+
 @endpush

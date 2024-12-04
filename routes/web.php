@@ -15,8 +15,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Log;
-
-
+use App\Http\Controllers\FavoriteController;
 
 // Home page route
 Route::get('/', function () {
@@ -38,10 +37,9 @@ Route::prefix('cart')->group(function () {
 });
 
 // Checkout routes
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout'); // Display checkout
-Route::post('/checkout', [App\Http\Controllers\CheckoutController::class, 'process'])->name('checkout.process');
-
-Route::post('/save-card-details', [CheckoutController::class, 'saveCardDetails'])->name('saveCardDetails'); // Save card details
+Route::get('/checkout', [CheckoutController::class, 'index'])->middleware('auth')->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'process'])->middleware('auth')->name('checkout.process');
+Route::post('/save-card-details', [CheckoutController::class, 'saveCardDetails'])->middleware('auth')->name('saveCardDetails');
 
 // Contact page route
 Route::get('/contact', function () {
@@ -93,6 +91,14 @@ Route::get('/api/search', [SearchController::class, 'search'])->name('api.search
 
 // Admin Dashboard
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+// Favorite routes
+Route::middleware('auth')->group(function () {
+
+    Route::post('/books/{id}/favorite', [BookController::class, 'toggleFavorite'])->name('books.favorite');
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites');
+});
+
 
 // Edit Routes
 Route::prefix('admin')->group(function () {

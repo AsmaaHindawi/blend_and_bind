@@ -341,7 +341,7 @@
     <div class="modal-dialog modal-sm" style="max-width: 500px;">
         <div class="modal-content">
             <!-- Background Image Overlay -->
-            <div class="position-absolute top-0 start-0 w-100 h-100" style="background-image: url('{{ asset('images/reserve2.jpg') }}'); background-size: cover;  background-position: center;   filter: brightness(40%); border-radius: 0.5rem; z-index: 0;">
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background-image: url('{{ asset('images/gggggggg.webp') }}'); background-size: cover;  background-position: center;   filter: brightness(70%); border-radius: 0.5rem; z-index: 0;">
             </div>
 
             <div class="modal-header border-0" style="z-index: 2; position: relative;">

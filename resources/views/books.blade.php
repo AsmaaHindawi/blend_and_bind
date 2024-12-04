@@ -92,33 +92,40 @@
     </div>
     <div class="row">
         @foreach ($books as $book)
-    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="book-card rounded" style="background-color: #f8f9fa; border: 1px solid #ddd;">
-            <div class="book-image">
-                <img src="{{ asset('book_images/' . $book->image) }}" alt="{{ $book->title }}">
-            </div>
-            <div class="book-body p-3">
-                <h5 class="book-title">{{ $book->title }}</h5>
-                <p class="book-author text-muted">By {{ $book->author }}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <h6 class="menu-card-price">${{ number_format($book->price, 2) }}</h6>
-                    <form action="{{ route('cart.add', ['id' => $book->book_id]) }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="type" value="book">
-                        <button type="submit" class="btn btn-warning btn-circle">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
-                    </form>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="book-card rounded">
+                    <div class="book-image">
+                        <img src="{{ asset('book_images/' . $book->image) }}" alt="{{ $book->title }}">
+                    </div>
+                    <div class="book-body p-3">
+                        <h5 class="book-title">{{ $book->title }}</h5>
+                        <p class="book-author text-muted">By {{ $book->author }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="menu-card-price">${{ number_format($book->price, 2) }}</h6>
+                            <form action="{{ route('cart.add', ['id' => $book->book_id]) }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="type" value="book">
+                                <button type="submit" class="btn btn-warning btn-circle">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="mt-3">
+                            <form action="{{ route('books.favorite', ['id' => $book->book_id]) }}" method="POST" class="favorite-form">
+                                @csrf
+                                <button type="submit" class="btn btn-sm {{ in_array($book->book_id, $favorites) ? 'btn-danger' : 'btn-outline-secondary' }}">
+                                    <i class="fas fa-heart"></i>
+                                    {{ in_array($book->book_id, $favorites) ? 'Unfavorite' : 'Favorite' }}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-@endforeach
-
+        @endforeach
     </div>
 </div>
 @endsection
-
 @push('styles')
 <style>
 
