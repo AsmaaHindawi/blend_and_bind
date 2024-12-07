@@ -32,8 +32,7 @@
 }
 
 .card-body {
-  // Enable `flex-grow: 1` for decks and groups so that card blocks take up
-  // as much space as possible, ensuring footers are aligned to the bottom.
+
   flex: 1 1 auto;
   padding: $card-spacer-x;
 }
@@ -153,7 +152,6 @@
 
     .card {
       display: flex;
-      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
       flex-direction: column;
       margin-right: $card-deck-margin;
@@ -180,10 +178,9 @@
 
   @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
-    // The child selector allows nested `.card` within `.card-group`
-    // to display properly.
+
     > .card {
-      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+
       flex: 1 0 0%;
       margin-bottom: 0;
 
@@ -265,8 +262,8 @@
     widows: 1;
 
     .card {
-      display: inline-block; // Don't let them vertically span multiple columns
-      width: 100%; // Don't let their width change
+      display: inline-block; 
+      width: 100%; 
     }
   }
 }

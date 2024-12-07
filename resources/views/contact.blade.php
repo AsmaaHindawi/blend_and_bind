@@ -53,30 +53,28 @@
     margin-bottom: 12px;
     color: white;
 }
- /* 2px solid rgba(255, 255, 255, 0.1) */
 
- /* Style for the Breadcrumbs */
 .breadcrumbs {
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 1px;
-    color: #bfbfbf; /* Default breadcrumb text color */
+    color: #bfbfbf;
 }
 
 .breadcrumbs span {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    color: #bfbfbf; /* Span text color */
+    color: #bfbfbf; 
 }
 
 .breadcrumbs span a {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff; /* Link color specifically for "Home" */
+    color: #ffffff; 
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .breadcrumbs span a:hover {
-    color: #edca1b; /* Darker color when hovered */
+    color: #edca1b; 
 }
 </style>
 <section class="ftco-section contact-section contact-page" style="background: url(images/istockphoto-1255807969-612x612.png); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; background-color: rgba(0, 0, 0, 0.5);">

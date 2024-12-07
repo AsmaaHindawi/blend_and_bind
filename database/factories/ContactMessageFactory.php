@@ -13,7 +13,7 @@ class ContactMessageFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),  // Create a user and associate the message.
+            'user_id' => User::factory(),  
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'subject' => $this->faker->sentence(5),

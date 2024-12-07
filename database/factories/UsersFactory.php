@@ -15,7 +15,7 @@ class UsersFactory extends Factory
         return [
             'username' => $this->faker->unique()->userName,
             'email' => $this->faker->unique()->safeEmail,
-            'password' => Hash::make('password'),  // Password is hashed for security.
+            'password' => Hash::make('password'),  
             'created_at' => now(),
             'updated_at' => now(),
         ];

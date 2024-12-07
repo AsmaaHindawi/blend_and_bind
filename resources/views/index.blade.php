@@ -6,7 +6,6 @@
 
 <!-- Hero Section -->
 <header class="d-flex align-items-center justify-content-center text-center position-relative responsive-header lazyload">
-    <!-- Coffee Top Image -->
     <div class="position-absolute coffee-top">
         <img src="http://localhost/blend_and_bind/public/images/Layer 4 gg.png" style="background-size: cover; background-repeat: no-repeat;" class="img-fluid" alt="Coffee Top">
     </div>
@@ -16,11 +15,9 @@
       <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
         <div class="col-md-8 col-sm-12 text-center ftco-animate">
 
-            <!-- Welcome Message -->
             <span class="subheading" style="font-family: 'Great Vibes', cursive; font-size: 50px; color:#dfba8f;">Welcome</span>
             <h2 class="mb-4 text-custom-white">To Our Coffee Shop</h2>
 
-            <!-- Search Bar -->
             <input
             type="text"
             id="searchTerm"
@@ -28,7 +25,6 @@
             placeholder="Search site content..."
             class="form-control mb-5 search-bar-input">
 
-        <!-- Search Results -->
         <div id="searchResults" class="search-results"></div>
         </div>
       </div>

@@ -11,10 +11,10 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('contents', function (Blueprint $table) {
-            $table->id(); // Auto-increment primary key
+            $table->id(); 
             $table->string('title');
             $table->text('body');
-            $table->timestamps(); // This will create 'created_at' and 'updated_at' columns
+            $table->timestamps(); 
         });
     }
 

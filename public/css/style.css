@@ -1,9 +1,3 @@
-/*!
- * Bootstrap v4.1.0 (https://getbootstrap.com/)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -2017,24 +2011,21 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #212529;
-  background-color: #78d5ef;
-  border-color: #78d5ef; }
+}
   .btn-primary:hover {
     color: #212529;
-    background-color: #56caeb;
-    border-color: #4ac7ea; }
+
+ }
   .btn-primary:focus, .btn-primary.focus {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(120, 213, 239, 0.5);
     box-shadow: 0 0 0 0.2rem rgba(120, 213, 239, 0.5); }
   .btn-primary.disabled, .btn-primary:disabled {
     color: #212529;
-    background-color: #78d5ef;
-    border-color: #78d5ef; }
+   }
   .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
   .show > .btn-primary.dropdown-toggle {
     color: #ffffff;
-    background-color: #4ac7ea;
-    border-color: #3fc3e8; }
+    }
     .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
     .show > .btn-primary.dropdown-toggle:focus {
       -webkit-box-shadow: 0 0 0 0.2rem rgba(120, 213, 239, 0.5);
@@ -2216,14 +2207,11 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5); }
 
 .btn-outline-primary {
-  color: #78d5ef;
   background-color: transparent;
-  background-image: none;
-  border-color: #78d5ef; }
+  background-image: none; }
   .btn-outline-primary:hover {
     color: #212529;
-    background-color: #78d5ef;
-    border-color: #78d5ef; }
+}
   .btn-outline-primary:focus, .btn-outline-primary.focus {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(120, 213, 239, 0.5);
     box-shadow: 0 0 0 0.2rem rgba(120, 213, 239, 0.5); }
@@ -7315,7 +7303,7 @@ h1, h2, h3, h4, h5,
   border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
   @media (max-width: 991.98px) {
     .ftco-navbar-light {
-      background: #ffffff !important;  /* Changed to white */
+      background: #ffffff !important; 
       position: relative;
       top: 0; } }
   .ftco-navbar-light .navbar-brand {
@@ -7720,7 +7708,7 @@ h1, h2, h3, h4, h5,
   .btn.btn-primary {
     background: #4476ac;
     border: 1px solid #4476ac;
-    color: #000; }
+    color: #fff; }
     .btn.btn-primary:hover {
       border: 1px solid #4476ac;
       background: transparent;
@@ -7816,7 +7804,7 @@ h1, h2, h3, h4, h5,
     .ftco-about .one-half .overlap {
       margin-left: -150px;
       padding: 40px;
-      background: rgba(87, 133, 183, 0.5);
+      background: #a8c5d9;
     }
 
     }
@@ -8414,9 +8402,8 @@ h1, h2, h3, h4, h5,
     color: #c49b63; }
 
 .form-control {
-  height: 58px !important;
   background: transparent !important;
-  /* color: rgba(255, 255, 255, 0.9) !important; */
+  color: #000 !important;
   font-size: 18px;
   border-radius: 0px;
   -webkit-box-shadow: none !important;
@@ -8973,65 +8960,60 @@ textarea.form-control {
       }
 
       .contact-form .form-control {
-        border: none !important; /* Remove any other borders */
-        border-bottom: 2px solid rgba(60, 100, 150, 0.9) !important; /* Underline border with a darker color */
+        border: none !important;
+        border-bottom: 2px solid rgba(60, 100, 150, 0.9) !important;
         height: 58px !important;
         padding-left: 0;
         padding-right: 0;
         background: transparent !important;
-        color: #4476ac !important; /* Text color */
+        color: #4476ac !important;
         font-size: 13px;
         border-radius: 0px;
         -webkit-box-shadow: none !important;
         box-shadow: none !important;
       }
 
-/* Search Bar Styling */
 .search-bar-input {
-    border: none !important; /* Removes all borders */
-    border-bottom: 2px solid #f1e4cc !important; /* Adds an underline border */
-    height: 50px; /* Adjusts the height */
-    background: transparent !important; /* Transparent background */
-    color: #f1e4cc; /* Text color */
-    font-size: 16px; /* Font size */
-    font-family: 'Poppins', sans-serif; /* Font family */
-    border-radius: 0px; /* No rounded corners */
-    padding: 0 5px; /* Adds slight padding for spacing */
-    text-align: center; /* Centers the text inside the input */
-    outline: none !important; /* Removes the default focus outline */
-    box-shadow: none !important; /* Removes browser shadow */
-    width: 300px; /* Sets a fixed width */
-    margin: 0 auto; /* Centers the search bar horizontally */
-    transition: all 0.3s ease; /* Adds smooth transitions */
+    border: 2px solid #f1e4cc !important;
+    height: 50px;
+    background: #C8AD7F !important;
+    color: #4476ac !important;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 0px;
+    padding: 0 5px;
+    text-align: center;
+    outline: none !important;
+    box-shadow: none !important;
+    width: 300px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
 }
 
-/* Placeholder Styling */
 .search-bar-input::placeholder {
-    color: rgba(255, 255, 255, 0.6); /* Light text for placeholder */
-    font-style: italic; /* Italic placeholder text */
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
 }
 
-/* Hover Effect */
 .search-bar-input:hover {
-    border-bottom: 2px solid #ffd700; /* Changes underline color on hover */
+    border-bottom: 2px solid #ffd700;
 }
 
-/* Focus Effect - Fix Background and Text Color */
 .search-bar-input:focus {
-    background: transparent !important; /* Ensure background stays transparent */
-    border-bottom: 2px solid #ffffff !important; /* Highlight underline */
-    color: #f1e4cc !important; /* Ensure text color remains */
-    outline: none !important; /* Remove outline */
-    box-shadow: none !important; /* Remove shadow */
+    background: transparent !important;
+    border-bottom: 2px solid #ffffff !important;
+    color: #f1e4cc !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
-/* Search Results Styling */
+
 .search-results {
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%; /* Default to 90% of the search bar's parent container width */
-    max-width: 400px; /* Limit the width on larger screens */
+    width: 90%;
+    max-width: 400px;
     max-height: 200px;
     overflow-y: auto;
     background-color: #fff;
@@ -9040,12 +9022,11 @@ textarea.form-control {
     z-index: 1000;
     padding: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    visibility: hidden; /* Hide by default */
-    opacity: 0; /* Fully transparent by default */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Individual Search Items */
 .search-item {
     padding: 10px;
     border-bottom: 1px solid #f1f1f1;
@@ -9055,46 +9036,45 @@ textarea.form-control {
     background-color: #f9f9f9;
 }
 
-/* Responsive Styling for Smaller Screens */
+
 @media (max-width: 768px) {
     .search-results {
-        width: 95%; /* Use more screen space on smaller devices */
-        max-width: none; /* Remove max-width restriction */
+        width: 95%;
+        max-width: none;
     }
 
     .search-item {
-        font-size: 14px; /* Smaller font size for search items */
-        padding: 8px; /* Reduce padding for smaller screens */
+        font-size: 14px;
+        padding: 8px;
     }
 }
 
 @media (max-width: 480px) {
     .search-results {
-        width: 100%; /* Use full width on very small screens */
-        left: 0; /* Align to the left edge of the screen */
-        transform: none; /* Remove centering transform */
+        width: 100%;
+        left: 0;
+        transform: none;
     }
 
     .search-item {
-        font-size: 12px; /* Further reduce font size for tiny screens */
+        font-size: 12px;
     }
 }
 
-/* Positioning the Search Bar */
 body > header > div.container > div > div {
     display: flex;
-    flex-direction: column; /* Stacks elements vertically */
-    align-items: center; /* Centers elements horizontally */
-    justify-content: center; /* Centers elements vertically */
-    height: 100%; /* Ensures the container fills its parent */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 body > header > div.container > div > div > input {
-    margin-top: 20px; /* Adds spacing below Welcome text */
+    margin-top: 20px;
 }
 
     input {
-        /* background-color: transparent !important; */
+
         box-shadow: none !important;
     }
 
@@ -9115,11 +9095,11 @@ body > header > div.container > div > div > input {
 
     @media (max-width: 768px) {
       .search-bar-input {
-          width: 50%; /* Make it wider on smaller screens */
+          width: 50%;
       }
   }
     .search-bar-input::placeholder {
-      color: #f1e4cc; /* Replace this with your desired color */
+      color: #f1e4cc;
   }
 
   .contact-form .form-control::-webkit-input-placeholder {
@@ -9430,34 +9410,34 @@ body > header > div.container > div > div > input {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
 
-/* Style for header container */
+
 .responsive-header {
   height: 100vh;
   background-image: url('http://localhost/blend_and_bind/public/images/coffee background copy.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative; /* Important to position elements within */
-  overflow: hidden; /* Prevent overflow for animation */
+  position: relative;
+  overflow: hidden;
 }
-/* Coffee Top Image - Positioned above the cup in the background */
+
 .coffee-top {
-  position: absolute; /* Position relative to header */
-  top: 70.6%; /* Adjust as necessary to align the image vertically above the coffee cup */
-  left: 77.7%; /* Adjust as necessary to align horizontally above the coffee cup */
-  transform: translate(-50%, -50%); /* Centering the image at specified coordinates */
-  z-index: 2; /* Ensure it's above the background */
-  width: 152px; /* Adjust the size of the image as needed */
+  position: absolute;
+  top: 70.6%;
+  left: 77.7%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 152px;
   height: auto;
 }
 
-@media (max-width: 1500px) { /* Adjust 1200px to your desired breakpoint */
+@media (max-width: 1500px) {
     .coffee-top {
         display: none;
     }
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 800px) {
   .responsive-header {
     background-size:auto;
@@ -9486,36 +9466,3 @@ body > div.main-content > div.container.mt-5 > div > div:nth-child(6){
 
 }
 
-/* body > section.ftco-about.d-md-flex > div.one-half.ftco-animate.fadeInUp.ftco-animated > div > div.heading-section.ftco-animate.fadeInUp.ftco-animated > h2{
-  color: white;
-}
-
-body > section.ftco-about.d-md-flex > div.one-half.ftco-animate.fadeInUp.ftco-animated > div > div:nth-child(2) > p{
-  color: white;
-} */
-
-/* Keyframes for rotating the coffee top */
-/* @keyframes rotate-coffee {
-  0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-      transform: translate(-50%, -50%) rotate(360deg);
-  }
-} */
-  /* .rotate-slow {
-    animation: loader 1.25s infinite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@keyframes loader {
-  0% {
-    rotate: 0deg;
-  }
-  100% {
-    border-radius: 50%;
-    rotate: 180deg;
-  }
-} */

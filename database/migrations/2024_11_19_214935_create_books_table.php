@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('genre');
             $table->integer('publication_year');
-            $table->string('image')->nullable(); // Added image column
+            $table->string('image')->nullable(); 
             $table->timestamps();
         });
     }

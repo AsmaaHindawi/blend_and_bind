@@ -20,14 +20,12 @@
     </div>
 </div>
 
-<!-- Introduction Section -->
 <section class="ftco-about d-md-flex position-relative" style="background-color:aliceblue;">
-    <!-- Left Image Section -->
+
     <div class="one-half img position-relative" style="background-image: url('{{ asset('images/gamezone.jpg') }}'); background-size: cover; background-position: center;">
         <div class="overlay" style="background: rgba(0, 0, 0, 0.4); position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
     </div>
 
-    <!-- Right Text Section -->
     <div class="one-half d-flex align-items-center position-relative" style="z-index: 2;">
         <div class="container py-5">
             <div class="overlap p-5 shadow-lg" style="background: rgba(255, 255, 255, 0.9); border-radius: 15px; transform: translateY(-50px);">
@@ -44,11 +42,9 @@
     </div>
 </section>
 
-<!-- Games Section -->
 <div class="container mt-5" id="games-section">
     <h2 class="text-center mb-5" style="font-family: 'Dancing Script', cursive; font-size: 48px; color: black;">Explore Our Games</h2>
 
-    <!-- Filters Menu -->
     <ul class="filters_menu">
         <li class="active" data-filter="*">All</li>
         <li data-filter="board">Board</li>
@@ -56,11 +52,10 @@
         <li data-filter="video">Video</li>
     </ul>
 
-    <!-- Games List -->
     <div class="row grid">
         @foreach($games as $game)
             @php
-                $filterClass = strtolower($game->type); // Convert game type to lowercase for consistent class naming
+                $filterClass = strtolower($game->type); 
             @endphp
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 all {{ $filterClass }}">
                 <div class="card">
@@ -77,7 +72,7 @@
 </div>
 @push('scripts')
 <script>
-    // Smooth Scroll to Games Section
+
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.scroll-to-games').addEventListener('click', function (e) {
             e.preventDefault();
@@ -88,24 +83,20 @@
             });
         });
 
-        // Filters Functionality
         document.querySelectorAll('.filters_menu li').forEach(filter => {
             filter.addEventListener('click', function () {
-                // Remove active class from all filters
+
                 document.querySelectorAll('.filters_menu li').forEach(el => el.classList.remove('active'));
 
-                // Add active class to clicked filter
                 this.classList.add('active');
 
-                // Get the filter value
                 const filterValue = this.getAttribute('data-filter');
 
-                // Show/hide items based on filter
                 document.querySelectorAll('.grid .all').forEach(item => {
                     if (filterValue === '*' || item.classList.contains(filterValue)) {
-                        item.style.display = 'block'; // Show matching items
+                        item.style.display = 'block'; 
                     } else {
-                        item.style.display = 'none'; // Hide non-matching items
+                        item.style.display = 'none'; 
                     }
                 });
             });
@@ -115,44 +106,39 @@
 @endpush
 
 <style>
-    /* Style for the Breadcrumbs */
     .breadcrumbs {
         text-transform: uppercase;
         font-size: 13px;
         letter-spacing: 1px;
-        color: #bfbfbf; /* Default breadcrumb text color */
+        color: #bfbfbf; 
     }
 
     .breadcrumbs span {
         border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-        color: #bfbfbf; /* Span text color */
+        color: #bfbfbf; 
     }
 
     .breadcrumbs span a {
         border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-        color: #ffffff; /* Link color specifically for "Home" */
+        color: #ffffff; 
         text-decoration: none;
         transition: color 0.3s ease;
     }
 
     .breadcrumbs span a:hover {
-        color: #edca1b; /* Darker color when hovered */
+        color: #edca1b; 
     }
 
-    /* General Section Styling */
     section {
-        padding: 2rem 1rem; /* Consistent padding for all sections */
+        padding: 2rem 1rem;
     }
-
-    /* Ensuring card images maintain aspect ratio */
     .card-img-top {
         object-fit: cover;
-        aspect-ratio: 16/9; /* Keeps consistent aspect ratio */
+        aspect-ratio: 16/9; 
         width: 100%;
         border-radius: 10px 10px 0 0;
     }
 
-    /* Card styling */
     .card {
         border: none;
         border-radius: 15px;
@@ -166,14 +152,12 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
 
-    /* Card body styling */
     .card-body {
         padding: 15px;
         background-color: #f8f9fa;
         border-radius: 0 0 15px 15px;
     }
 
-    /* Card title and text styling */
     .card-title {
         font-size: 1.125rem;
         font-weight: bold;
@@ -186,7 +170,6 @@
         font-size: 0.875rem;
     }
 
-    /* Button styling */
     .card .btn {
         background-color: #007bff;
         color: white;
@@ -201,15 +184,14 @@
         transform: scale(1.05);
     }
 
-    /* Filters menu styling */
     .filters_menu {
         list-style: none;
         padding: 0;
         margin: 20px 0;
         display: flex;
         justify-content: center;
-        gap: 10px; /* Add space between buttons */
-        flex-wrap: wrap; /* Ensures wrapping on smaller screens */
+        gap: 10px; 
+        flex-wrap: wrap; 
     }
 
     .filters_menu li {
@@ -227,7 +209,6 @@
         color: #000;
     }
 
-    /* Header Section */
     .header-banner {
         position: relative;
         overflow: hidden;

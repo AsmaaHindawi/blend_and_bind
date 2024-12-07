@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        // Eager loading relationships to optimize performance
+        
         $users = User::with(['contactMessages', 'paid'])->get();
 
         return view('users.index', compact('users'));

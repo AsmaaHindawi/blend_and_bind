@@ -8,12 +8,12 @@ class PaymentController extends Controller
 {
     public function showPaymentPage()
     {
-        return view('paymentmethod'); // Ensure the view file is named payment.blade.php in the views folder
+        return view('paymentmethod');
     }
 
     public function confirmPayment(Request $request)
     {
-        // Validate payment details based on the payment method selected
+
         $request->validate([
             'payment_method' => 'required',
             'card_number' => 'required_if:payment_method,visa',
@@ -23,9 +23,6 @@ class PaymentController extends Controller
             'paypal_email' => 'required_if:payment_method,paypal|email',
         ]);
 
-        // Here you would process the payment using an appropriate service.
-
-        // Redirect back with a success message for the sake of simplicity.
         return redirect()->route('paymentmethod')->with('success', 'Payment processed successfully!');
     }
 }

@@ -15,46 +15,42 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        // Temporarily disable foreign key checks
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        // Truncate the users table to clear existing data
         DB::table('users')->truncate();
 
-        // Re-enable foreign key checks
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        // Insert users into the 'users' table
         DB::table('users')->insert([
             [
                 'username' => 'Ashraf',
                 'email' => 'ashrafdassouki@gmail.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('12345678'), // Hashed password for security
+                'password' => Hash::make('12345678'), 
                 'remember_token' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'role' => 'user', // Role
+                'role' => 'user', 
             ],
             [
                 'username' => 'admin',
                 'email' => 'admin@gmail.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('12345678'), // Hashed password for security
+                'password' => Hash::make('12345678'), 
                 'remember_token' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'role' => 'admin', // Role
+                'role' => 'admin', 
             ],
             [
                 'username' => 'ziad',
                 'email' => 'ziad@gmail.com',
                 'email_verified_at' => null,
-                'password' => Hash::make('ziad12345'), // Hashed password for security
+                'password' => Hash::make('ziad12345'), 
                 'remember_token' => null,
                 'created_at' => now(),
                 'updated_at' => now(),
-                'role' => 'user', // Role
+                'role' => 'user', 
             ],
         ]);
     }

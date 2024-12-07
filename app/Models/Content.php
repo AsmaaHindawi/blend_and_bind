@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable; // Import the Searchable trait
+use Laravel\Scout\Searchable; 
 
 class Content extends Model
 {
-    use HasFactory, Searchable; // Add Searchable to the list of traits
+    use HasFactory, Searchable; 
 
     protected $fillable = [
         'title',
         'body',
-        // Add any other fields you have in the 'contents' table
     ];
 }

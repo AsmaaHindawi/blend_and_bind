@@ -9,7 +9,7 @@ class ZoneController extends Controller
 {
     public function index()
     {
-        // Use the imported Zone class directly
+
         $zones = Zone::all();
         return view('zones', compact('zones'));
     }
@@ -24,16 +24,16 @@ class ZoneController extends Controller
             'reservation_date' => 'required|date',
         ]);
 
-        // Create a new Zone reservation entry
+
         $zone = new Zone();
         $zone->name = $validatedData['name'];
         $zone->email = $validatedData['email'];
         $zone->reserve_time = $validatedData['reserve_time'];
         $zone->capacity = $validatedData['capacity'];
         $zone->reservation_date = $validatedData['reservation_date'];
-        $zone->save(); // Save the reservation data
+        $zone->save();
 
-        // Respond with JSON for AJAX
+        
         return response()->json([
             'message' => 'Reservation successful!',
             'zone' => $zone,

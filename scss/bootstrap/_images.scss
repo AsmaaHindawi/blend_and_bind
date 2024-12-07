@@ -2,8 +2,6 @@
   @include img-fluid;
 }
 
-
-// Image thumbnails
 .img-thumbnail {
   padding: $thumbnail-padding;
   background-color: $thumbnail-bg;
@@ -11,16 +9,10 @@
   @include border-radius($thumbnail-border-radius);
   @include box-shadow($thumbnail-box-shadow);
 
-  // Keep them at most 100% wide
   @include img-fluid;
 }
 
-//
-// Figures
-//
-
 .figure {
-  // Ensures the caption's text aligns with the image.
   display: inline-block;
 }
 

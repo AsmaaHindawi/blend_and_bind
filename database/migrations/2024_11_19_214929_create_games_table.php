@@ -14,13 +14,13 @@ class CreateGamesTable extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
-            $table->bigIncrements('game_id'); // Primary key
+            $table->bigIncrements('game_id'); 
             $table->string('name');
             $table->string('type');
             $table->integer('min_players');
             $table->integer('max_players');
-            $table->string('image')->nullable(); // Add the image column
-            $table->timestamps(); // created_at and updated_at
+            $table->string('image')->nullable(); 
+            $table->timestamps(); 
         });
     }
 

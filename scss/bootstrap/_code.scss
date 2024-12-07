@@ -12,7 +12,6 @@ code {
   color: $code-color;
   word-break: break-word;
 
-  // Streamline the style when inside anchors to avoid broken underline and more
   a > & {
     color: inherit;
   }

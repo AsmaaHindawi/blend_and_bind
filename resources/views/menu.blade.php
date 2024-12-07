@@ -291,7 +291,6 @@
 <div class="container my-5">
     <h1 class="text-center mb-4" style="font-family: 'Dancing Script', cursive; font-size: 48px; color: black ;">Our Menu</h1>
 
-    <!-- Filter Buttons -->
     <ul class="filters_menu d-flex justify-content-center mb-4">
         <li class="active mx-2" data-filter="*">All</li>
         <li class="mx-2" data-filter="Appetizers">Appetizers</li>
@@ -304,10 +303,8 @@
         <p class="text-center">No menu items available at the moment.</p>
     @else
         <div class="row grid justify-content-center">
-            <!-- Start the Loop -->
             @foreach ($menuItems as $item)
                 @php
-                    // Map categories to filter classes
                     $categoryMap = [
                         'Hot Drinks' => 'Drinks',
                         'Cold Drinks' => 'Drinks',
@@ -318,7 +315,6 @@
                     $filterClass = $categoryMap[$item->category] ?? strtolower(str_replace(' ', '-', $item->category));
                 @endphp
 
-                <!-- Single Menu Item -->
                 <div class="col-lg-3 col-md-4 col-sm-6 mb-4 all {{ $filterClass }}">
                     <div class="menu-card">
                         <div class="menu-card-img">
@@ -340,9 +336,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- End Single Menu Item -->
             @endforeach
-            <!-- End the Loop -->
         </div>
     @endif
 </div>
@@ -351,54 +345,50 @@
 @push('styles')
 <style>
 
-    /* Style for the Breadcrumbs */
 .breadcrumbs {
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 1px;
-    color: #bfbfbf; /* Default breadcrumb text color */
+    color: #bfbfbf; 
 }
 
 .breadcrumbs span {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    color: #bfbfbf; /* Span text color */
+    color: #bfbfbf; 
 }
 
 .breadcrumbs span a {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff; /* Link color specifically for "Home" */
+    color: #ffffff; 
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .breadcrumbs span a:hover {
-    color: #edca1b; /* Darker color when hovered */
+    color: #edca1b; 
 }
     .pricing-entry h3 span {
-    background-color: #4476ac !important; /* Change this to your website's blue color */
+    background-color: #4476ac !important; 
     color: white;
     padding: 6px 10px;
-    border-radius: 1px; /* Optional: Add rounded corners */
+    border-radius: 1px; 
 }
 
-    /* Card container */
     .menu-card {
-        background-color: #4476ac; /* Footer blue color */
-        color: #fff; /* White text */
+        background-color: #4476ac; 
+        color: #fff; 
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        width: 90%; /* Make box narrower */
-        margin: auto; /* Center the box */
+        width: 90%; 
+        margin: auto; 
     }
-
     .menu-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
-    /* Image container */
     .menu-card-img {
         position: relative;
     }
@@ -407,7 +397,7 @@
         width: 100%;
         height: 180px;
         object-fit: cover;
-        border-bottom: none; /* Remove border for smooth curve */
+        border-bottom: none; 
     }
 
     .menu-card-curve {
@@ -416,37 +406,33 @@
         left: 0;
         width: 100%;
         height: 40px;
-        background-color: #4476ac; /* Same color as the box */
-        border-radius: 50% 50% 0 0; /* Create the curve */
+        background-color: #4476ac; 
+        border-radius: 50% 50% 0 0; 
         z-index: 1;
     }
 
-    /* Body container */
     .menu-card-body {
         padding: 15px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: calc(100% - 180px); /* Remaining space below the image */
+        height: calc(100% - 180px); 
         z-index: 2;
         position: relative;
     }
-
     .menu-card-body h5 {
         font-size: 16px;
         font-weight: bold;
-        color: #fff; /* White text for item name */
+        color: #fff; 
         margin-bottom: 10px;
         text-align: center;
     }
 
-    /* Price and button alignment */
     .menu-card-price {
         font-size: 14px;
         font-weight: bold;
-        color: #FFD700; /* Bright yellow for the price */
+        color: #FFD700; 
     }
-
     .btn-circle {
         border-radius: 50%;
         width: 40px;
@@ -454,18 +440,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #FFD700; /* Bright yellow button */
+        background-color: #FFD700; 
         color: #000;
         border: none;
         transition: background-color 0.3s ease;
     }
-
     .btn-circle:hover {
         background-color: #FFA500;
         color: #fff;
     }
 
-    /* Filters Menu */
     .filters_menu {
         list-style: none;
         padding: 0;
@@ -487,7 +471,6 @@
         color: #000;
     }
 
-    /* Header Section */
     .header-banner {
         position: relative;
         overflow: hidden;
@@ -522,19 +505,17 @@
 
     .line-decoration {
         height: 2px;
-        background-color: #FFD700; /* Yellow Line */
+        background-color: #FFD700;
         flex: 1;
         max-width: 100px;
     }
 
     .line-decoration-author {
         height: 2px;
-        background-color: #4476ac; /* Blue Line */
+        background-color: #4476ac; 
         flex: 1;
         max-width: 100px;
     }
-
-
 
 </style>
 @endpush
@@ -542,7 +523,6 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Filtering functionality
         document.querySelectorAll('.filters_menu li').forEach(filter => {
     filter.addEventListener('click', function () {
         document.querySelectorAll('.filters_menu li').forEach(el => el.classList.remove('active'));
@@ -560,7 +540,6 @@
 });
 
 });
-
 
 </script>
 @endpush

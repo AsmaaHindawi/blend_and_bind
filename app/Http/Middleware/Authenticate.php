@@ -19,16 +19,16 @@ class Authenticate
     {
         \Log::info('Authenticate middleware called.');
         if (empty($guards)) {
-            $guards = [null]; // Use the default guard if none is specified
+            $guards = [null];
         }
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->guest()) {
                 if ($request->expectsJson()) {
-                    return response()->json(['message' => 'Unauthorized'], 401); // API response
+                    return response()->json(['message' => 'Unauthorized'], 401);
                 }
 
-                return redirect()->route('login'); // Web response
+                return redirect()->route('login'); 
             }
         }
 

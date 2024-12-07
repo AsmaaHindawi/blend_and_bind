@@ -163,7 +163,6 @@
 @push('styles')
 <style>
 
-        /* Header Section */
 .header-banner {
         position: relative;
         overflow: hidden;
@@ -195,30 +194,28 @@
         color: white;
     }
 
-    /* Style for the Breadcrumbs */
 .breadcrumbs {
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 1px;
-    color: #bfbfbf; /* Default breadcrumb text color */
+    color: #bfbfbf; 
 }
 
 .breadcrumbs span {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    color: #bfbfbf; /* Span text color */
+    color: #bfbfbf; 
 }
 
 .breadcrumbs span a {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff; /* Link color specifically for "Home" */
+    color: #ffffff; 
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .breadcrumbs span a:hover {
-    color: #edca1b; /* Darker color when hovered */
+    color: #edca1b; 
 }
-    /* General form input styles */
     .form-control {
         background-color: white !important;
         color: black !important;
@@ -232,7 +229,6 @@
         box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
     }
 
-    /* Placeholder styling */
     ::placeholder {
         color: #aaa;
     }
@@ -246,7 +242,7 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Show payment modal when a payment method is selected
+
         document.querySelectorAll('.payment-method').forEach(method => {
             method.addEventListener('change', function () {
                 if (this.value === 'bank_transfer' || this.value === 'wish' || this.value === 'omt') {
@@ -255,12 +251,10 @@
             });
         });
 
-        // Automatically close modal after saving card details successfully
         const paymentForm = document.querySelector('#paymentModal form');
         paymentForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Simulate a server request
             fetch(paymentForm.action, {
                 method: 'POST',
                 body: new FormData(paymentForm),
@@ -268,7 +262,7 @@
             })
                 .then(response => {
                     if (!response.ok) throw new Error('Failed to save card details.');
-                    return response.text(); // Process response if needed
+                    return response.text(); 
                 })
                 .then(() => {
                     $('#paymentModal').modal('hide');

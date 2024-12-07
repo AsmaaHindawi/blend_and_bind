@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('zone_id'); // Zone ID to identify the reservation type (e.g., table, coffee place, study room)
-            $table->string('name'); // Name of the person reserving
-            $table->string('email'); // Email of the person reserving
-            $table->date('reservation_date'); // Reservation date
-            $table->time('reservation_time'); // Reservation time
-            $table->integer('capacity'); // Number of people
-            $table->string('type'); // 'table', 'coffee place', or 'study room'
+            $table->unsignedBigInteger('zone_id'); 
+            $table->string('name'); 
+            $table->string('email'); 
+            $table->date('reservation_date'); 
+            $table->time('reservation_time'); 
+            $table->integer('capacity'); 
+            $table->string('type'); 
             $table->timestamps();
         });
     }

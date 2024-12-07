@@ -9,13 +9,13 @@ class MenuItem extends Model
 {
     use HasFactory;
 
-    protected $table = 'menu_items'; // Table name
+    protected $table = 'menu_items'; 
 
-    protected $primaryKey = 'item_id'; // Primary key column
+    protected $primaryKey = 'item_id'; 
 
-    public $incrementing = true; // Auto-incrementing key
+    public $incrementing = true; 
 
-    protected $keyType = 'int'; // Primary key type
+    protected $keyType = 'int'; 
 
     protected $fillable = ['name', 'category', 'price', 'availability', 'image'];
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -27,7 +27,7 @@ class ContactController extends Controller
 
     $validatedData = $validator->validated();
 
-    // Ensure name is a string
+    
     $name = is_array($validatedData['name']) ? implode(' ', $validatedData['name']) : $validatedData['name'];
 
     ContactMessage::create($validatedData);

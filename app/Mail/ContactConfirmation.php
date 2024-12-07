@@ -31,7 +31,7 @@ class ContactConfirmation extends Mailable
     {
         // Adjusted view reference
         return $this->subject('Contact Confirmation')
-                    ->view('emails.contact_confirmation') // Corrected view path
+                    ->view('emails.contact_confirmation') 
                     ->with('name', $this->name);
     }
 }

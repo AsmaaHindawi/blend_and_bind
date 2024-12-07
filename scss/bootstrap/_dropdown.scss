@@ -1,4 +1,3 @@
-// The dropdown wrapper (`<div>`)
 .dropup,
 .dropright,
 .dropdown,
@@ -38,8 +37,6 @@
   left: auto;
 }
 
-// Allow for dropdowns to go bottom up (aka, dropup-menu)
-// Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
   .dropdown-menu {
     top: auto;
@@ -87,8 +84,6 @@
   }
 }
 
-// When enabled Popper.js, reset basic dropdown position
-// stylelint-disable no-duplicate-selectors
 .dropdown-menu {
   &[x-placement^="top"],
   &[x-placement^="right"],
@@ -98,16 +93,11 @@
     bottom: auto;
   }
 }
-// stylelint-enable no-duplicate-selectors
 
-// Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
   @include nav-divider($dropdown-divider-bg);
 }
 
-// Links, buttons, and more within the dropdown menu
-//
-// `<button>`-specific styles are denoted with `// For <button>s`
 .dropdown-item {
   display: block;
   width: 100%; // For `<button>`s

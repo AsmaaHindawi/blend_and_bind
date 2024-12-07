@@ -1,10 +1,3 @@
-// .modal-open      - body class for killing the scroll
-// .modal           - container to scroll within
-// .modal-dialog    - positioning shell for the actual modal
-// .modal-content   - actual modal w/ bg and corners and stuff
-
-
-// Kill the scroll on the body
 .modal-open {
   overflow: hidden;
 }
@@ -19,12 +12,7 @@
   z-index: $zindex-modal;
   display: none;
   overflow: hidden;
-  // Prevent Chrome on Windows from adding a focus outline. For details, see
-  // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
-  // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
-  // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
-  // See also https://github.com/twbs/bootstrap/issues/17695
 
   .modal-open & {
     overflow-x: hidden;
@@ -32,15 +20,13 @@
   }
 }
 
-// Shell div to position the modal with bottom padding
 .modal-dialog {
   position: relative;
   width: auto;
   margin: $modal-dialog-margin;
-  // allow clicks to pass through for custom click handling to close modal
+
   pointer-events: none;
 
-  // When fading in the modal, animate it to slide down
   .modal.fade & {
     @include transition($modal-transition);
     transform: translate(0, -25%);
@@ -61,19 +47,17 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
-  // counteract the pointer-events: none; in the .modal-dialog
+  width: 100%; 
+
   pointer-events: auto;
   background-color: $modal-content-bg;
   background-clip: padding-box;
   border: $modal-content-border-width solid $modal-content-border-color;
   @include border-radius($modal-content-border-radius);
   @include box-shadow($modal-content-box-shadow-xs);
-  // Remove focus outline from opened modal
   outline: 0;
 }
 
-// Modal background
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -83,13 +67,10 @@
   z-index: $zindex-modal-backdrop;
   background-color: $modal-backdrop-bg;
 
-  // Fade for backdrop
   &.fade { opacity: 0; }
   &.show { opacity: $modal-backdrop-opacity; }
 }
 
-// Modal header
-// Top section of the modal w/ title and dismiss
 .modal-header {
   display: flex;
   align-items: flex-start; // so the close btn always stays on the upper right corner
@@ -111,8 +92,6 @@
   line-height: $modal-title-line-height;
 }
 
-// Modal body
-// Where all modal content resides (sibling of .modal-header and .modal-footer)
 .modal-body {
   position: relative;
   // Enable `flex-grow: 1` so that the body take up as much space as possible

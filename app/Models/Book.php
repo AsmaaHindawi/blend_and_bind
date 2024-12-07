@@ -10,11 +10,10 @@ class Book extends Model
 {
     use HasFactory;
 
-    protected $table = 'books'; // Table name in your database
+    protected $table = 'books'; 
 
-    protected $primaryKey = 'book_id'; // Primary key column
-
-    public $timestamps = true; // Enable timestamps if your table has 'created_at' and 'updated_at'
+    protected $primaryKey = 'book_id'; 
+    public $timestamps = true; 
 
     protected $fillable = [
         'title', 
@@ -24,5 +23,5 @@ class Book extends Model
         'publication_year', 
         'created_at', 
         'updated_at',
-    ]; // Allow mass assignment for these columns
+    ]; 
 }

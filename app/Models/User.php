@@ -15,7 +15,7 @@ class User extends Authenticatable
      *
      * @var string
      */
-    protected $primaryKey = 'user_id'; // Specify the correct primary key column name
+    protected $primaryKey = 'user_id'; 
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -37,10 +37,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', // Replace 'name' with 'username'
+        'username', 
         'email',
         'password',
-        'role', // Add the 'role' field
+        'role', 
     ];
 
     /**
@@ -70,7 +70,7 @@ class User extends Authenticatable
      */
     public function contactMessages()
     {
-        return $this->hasMany(ContactMessage::class, 'user_id', 'user_id'); // Updated foreign key and local key to match the actual schema
+        return $this->hasMany(ContactMessage::class, 'user_id', 'user_id'); 
     }
 
     /**
@@ -81,6 +81,6 @@ class User extends Authenticatable
      */
     public function paid()
     {
-        return $this->hasMany(Paid::class, 'user_id', 'user_id'); // Updated foreign key and local key to match the actual schema
+        return $this->hasMany(Paid::class, 'user_id', 'user_id'); 
     }
 }

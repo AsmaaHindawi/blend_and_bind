@@ -7,22 +7,19 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    let debounceTimeout; // Variable for debouncing
+    let debounceTimeout;
 
     searchBarInput.addEventListener('input', function () {
         const query = searchBarInput.value.trim();
 
-        // Clear debounce timeout
         clearTimeout(debounceTimeout);
 
         if (query.length > 0) {
-            // Show the results box
             searchResultsContainer.style.visibility = 'visible';
             searchResultsContainer.style.opacity = '1';
 
-            // Debounce API call to wait 300ms after the last input
             debounceTimeout = setTimeout(() => {
-                if (query.length > 2) { // Trigger search after 3+ characters
+                if (query.length > 2) {
                     fetch(`${window.location.origin}/api/search?query=${encodeURIComponent(query)}`)
                         .then((response) => {
                             if (!response.ok) {
@@ -31,8 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             return response.json();
                         })
                         .then((data) => {
-                            searchResultsContainer.innerHTML = ''; // Clear previous results
-
+                            searchResultsContainer.innerHTML = '';
                             if (data.data.length > 0) {
                                 data.data.forEach((item) => {
                                     const resultItem = document.createElement('div');
@@ -54,9 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             searchResultsContainer.innerHTML = '<div class="text-danger">An error occurred while searching.</div>';
                         });
                 }
-            }, 300); // 300ms debounce delay
+            }, 300);
         } else {
-            // Hide the results box if the input is empty
+            y
             searchResultsContainer.style.visibility = 'hidden';
             searchResultsContainer.style.opacity = '0';
         }

@@ -1,4 +1,4 @@
-/* Custom primary text color */
+
 .text-custom-primary {
     color: #4476ac;
 }
@@ -6,12 +6,10 @@
     color:#f1e4cc;
 }
 
-/* Custom primary background color */
 .bg-custom-primary {
     background-color: #4476ac;
 }
 
-/* Navbar item custom primary color */
 .nav-item .nav-link.text-custom-primary {
     color: #4476ac !important;
 }

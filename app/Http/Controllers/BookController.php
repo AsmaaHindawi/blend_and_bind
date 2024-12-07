@@ -17,33 +17,40 @@ class BookController extends Controller
 
         $query = Book::query();
 
-        // Apply filter by author or genre if provided
+        
         if ($filter === 'author') {
             $query->where('author', $value);
         } elseif ($filter === 'genre') {
             $query->where('genre', $value);
         }
 
-        // Apply search functionality
+
+        $scrollToBookId = null;
         if ($search = $request->input('search')) {
             $query->where(function ($q) use ($search) {
                 $q->where('title', 'like', "%$search%")
                   ->orWhere('author', 'like', "%$search%")
                   ->orWhere('genre', 'like', "%$search%");
             });
+
+
+            $firstMatch = $query->first();
+            if ($firstMatch) {
+                $scrollToBookId = $firstMatch->book_id;
+            }
         }
 
-        // Get books and top authors and genres
+
         $books = $query->get();
         $topAuthors = Book::select('author')->distinct()->limit(6)->pluck('author');
         $topGenres = Book::select('genre')->distinct()->limit(6)->pluck('genre');
 
-        // Retrieve favorite books for the logged-in user
+
         $favorites = Auth::check()
             ? Favorite::where('user_id', Auth::id())->pluck('book_id')->toArray()
             : [];
 
-        return view('books', compact('books', 'topAuthors', 'topGenres', 'favorites'));
+        return view('books', compact('books', 'topAuthors', 'topGenres', 'favorites', 'scrollToBookId'));
     }
 
     public function toggleFavorite(Request $request, $id)

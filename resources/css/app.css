@@ -1,7 +1,6 @@
 /* Import Bootstrap */
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
-/* Add your custom styles below */
 body {
     font-family: 'Arial', sans-serif;
 }

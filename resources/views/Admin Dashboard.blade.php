@@ -156,12 +156,12 @@
                 <div class="card products-card-dashboard">
                     <div class="card-header products-card-header-dashboard d-flex justify-content-between align-items-center">
                         <h5>Products</h5>
-                        <button class="btn btn-outline-secondary btn-sm" id="export-excel"><!-- MODIFIED BUTTON -->
+                        <button class="btn btn-outline-secondary btn-sm" id="export-excel">
                             <i class="fa fa-download"></i>
                         </button>
                     </div>
                     <div class="card-body">
-                        <table class="table products-table-dashboard" id="products-table"><!-- ADDED ID TO TABLE -->
+                        <table class="table products-table-dashboard" id="products-table">
                             <thead>
                                 <tr>
                                     <th>Product</th>
@@ -209,7 +209,6 @@ new Chart(statisticsCtx, {
     }
 });
 
-// Monthly Sales Chart with toggle functionality
 let chartType = 'bar';
 const monthlySalesCtx = document.getElementById('monthlySalesChart').getContext('2d');
 let monthlySalesChart = new Chart(monthlySalesCtx, {
@@ -238,7 +237,6 @@ let monthlySalesChart = new Chart(monthlySalesCtx, {
     }
 });
 
-// Toggle chart type
 document.querySelector('.toggle-chart-type').addEventListener('click', () => {
     chartType = chartType === 'bar' ? 'line' : 'bar';
     monthlySalesChart.destroy();
@@ -269,9 +267,8 @@ document.querySelector('.toggle-chart-type').addEventListener('click', () => {
     });
 });
 
-// Additional Scripts for To-Do List
 document.addEventListener('DOMContentLoaded', () => {
-    // Load the persisted To-Do list from localStorage or use default mock data
+
     let todoList = JSON.parse(localStorage.getItem('todoList')) || [
         { task: "Prepare daily sales report", time: "2 hours", done: false },
         { task: "Inventory check", time: "1 day", done: false }
@@ -282,11 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const addTodoForm = document.getElementById('add-todo-form');
     const showFirstThreeButton = document.getElementById('show-first-three');
 
-    let showAllTasks = true; // State variable to track if showing all tasks or only the first three
+    let showAllTasks = true; 
 
-    // Function to render tasks in the list
     function renderTodoList(tasks) {
-        todoListContainer.innerHTML = ""; // Clear the list before rendering
+        todoListContainer.innerHTML = ""; 
         tasks.forEach((item) => {
             const listItem = document.createElement('li');
             listItem.className = 'list-group-item-todo-dashboard d-flex align-items-center justify-content-between';
@@ -301,56 +297,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Render initial tasks from localStorage
     renderTodoList(todoList);
 
-    // Save the updated To-Do list to localStorage
     function saveToLocalStorage() {
         localStorage.setItem('todoList', JSON.stringify(todoList));
     }
 
-    // Handle Add Item Button Click
     addItemButton.addEventListener('click', () => {
         addItemButton.classList.add('d-none');
         addTodoForm.classList.remove('d-none');
     });
 
-    // Handle Add Task Form Submission
     addTodoForm.addEventListener('submit', function (e) {
         e.preventDefault();
         const newTaskText = document.getElementById('new-task').value;
         const newTaskTime = document.getElementById('new-task-time').value;
 
         if (newTaskText && newTaskTime) {
-            // Add the new task to the list and persist it
-            todoList.push({ task: newTaskText, time: newTaskTime, done: false });
-            saveToLocalStorage(); // Save the updated list
-            renderTodoList(todoList); // Re-render the list with the new task
 
-            // Reset the form
+            todoList.push({ task: newTaskText, time: newTaskTime, done: false });
+            saveToLocalStorage(); 
+            renderTodoList(todoList); 
+
             addTodoForm.reset();
             addTodoForm.classList.add('d-none');
             addItemButton.classList.remove('d-none');
         }
     });
 
-    // Handle "123" Button Click to Toggle Between Showing First Three and All Tasks
     showFirstThreeButton.addEventListener('click', () => {
         if (showAllTasks) {
-            // Show only the first three tasks
             const firstThreeTasks = todoList.slice(0, 3);
             renderTodoList(firstThreeTasks);
-            showFirstThreeButton.textContent = 'Show All Tasks'; // Update button text
+            showFirstThreeButton.textContent = 'Show All Tasks'; 
         } else {
-            // Show all tasks
+
             renderTodoList(todoList);
-            showFirstThreeButton.textContent = 'Show First Three'; // Update button text
+            showFirstThreeButton.textContent = 'Show First Three'; 
         }
-        showAllTasks = !showAllTasks; // Toggle the state
+        showAllTasks = !showAllTasks; 
     });
 });
 
-// Populate Orders
 const orders = [
     { id: "ORD001", item: "Cappuccino", status: "Delivered", popularity: "95%" },
     { id: "ORD002", item: "Chocolate Cake", status: "Pending", popularity: "85%" },
@@ -369,7 +357,6 @@ orders.forEach(order => {
     ordersContainer.appendChild(row);
 });
 
-// Populate Products
 const products = [
     { name: "فقه السنة", price: "$20.99", sales: "150 Sold" },
     { name: "No one But You", price: "$15.00", sales: "98 Sold" },
@@ -388,12 +375,10 @@ products.forEach(product => {
     productsContainer.appendChild(row);
 });
 
-// Export Products Table to Excel
 document.getElementById('export-excel').addEventListener('click', function () {
-    // Prepare data for Excel
+
     let table = document.getElementById('products-table');
     let workbook = XLSX.utils.table_to_book(table, {sheet: "Products"});
-    // Create and download the Excel file
     XLSX.writeFile(workbook, 'Products.xlsx');
 });
 </script>
@@ -456,7 +441,6 @@ document.getElementById('export-excel').addEventListener('click', function () {
         color: #edca1b;
     }
 
-    /* Custom Card Styles for Dashboard */
     .custom-card-dashboard {
         border-radius: 10px;
         padding: 15px;

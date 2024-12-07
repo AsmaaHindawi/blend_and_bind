@@ -11,10 +11,10 @@ class Users extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'username', // Replace 'name' with 'username'
+        'username', 
         'email',
         'password',
-        'role', // Add the 'role' field
+        'role', 
     ];
 
     protected $hidden = [

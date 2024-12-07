@@ -63,31 +63,30 @@
 
 #reservationModal input,
     #reservationModal select {
-        color: black  !important;/* Ensures input text is black */
+        color: black  !important;
     }
 
-/* Style for the Breadcrumbs */
 .breadcrumbs {
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 1px;
-    color: #bfbfbf; /* Default breadcrumb text color */
+    color: #bfbfbf; 
 }
 
 .breadcrumbs span {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    color: #bfbfbf; /* Span text color */
+    color: #bfbfbf; 
 }
 
 .breadcrumbs span a {
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff; /* Link color specifically for "Home" */
+    color: #ffffff; 
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .breadcrumbs span a:hover {
-    color: #edca1b; /* Darker color when hovered */
+    color: #edca1b; 
 }
 </style>
 
@@ -97,7 +96,6 @@
         Your Cart ({{ count($cart) }} items)
     </h1>
 
-    <!-- Display success and error messages -->
     @if(session('success'))
         <div class="alert alert-success text-white" style="background-color: #4476ac;">
             {{ session('success') }}
@@ -109,7 +107,6 @@
         </div>
     @endif
 
-    <!-- Check if the cart is empty -->
     @if($isCartEmpty)
         <div class="alert alert-info" style="color: #4476ac;">
             Your cart is currently empty.
@@ -265,36 +262,34 @@
     .text-black {
         color: #000 !important;
     }
-/* Special selector for "Browse Menu" button */
 #btn-browse-menu {
-    background-color: hsla(213, 59%, 29%, 0.858); /* Green background */
-    color: white; /* White text */
-    border-radius: 1px; /* Rounded corners */
-    padding: 12px 20px; /* Padding */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Bold text */
+    background-color: hsla(213, 59%, 29%, 0.858); 
+    color: white; 
+    border-radius: 1px; 
+    padding: 12px 20px; 
+    text-decoration: none; 
+    font-weight: bold; 
     transition: background-color 0.3s, transform 0.3s;
 }
 
 #btn-browse-menu:hover {
-    background-color: hsla(213, 53%, 36%, 0.858); /* Darker green on hover */
-    transform: scale(1.05); /* Slight zoom effect */
+    background-color: hsla(213, 53%, 36%, 0.858); 
+    transform: scale(1.05); 
 }
 
-/* Special selector for "Browse Books" button */
 #btn-browse-books {
-    background-color: hsl(244, 34%, 42%); /* Orange background */
-    color: white; /* White text */
-    border-radius: 1px; /* Rounded corners */
-    padding: 12px 20px; /* Padding */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Bold text */
+    background-color: hsl(244, 34%, 42%); 
+    color: white; 
+    border-radius: 1px; 
+    padding: 12px 20px; 
+    text-decoration: none; 
+    font-weight: bold; 
     transition: background-color 0.3s, transform 0.3s;
 }
 
 #btn-browse-books:hover {
-    background-color: hsl(244, 34%, 42%); /* Darker orange on hover */
-    transform: scale(1.05); /* Slight zoom effect */
+    background-color: hsl(244, 34%, 42%); 
+    transform: scale(1.05); 
 }
 
 </style>
@@ -306,7 +301,7 @@
         console.log(`Updating cart for ID: ${id}, Quantity: ${quantity}`);
 
         $.ajax({
-            url: `/cart/update/${id}`, // Ensure the URL is correct
+            url: `/cart/update/${id}`, 
             method: 'POST',
             data: {
                 quantity: quantity,
@@ -316,10 +311,8 @@
                 if (response.success) {
                     const row = $(`tr[data-id="${id}"]`);
 
-                    // Update the item total
                     row.find('.item-total').text(`$${response.itemTotal.toFixed(2)}`);
 
-                    // Update the subtotal, sales tax, and grand total
                     $('.subtotal').text(`$${response.subtotal.toFixed(2)}`);
                     $('.sales-tax').text(`$${response.salesTax.toFixed(2)}`);
                     $('.grand-total').text(`$${response.grandTotal.toFixed(2)}`);
@@ -334,7 +327,7 @@
     }
 
     $(document).ready(function () {
-        // Attach click event listeners for increment and decrement buttons
+
         $(document).on('click', '.increment-btn, .decrement-btn', function () {
             const row = $(this).closest('tr');
             const id = row.data('id');
